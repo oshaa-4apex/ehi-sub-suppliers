@@ -9,11 +9,13 @@
     { id: "classic", label: "Classic Navy", swatch: "linear-gradient(135deg,#0b2a4a,#334155)" },
   ];
 
-  let ceMainTab = "days";
+  let ceMainTab = "tour";
   let ceActiveDay = 0;
   let ceSheetMode = null;
   let ceSheetEdit = null;
   let ceSheetImages = [];
+  let ceCoverImages = [];
+  const CE_FLOW = ["tour", "days", "overview", "preview", "costing"];
 
   function ceUid(prefix) {
     return prefix + "-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 7);
@@ -79,20 +81,63 @@
     if (total) total.textContent = "Total " + cur + " " + (base * pax).toLocaleString();
   }
 
+  function ceSyncPaxTotals() {
+    const a = Number((document.getElementById("ce-pax-adults") && document.getElementById("ce-pax-adults").value) || 0);
+    const c = Number((document.getElementById("ce-pax-children") && document.getElementById("ce-pax-children").value) || 0);
+    const i = Number((document.getElementById("ce-pax-infants") && document.getElementById("ce-pax-infants").value) || 0);
+    const total = Math.max(1, a + c + i);
+    const pax = document.getElementById("ce-pax-count");
+    if (pax) pax.value = String(total);
+    const setIf = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
+    setIf("ce-cost-adults", a);
+    setIf("ce-cost-children", c);
+    setIf("ce-cost-infants", i);
+    return total;
+  }
+
+  function ceAutoDaysFromDates() {
+    const s = document.getElementById("ce-date-start") && document.getElementById("ce-date-start").value;
+    const e = document.getElementById("ce-date-end") && document.getElementById("ce-date-end").value;
+    const flex = document.getElementById("ce-dates-flex");
+    if (flex && flex.checked) return;
+    if (!s || !e) return;
+    const a = new Date(s + "T00:00:00");
+    const b = new Date(e + "T00:00:00");
+    if (Number.isNaN(a.getTime()) || Number.isNaN(b.getTime()) || b < a) return;
+    const days = Math.floor((b - a) / 86400000) + 1;
+    const nights = Math.max(0, days - 1);
+    const el = document.getElementById("ce-days");
+    if (el) el.value = days + " Days / " + nights + " Nights";
+  }
+
+  function ceRenderCoverPreview() {
+    const box = document.getElementById("ce-cover-preview");
+    if (!box) return;
+    box.innerHTML = (ceCoverImages || []).map((src) => '<img src="' + ceEsc(src) + '" alt="" />').join("");
+  }
+
   ceRenderSteps = function ceRenderSteps() {
     document.querySelectorAll("[data-ce-tab]").forEach((btn) => btn.classList.toggle("on", btn.dataset.ceTab === ceMainTab));
     document.querySelectorAll("[data-ce-tab-panel]").forEach((p) => { p.hidden = p.dataset.ceTabPanel !== ceMainTab; });
     const prev = document.getElementById("ce-prev");
     const next = document.getElementById("ce-next");
     const dl = document.getElementById("ce-download");
-    if (prev) prev.hidden = true;
-    if (next) next.textContent = "Save to excursion list";
+    const flowIdx = CE_FLOW.indexOf(ceMainTab);
+    if (prev) {
+      prev.hidden = flowIdx <= 0;
+      prev.textContent = "← Back";
+    }
+    if (next) {
+      if (flowIdx >= 0 && flowIdx < CE_FLOW.length - 1) next.textContent = "Next";
+      else next.textContent = "Save to excursion list";
+    }
     if (dl) dl.hidden = ceMainTab !== "preview";
+    if (ceMainTab === "tour") { ceSyncPaxTotals(); ceAutoDaysFromDates(); ceSyncMileageUi(); }
     if (ceMainTab === "days") ceRenderDestRows();
-    if (ceMainTab === "overview") { ceRenderIncludes(); ceRenderThemePicker(); }
-    if (ceMainTab === "costing") { ceRenderCosting(); }
+    if (ceMainTab === "overview") { ceRenderIncludes(); ceRenderThemePicker(); ceRenderCoverPreview(); }
+    if (ceMainTab === "costing") { ceSyncPaxTotals(); ceRenderCosting(); }
     if (ceMainTab === "preview") { ceRenderPaxTable(); ceRenderPreview(); }
-    if (typeof ceRenderCosting === "function") ceRenderCosting();
+    if (typeof ceRenderCosting === "function" && ceMainTab === "costing") ceRenderCosting();
     else ceTouchMeta();
   };
 
@@ -267,6 +312,20 @@
       set("ce-sheet-exp-name", (item && item.name) || "");
       set("ce-sheet-exp-desc", (item && item.description) || "");
       set("ce-sheet-exp-tags", (item && item.tags) || "");
+      set("ce-sheet-exp-url", (item && item.url) || "");
+      set("ce-sheet-exp-date", (item && item.itemDate) || ((document.getElementById("ce-date-start") && document.getElementById("ce-date-start").value) || ""));
+      set("ce-sheet-exp-time", (item && item.time) || "");
+      set("ce-sheet-exp-cost-type", (item && item.costType) || "Per Person");
+      set("ce-sheet-exp-currency", (item && item.currency) || ((document.getElementById("ce-currency-primary") && document.getElementById("ce-currency-primary").value) || "USD"));
+      set("ce-sheet-exp-adult", (item && item.costAdult) != null ? item.costAdult : 0);
+      set("ce-sheet-exp-child", (item && item.costChild) != null ? item.costChild : 0);
+      set("ce-sheet-exp-infant", (item && item.costInfant) != null ? item.costInfant : 0);
+      set("ce-sheet-exp-markup", (item && item.markup) != null ? item.markup : 0);
+      set("ce-sheet-exp-condition", (item && item.condition) || "N/A");
+      set("ce-sheet-exp-notes", (item && item.notes) || "");
+      document.querySelectorAll("#ce-sheet-exp-cond .ce-cond-btn").forEach((b) => {
+        b.classList.toggle("on", b.dataset.cond === ((item && item.condition) || "N/A"));
+      });
     }
     if (mode === "acc") {
       set("ce-sheet-acc-search", (item && item.hotel) || "");
@@ -292,6 +351,20 @@
       const to = document.getElementById("ce-sheet-tr-to") && document.getElementById("ce-sheet-tr-to").value;
       const km = !(item && item.autoMileage === false) ? ceCalcLegKm(from, to) : ((item && item.mileage) || 80);
       set("ce-sheet-tr-mileage", km);
+      set("ce-sheet-tr-veh-select", (item && item.vehicle) || "Private car");
+      set("ce-sheet-tr-day-rate", (item && item.dayRate) != null ? item.dayRate : 85);
+      set("ce-sheet-tr-incl-km", (item && item.includedKm) != null ? item.includedKm : 100);
+      set("ce-sheet-tr-mile-rate", (item && item.mileRate) != null ? item.mileRate : 0.45);
+      set("ce-sheet-tr-bata", (item && item.bata) != null ? item.bata : 20);
+      set("ce-sheet-tr-currency", (item && item.currency) || ((document.getElementById("ce-currency-primary") && document.getElementById("ce-currency-primary").value) || "USD"));
+      set("ce-sheet-tr-notes", (item && item.notes) || "");
+      const hours = Number((item && item.travelHours) != null ? item.travelHours : 0);
+      const hrs = Math.floor(hours);
+      const mins = Math.round((hours - hrs) * 60);
+      set("ce-sheet-tr-hrs", hrs);
+      set("ce-sheet-tr-mins", mins);
+      set("ce-sheet-tr-hours", hours);
+      ceRecalcTransportTotal();
     }
     ceRenderSheetGallery();
     ceRenderSheetSuggestions();
@@ -342,8 +415,23 @@
     if (ceSheetMode === "exp") {
       const name = (document.getElementById("ce-sheet-exp-name") && document.getElementById("ce-sheet-exp-name").value || "").trim();
       if (!name) { if (typeof deToast === "function") deToast("Enter an experience name.", "warn"); return; }
-      const item = { id: ceUid("exp"), name: name, description: (document.getElementById("ce-sheet-exp-desc") && document.getElementById("ce-sheet-exp-desc").value) || "", tags: (document.getElementById("ce-sheet-exp-tags") && document.getElementById("ce-sheet-exp-tags").value) || "", image: ceSheetImages[0] || "",
-        itemDate: (document.getElementById("ce-sheet-exp-date") && document.getElementById("ce-sheet-exp-date").value) || ""
+      const item = {
+        id: ceUid("exp"),
+        name: name,
+        description: (document.getElementById("ce-sheet-exp-desc") && document.getElementById("ce-sheet-exp-desc").value) || "",
+        tags: (document.getElementById("ce-sheet-exp-tags") && document.getElementById("ce-sheet-exp-tags").value) || "",
+        url: (document.getElementById("ce-sheet-exp-url") && document.getElementById("ce-sheet-exp-url").value) || "",
+        image: ceSheetImages[0] || "",
+        itemDate: (document.getElementById("ce-sheet-exp-date") && document.getElementById("ce-sheet-exp-date").value) || "",
+        time: (document.getElementById("ce-sheet-exp-time") && document.getElementById("ce-sheet-exp-time").value) || "",
+        costType: (document.getElementById("ce-sheet-exp-cost-type") && document.getElementById("ce-sheet-exp-cost-type").value) || "Per Person",
+        currency: (document.getElementById("ce-sheet-exp-currency") && document.getElementById("ce-sheet-exp-currency").value) || "USD",
+        costAdult: Number((document.getElementById("ce-sheet-exp-adult") && document.getElementById("ce-sheet-exp-adult").value) || 0),
+        costChild: Number((document.getElementById("ce-sheet-exp-child") && document.getElementById("ce-sheet-exp-child").value) || 0),
+        costInfant: Number((document.getElementById("ce-sheet-exp-infant") && document.getElementById("ce-sheet-exp-infant").value) || 0),
+        markup: Number((document.getElementById("ce-sheet-exp-markup") && document.getElementById("ce-sheet-exp-markup").value) || 0),
+        condition: (document.getElementById("ce-sheet-exp-condition") && document.getElementById("ce-sheet-exp-condition").value) || "N/A",
+        notes: (document.getElementById("ce-sheet-exp-notes") && document.getElementById("ce-sheet-exp-notes").value) || "",
       };
       if (ceSheetEdit != null) row.experienceItems[ceSheetEdit] = Object.assign({}, row.experienceItems[ceSheetEdit], item, { id: row.experienceItems[ceSheetEdit].id });
       else row.experienceItems.push(item);
@@ -366,6 +454,12 @@
       if (!from || !to) { if (typeof deToast === "function") deToast("Set From and To for transport.", "warn"); return; }
       const auto = !!(document.getElementById("ce-sheet-tr-auto") && document.getElementById("ce-sheet-tr-auto").checked);
       const vehSel = (document.getElementById("ce-sheet-tr-veh-select") && document.getElementById("ce-sheet-tr-veh-select").value) || (document.getElementById("ce-sheet-tr-vehicle") && document.getElementById("ce-sheet-tr-vehicle").value) || "Private car";
+      const hrs = Number((document.getElementById("ce-sheet-tr-hrs") && document.getElementById("ce-sheet-tr-hrs").value) || 0);
+      const mins = Number((document.getElementById("ce-sheet-tr-mins") && document.getElementById("ce-sheet-tr-mins").value) || 0);
+      const travelHours = Math.round((hrs + (mins / 60)) * 100) / 100;
+      const hoursEl = document.getElementById("ce-sheet-tr-hours");
+      if (hoursEl) hoursEl.value = travelHours;
+      const totals = ceRecalcTransportTotal();
       const item = {
         id: ceUid("tr"), from: from, to: to,
         date: (document.getElementById("ce-sheet-tr-date") && document.getElementById("ce-sheet-tr-date").value) || "",
@@ -376,8 +470,12 @@
         dayRate: Number((document.getElementById("ce-sheet-tr-day-rate") && document.getElementById("ce-sheet-tr-day-rate").value) || 85),
         includedKm: Number((document.getElementById("ce-sheet-tr-incl-km") && document.getElementById("ce-sheet-tr-incl-km").value) || 100),
         mileRate: Number((document.getElementById("ce-sheet-tr-mile-rate") && document.getElementById("ce-sheet-tr-mile-rate").value) || 0.45),
-        bata: Number((document.getElementById("ce-sheet-tr-bata") && document.getElementById("ce-sheet-tr-bata").value) || 20),
-        travelHours: Number((document.getElementById("ce-sheet-tr-hours") && document.getElementById("ce-sheet-tr-hours").value) || 0),
+        bata: Number((document.getElementById("ce-sheet-tr-bata") && document.getElementById("ce-sheet-tr-bata").value) || 0),
+        currency: (document.getElementById("ce-sheet-tr-currency") && document.getElementById("ce-sheet-tr-currency").value) || "USD",
+        travelHours: travelHours,
+        notes: (document.getElementById("ce-sheet-tr-notes") && document.getElementById("ce-sheet-tr-notes").value) || "",
+        totalCost: totals.total,
+        mileagePay: totals.mileagePay,
       };
       // push rates into costing defaults
       const setIf = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
@@ -396,6 +494,20 @@
     ceTouchMeta();
   }
 
+  function ceRecalcTransportTotal() {
+    const km = Number((document.getElementById("ce-sheet-tr-mileage") && document.getElementById("ce-sheet-tr-mileage").value) || 0);
+    const rate = Number((document.getElementById("ce-sheet-tr-mile-rate") && document.getElementById("ce-sheet-tr-mile-rate").value) || 0);
+    const bata = Number((document.getElementById("ce-sheet-tr-bata") && document.getElementById("ce-sheet-tr-bata").value) || 0);
+    const cur = (document.getElementById("ce-sheet-tr-currency") && document.getElementById("ce-sheet-tr-currency").value) || "USD";
+    const mileagePay = Math.round(km * rate * 100) / 100;
+    const total = Math.round((mileagePay + bata) * 100) / 100;
+    const totalEl = document.getElementById("ce-sheet-tr-total");
+    if (totalEl) totalEl.value = total.toFixed(2);
+    const hint = document.getElementById("ce-sheet-tr-total-hint");
+    if (hint) hint.textContent = `(${km} km × ${rate}) + Bata ${bata} = ${cur} ${total.toFixed(2)}`;
+    return { mileagePay, total, cur };
+  }
+
   function ceAddImageFiles(files) {
     Array.prototype.forEach.call(files || [], (file) => {
       if (!file || !String(file.type || "").startsWith("image/")) return;
@@ -406,7 +518,7 @@
   }
 
   openCreateExcursion = function openCreateExcursion() {
-    ceMainTab = "days"; ceActiveDay = 0; ceDestRows = []; ceMileManual = false;
+    ceMainTab = "tour"; ceActiveDay = 0; ceDestRows = []; ceMileManual = false; ceCoverImages = [];
     const backdrop = document.getElementById("ce-backdrop");
     if (backdrop) { backdrop.hidden = false; document.body.style.overflow = "hidden"; }
     const logoImg = document.getElementById("ce-head-logo");
@@ -414,8 +526,12 @@
     const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
     setVal("ce-name", ""); setVal("ce-days", "5 Days / 4 Nights"); setVal("ce-intro", ""); setVal("ce-itinerary", "");
     setVal("ce-client", ""); setVal("ce-tags", ""); setVal("ce-pax-count", "2"); setVal("ce-date-start", ""); setVal("ce-date-end", "");
+    setVal("ce-pax-adults", "2"); setVal("ce-pax-children", "0"); setVal("ce-pax-infants", "0");
+    setVal("ce-exchange-rate", "330.10"); setVal("ce-payment-link", ""); setVal("ce-export-remarks", "");
     setVal("ce-remarks", ""); setVal("ce-terms", CE_TERMS_DEFAULT); setVal("ce-theme", "purple");
-    setVal("ce-cost-adults", document.getElementById("ce-pax-count") && document.getElementById("ce-pax-count").value || "2");
+    const flex = document.getElementById("ce-dates-flex");
+    if (flex) flex.checked = false;
+    setVal("ce-cost-adults", "2");
     setVal("ce-cost-children", "0");
     setVal("ce-cost-infants", "0");
     const curP = document.getElementById("ce-currency-primary");
@@ -423,13 +539,40 @@
     const cur = document.getElementById("ce-currency");
     if (costCur && curP) costCur.value = curP.value || "USD";
     if (cur && curP) cur.value = curP.value || "USD";
+    ceRenderCoverPreview();
     ceRenderIncludes(); ceRenderDestRows(); ceRenderPaxTable(); ceRenderSteps(); ceSyncMileageUi();
     const status = document.getElementById("ce-intro-status");
-    if (status) { status.textContent = "Short intro is AI-defined — fill tour name in Overview, then AI write intro."; status.style.color = "#6d28d9"; }
+    if (status) { status.textContent = "Fill Tour Information first, then Day by Day, Overview, Preview, Costing."; status.style.color = "#6d28d9"; }
   };
 
   ceGoNext = function ceGoNext() {
-    cePersistBoardFields(); ceCollectDestRows();
+    cePersistBoardFields(); ceCollectDestRows(); ceSyncPaxTotals(); ceAutoDaysFromDates();
+    const idx = CE_FLOW.indexOf(ceMainTab);
+    if (idx >= 0 && idx < CE_FLOW.length - 1) {
+      if (ceMainTab === "tour") {
+        const client = (document.getElementById("ce-client") && document.getElementById("ce-client").value || "").trim();
+        const flex = document.getElementById("ce-dates-flex");
+        const start = document.getElementById("ce-date-start") && document.getElementById("ce-date-start").value;
+        const end = document.getElementById("ce-date-end") && document.getElementById("ce-date-end").value;
+        if (!client) { if (typeof deToast === "function") deToast("Enter customer name.", "warn"); return; }
+        if (!(flex && flex.checked) && (!start || !end)) { if (typeof deToast === "function") deToast("Select tour dates (or mark Dates not specified).", "warn"); return; }
+        if (!ceDestRows.length) {
+          const transport = (document.getElementById("ce-transport") && document.getElementById("ce-transport").value) || "Private car";
+          const day = ceBlankDay(CE_DEST_OPTIONS[0], (document.getElementById("ce-region") && document.getElementById("ce-region").value) || CE_CITIES[0]);
+          day.transport = transport;
+          day.transports = [{ id: ceUid("tr"), from: day.city, to: day.place, date: start || "", mode: "Land", autoMileage: true, mileage: 80, vehicle: transport }];
+          ceFillDaySlots(day, 1);
+          ceDestRows.push(day);
+          ceActiveDay = 0;
+        }
+      }
+      if (ceMainTab === "overview" && !(document.getElementById("ce-intro") && document.getElementById("ce-intro").value || "").trim()) {
+        const ta = document.getElementById("ce-intro"); if (ta) ta.value = ceDraftIntro();
+      }
+      ceMainTab = CE_FLOW[idx + 1];
+      ceRenderSteps();
+      return;
+    }
     if (!(document.getElementById("ce-intro") && document.getElementById("ce-intro").value || "").trim()) {
       const ta = document.getElementById("ce-intro"); if (ta) ta.value = ceDraftIntro();
     }
@@ -438,7 +581,14 @@
     }
     ceSaveToList();
   };
-  ceGoPrev = function ceGoPrev() {};
+  ceGoPrev = function ceGoPrev() {
+    cePersistBoardFields();
+    const idx = CE_FLOW.indexOf(ceMainTab);
+    if (idx > 0) {
+      ceMainTab = CE_FLOW[idx - 1];
+      ceRenderSteps();
+    }
+  };
 
 
   let ceSeasonalOn = false;
@@ -592,6 +742,36 @@
         ceRenderSteps();
         return;
       }
+      const cond = e.target.closest("#ce-sheet-exp-cond .ce-cond-btn");
+      if (cond) {
+        document.querySelectorAll("#ce-sheet-exp-cond .ce-cond-btn").forEach((b) => b.classList.remove("on"));
+        cond.classList.add("on");
+        const hid = document.getElementById("ce-sheet-exp-condition");
+        if (hid) hid.value = cond.dataset.cond || "N/A";
+        return;
+      }
+      if (e.target.closest("#ce-client-add")) {
+        const name = prompt("Customer name:");
+        if (name && name.trim()) {
+          const el = document.getElementById("ce-client");
+          if (el) el.value = name.trim();
+        }
+        return;
+      }
+      if (e.target.closest("#ce-category-add")) {
+        const name = prompt("New category:");
+        if (name && name.trim()) {
+          const sel = document.getElementById("ce-category");
+          if (sel) {
+            const opt = document.createElement("option");
+            opt.value = name.trim();
+            opt.textContent = name.trim();
+            sel.appendChild(opt);
+            sel.value = name.trim();
+          }
+        }
+        return;
+      }
       const dayPill = e.target.closest("[data-ce-day]");
       if (dayPill) { cePersistBoardFields(); ceActiveDay = Number(dayPill.dataset.ceDay); ceRenderDestRows(); return; }
       if (e.target.closest("#ce-add-dest")) {
@@ -678,8 +858,28 @@
           const mile = document.getElementById("ce-sheet-tr-mileage");
           if (mile) mile.value = ceCalcLegKm(document.getElementById("ce-sheet-tr-from").value, document.getElementById("ce-sheet-tr-to").value);
         }
+        ceRecalcTransportTotal();
+      }
+      if (e.target.id === "ce-sheet-tr-mileage" || e.target.id === "ce-sheet-tr-mile-rate" || e.target.id === "ce-sheet-tr-bata" || e.target.id === "ce-sheet-tr-currency") {
+        ceRecalcTransportTotal();
       }
       if (e.target.id === "ce-sheet-file") { ceAddImageFiles(e.target.files); e.target.value = ""; }
+      if (e.target.id === "ce-cover-file") {
+        Array.prototype.forEach.call(e.target.files || [], (file) => {
+          if (!file || !String(file.type || "").startsWith("image/")) return;
+          const reader = new FileReader();
+          reader.onload = () => { ceCoverImages.push(String(reader.result || "")); ceRenderCoverPreview(); };
+          reader.readAsDataURL(file);
+        });
+        e.target.value = "";
+      }
+      if (e.target.id === "ce-dates-flex") {
+        const on = !!e.target.checked;
+        ["ce-date-start", "ce-date-end"].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.disabled = on;
+        });
+      }
     });
 
     root.addEventListener("input", (e) => {
@@ -689,6 +889,15 @@
         if (e.target.id === "ce-sheet-exp-search") document.getElementById("ce-sheet-exp-name").value = e.target.value;
         if (e.target.id === "ce-sheet-acc-search") document.getElementById("ce-sheet-acc-hotel").value = e.target.value;
       }
+      if (e.target.id === "ce-pax-adults" || e.target.id === "ce-pax-children" || e.target.id === "ce-pax-infants") {
+        ceSyncPaxTotals();
+        ceTouchMeta();
+        if (ceMainTab === "costing") ceRenderCosting();
+      }
+      if (e.target.id === "ce-date-start" || e.target.id === "ce-date-end") ceAutoDaysFromDates();
+      if (e.target.id === "ce-sheet-tr-mileage" || e.target.id === "ce-sheet-tr-mile-rate" || e.target.id === "ce-sheet-tr-bata") {
+        ceRecalcTransportTotal();
+      }
       if (e.target.id === "ce-name" || e.target.id === "ce-base-usd" || e.target.id === "ce-pax-count" || String(e.target.id || "").startsWith("ce-cost-")) {
         if (e.target.id === "ce-pax-count") {
           const a = document.getElementById("ce-cost-adults");
@@ -697,6 +906,23 @@
         ceRenderCosting();
       }
     });
+
+    const cover = document.getElementById("ce-cover-drop");
+    if (cover && !cover.dataset.wired) {
+      cover.dataset.wired = "1";
+      cover.addEventListener("dragover", (ev) => { ev.preventDefault(); cover.classList.add("is-drag"); });
+      cover.addEventListener("dragleave", () => cover.classList.remove("is-drag"));
+      cover.addEventListener("drop", (ev) => {
+        ev.preventDefault();
+        cover.classList.remove("is-drag");
+        Array.prototype.forEach.call((ev.dataTransfer && ev.dataTransfer.files) || [], (file) => {
+          if (!file || !String(file.type || "").startsWith("image/")) return;
+          const reader = new FileReader();
+          reader.onload = () => { ceCoverImages.push(String(reader.result || "")); ceRenderCoverPreview(); };
+          reader.readAsDataURL(file);
+        });
+      });
+    }
 
     const gal = document.getElementById("ce-sheet-gallery");
     if (gal) {
