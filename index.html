@@ -10170,7 +10170,7 @@
                   </span>
                   <span class="nav-copy">
                     <strong>Allocation</strong>
-                    <small>AI Smart Box · Transfer Job · roster</small>
+                    <small>AI Smart Box · roster</small>
                   </span>
                   <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
@@ -10182,15 +10182,6 @@
                     <span class="nav-copy">
                       <strong>AI Smart Box</strong>
                       <small>Smart Board · combine · duty chains</small>
-                    </span>
-                  </a>
-                  <a class="nav-link" data-page="pay-driver" href="#pay-driver">
-                    <span class="nav-ico green">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 17h14v-5l-1.5-4.5A2 2 0 0 0 15.6 6H8.4a2 2 0 0 0-1.9 1.5L5 12v5z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg>
-                    </span>
-                    <span class="nav-copy">
-                      <strong>Transfer Job</strong>
-                      <small>Supplier owner · vehicle · TR desk</small>
                     </span>
                   </a>
                   <a class="nav-link" data-page="guide-roster" href="#guide-roster">
@@ -10355,7 +10346,7 @@
               </span>
               <span class="nav-copy">
                 <strong>Payments</strong>
-                <small>Guides · suppliers · books</small>
+                <small>Drivers · guides · books</small>
               </span>
               <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
             </button>
@@ -10385,6 +10376,15 @@
                 <span class="nav-copy">
                   <strong>Tour Advance</strong>
                   <small>Guide · driver tour floats</small>
+                </span>
+              </a>
+              <a class="nav-link" data-page="pay-driver" href="#pay-driver">
+                <span class="nav-ico green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 17h14v-5l-1.5-4.5A2 2 0 0 0 15.6 6H8.4a2 2 0 0 0-1.9 1.5L5 12v5z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg>
+                </span>
+                <span class="nav-copy">
+                  <strong>Driver Payments</strong>
+                  <small>TR settle · mileage · bata · LKR</small>
                 </span>
               </a>
               <a class="nav-link" data-page="pay-guide" href="#pay-guide">
@@ -11730,7 +11730,6 @@
 
             <div class="tabs ops-tabs" id="xfer-tabs" role="tablist" aria-label="Transfer allocation">
               <button type="button" class="tab active" data-xfer-tab="ai">AI Smart Box</button>
-              <button type="button" class="tab" data-xfer-tab="trjob">Transfer Job</button>
               <button type="button" class="tab" data-xfer-tab="job">All jobs</button>
               <button type="button" class="tab" data-xfer-tab="departure">Departure H-A</button>
               <button type="button" class="tab" data-xfer-tab="arrival">Arrival A-H</button>
@@ -11743,14 +11742,15 @@
                 <div>
                   <div class="ai-alloc-kicker">AI Transport Controller</div>
                   <h2>AI Smart Box</h2>
-                  <p>Chain optimizer · Transfer Job desk · supplier owner fleet · Ops confirms every decision</p>
+                  <p>Chain optimizer · Without TR → New Transfer · supplier owner fleet · Ops confirms every decision</p>
                 </div>
                 <div class="ai-alloc-hero-actions">
                   <label class="ai-alloc-date">Date <input type="date" id="ai-alloc-date" /></label>
                   <button type="button" class="btn-primary" id="ai-btn-auto">Auto Allocate</button>
                   <button type="button" class="btn-secondary" id="ai-btn-find">Find Combinations</button>
                   <button type="button" class="btn-secondary" id="ai-btn-optimize">Optimize All</button>
-                  <button type="button" class="btn-primary" data-goto="pay-driver" id="ai-btn-trjob">Transfer Job →</button>
+                  <button type="button" class="btn-secondary" data-goto="tr-driver-transfers">Transfers →</button>
+                  <button type="button" class="btn-secondary" data-goto="pay-driver" id="ai-btn-trjob">Driver Payments →</button>
                 </div>
               </div>
               <div class="ai-alloc-summary" id="ai-alloc-summary"></div>
@@ -12044,16 +12044,17 @@
           </div>
         </section>
 
-        <!-- Transfer Job desk · Allocation → AI Smart Box -->
+        <!-- Driver Payments desk · under Payments -->
         <section id="page-pay-driver" class="page">
           <div class="wrap">
             <div class="top">
               <div>
-                <h1>Transfer Job</h1>
-                <p>Allocation · AI Smart Box · supplier owner · vehicle fleet · garage-to-garage</p>
+                <h1>Driver Payments</h1>
+                <p>TR settlement · supplier owner · vehicle fleet · garage-to-garage mileage · bata · tickets · LKR</p>
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
-                <button class="btn-secondary" type="button" data-goto="transfer-alloc">← AI Smart Box</button>
+                <button class="btn-secondary" type="button" data-goto="pay-guide">Guide Payments →</button>
+                <button class="btn-secondary" type="button" data-goto="transfer-alloc">← Allocation</button>
               </div>
             </div>
             <div id="tr-pay-desk">
@@ -12360,7 +12361,7 @@
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
                 <button class="btn-primary" type="button" data-goto="transfer-alloc">Allocation panel</button>
-                <button class="btn-secondary" type="button" data-goto="pay-driver">Transfer Job →</button>
+                <button class="btn-secondary" type="button" data-goto="pay-driver">Driver Payments →</button>
                 <button class="btn-secondary" type="button" data-goto="excursions" id="tr-dt-close">Close</button>
               </div>
             </div>
@@ -19133,7 +19134,7 @@
         "pay-bank": "EHI Back Office — Bank Book",
         "pay-cash": "EHI Back Office — Cash Book",
         "pay-advance": "EHI Back Office — Tour Advance",
-        "pay-driver": "EHI Back Office — Transfer Job",
+        "pay-driver": "EHI Back Office — Driver Payments",
         "pay-guide": "EHI Back Office — Guide Payments",
         "pay-supplier": "EHI Back Office — Supplier Payments",
         "pay-utility": "EHI Back Office — Utility Payments",
@@ -19152,18 +19153,24 @@
       const transportPages = [
         "excursions", "vehicle-regis", "guide-regis", "transfer-alloc", "guide-roster", "driver-roster",
         "tr-analytics", "tr-driver-transfers", "tr-driver-reviews",
-        "tr-media", "pay-driver",
+        "tr-media",
       ];
       if (transportPages.includes(page)) {
         document.getElementById("transport-section").classList.add("open");
         document.getElementById("transport-toggle").setAttribute("aria-expanded", "true");
       }
-      const allocationNestPages = ["transfer-alloc", "pay-driver", "guide-roster", "driver-roster", "guide-regis", "vehicle-regis"];
+      const allocationNestPages = ["transfer-alloc", "guide-roster", "driver-roster", "guide-regis", "vehicle-regis"];
       const allocationNest = document.getElementById("allocation-nest");
       const allocationNestBtn = document.getElementById("allocation-nest-toggle");
       if (allocationNest && allocationNestBtn && allocationNestPages.includes(page)) {
         allocationNest.classList.add("open");
         allocationNestBtn.setAttribute("aria-expanded", "true");
+      }
+      if (page === "pay-driver") {
+        document.getElementById("payments-section")?.classList.add("open");
+        document.getElementById("payments-toggle")?.setAttribute("aria-expanded", "true");
+        if (typeof renderPayments === "function") renderPayments("pay-driver");
+        else if (typeof renderTrPayDesk === "function") renderTrPayDesk();
       }
       if (page === "guide-roster" || page === "driver-roster") {
         rosterMode = page === "driver-roster" ? "drivers" : "guides";
@@ -19175,15 +19182,11 @@
         document.getElementById("excursion-section").classList.add("open");
         document.getElementById("excursion-toggle").setAttribute("aria-expanded", "true");
       }
-      if (isPay || isPayBook) {
+      if (isPay || isPayBook || page === "pay-driver") {
         document.getElementById("payments-section").classList.add("open");
         document.getElementById("payments-toggle").setAttribute("aria-expanded", "true");
       }
       if (isPay) renderPayments(page);
-      if (page === "pay-driver") {
-        if (typeof renderPayments === "function") renderPayments("pay-driver");
-        else if (typeof renderTrPayDesk === "function") renderTrPayDesk();
-      }
       if (isPayBook) {
         const map = { "pay-bank": "bank", "pay-cash": "cash", "pay-advance": "advance" };
         showPayBookTab(map[page] || "bank");
@@ -20712,12 +20715,8 @@
 
     function showXferTab(tab) {
       if (tab === "trjob") {
-        document.querySelectorAll("#xfer-tabs [data-xfer-tab]").forEach((btn) => {
-          btn.classList.toggle("active", btn.dataset.xferTab === "trjob");
-        });
-        if (typeof showPage === "function") showPage("pay-driver");
-        else if (typeof renderPayments === "function") renderPayments("pay-driver");
-        return;
+        /* legacy: Transfer Job tab removed — open All jobs */
+        tab = "job";
       }
       xferActiveTab = tab;
       document.querySelectorAll("#xfer-tabs [data-xfer-tab]").forEach((btn) => {
@@ -21875,7 +21874,7 @@
     /* Payments — Driver TR Payment desk / Guide / Supplier / Utility / Hotel / Rent */
     let payActive = "pay-driver";
     const PAY_META = {
-      "pay-driver": { title: "Transfer Job", sub: "Supplier owner · vehicle fleet · garage-to-garage mileage · bata · tickets · LKR" },
+      "pay-driver": { title: "Driver Payments", sub: "TR settlement · supplier owner · vehicle fleet · garage-to-garage mileage · bata · tickets · LKR" },
       "pay-guide": { title: "Guide Payments", sub: "Settlement · advance · balance · LKR" },
       "pay-supplier": { title: "Supplier Payments", sub: "Madu · Yala · Udawalawe · snorkel · turtle · tea · spice · LKR" },
       "pay-utility": { title: "Utility Payments", sub: "Power · water · internet · rent · LKR" },
@@ -32926,13 +32925,13 @@
       if (sec && btn && !sec.classList.contains("open")) btn.click();
     }
     async function goPage(page) {
-      if (["pay-guide", "pay-supplier", "pay-utility", "pay-hotel", "pay-rent", "pay-bank", "pay-cash", "pay-advance"].includes(page)) {
+      if (["pay-driver", "pay-guide", "pay-supplier", "pay-utility", "pay-hotel", "pay-rent", "pay-bank", "pay-cash", "pay-advance"].includes(page)) {
         openSection("payments-section", "payments-toggle");
       }
       if (["excursion-dash", "excursion-reports", "excursion-marketplace", "daily-excursions", "daily-info", "operation", "allocation"].includes(page)) {
         openSection("excursion-section", "excursion-toggle");
       }
-      if (["transfer-alloc", "pay-driver", "guide-roster", "driver-roster", "guide-regis", "vehicle-regis"].includes(page)) {
+      if (["transfer-alloc", "guide-roster", "driver-roster", "guide-regis", "vehicle-regis"].includes(page)) {
         openSection("transport-section", "transport-toggle");
         const nest = document.getElementById("allocation-nest");
         const nestBtn = document.getElementById("allocation-nest-toggle");
