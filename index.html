@@ -1799,9 +1799,52 @@
       box-shadow: 0 0 0 3px rgba(56,189,248,.2);
     }
     .xfer-field:disabled { opacity: .55; background: #f8fafc; }
-    .xfer-pickup-wrap { display: grid; gap: 4px; min-width: 130px; }
+    .xfer-pickup-wrap { display: grid; gap: 4px; min-width: 150px; }
     .xfer-pickup-wrap .auto {
       font-size: 10px; font-weight: 750; color: #0369a1;
+    }
+    .xfer-pickup-wrap .xfer-pickup-actions {
+      display: flex; gap: 4px; flex-wrap: wrap; align-items: center;
+    }
+    .xfer-pickup-wrap .xfer-calc-btn {
+      border: 1px solid #7dd3fc; background: #e0f2fe; color: #0369a1;
+      border-radius: 8px; padding: 3px 8px; font: inherit; font-size: 10px; font-weight: 800;
+      cursor: pointer; white-space: nowrap;
+    }
+    .xfer-pickup-wrap .xfer-calc-btn:hover { background: #bae6fd; }
+    .xfer-pickup-wrap .xfer-calc-btn:disabled { opacity: .45; cursor: not-allowed; }
+    .xfer-pickup-wrap label.mini {
+      display: flex; flex-direction: column; gap: 2px;
+      font-size: 9px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: .03em;
+    }
+    .xfer-pickup-wrap .row2 {
+      display: grid; grid-template-columns: 72px 1fr; gap: 4px;
+    }
+    .xfer-book-table tr.has-tr .xfer-pickup-wrap {
+      background: #f0fdf4; border: 1px solid #86efac; border-radius: 10px; padding: 6px;
+    }
+    .xfer-hotel-queue { display: grid; gap: 8px; margin-top: 8px; }
+    .xfer-hotel-item {
+      border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; background: #fff;
+      display: grid; gap: 6px;
+    }
+    .xfer-hotel-item.due { border-color: #f59e0b; background: #fffbeb; }
+    .xfer-hotel-item.sent { border-color: #86efac; background: #f0fdf4; }
+    .xfer-hotel-item .top {
+      display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; align-items: center;
+    }
+    .xfer-hotel-item strong { font-size: 13px; }
+    .xfer-hotel-item .meta { font-size: 11px; color: #64748b; font-weight: 650; }
+    .xfer-hotel-schedule {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 10px;
+    }
+    .xfer-hotel-schedule .box {
+      border: 1px solid #bae6fd; background: #f0f9ff; border-radius: 10px; padding: 10px;
+      font-size: 12px; font-weight: 700; color: #0c4a6e; line-height: 1.4;
+    }
+    .xfer-hotel-schedule .box span { display: block; font-size: 10px; color: #0369a1; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 2px; }
+    @media (max-width: 560px) {
+      .xfer-hotel-schedule { grid-template-columns: 1fr; }
     }
     .xfer-book-table { width: 100%; border-collapse: collapse; font-size: 12px; }
     .xfer-book-table th, .xfer-book-table td {
@@ -8458,6 +8501,41 @@
       justify-content: space-between;
       margin-bottom: 14px;
     }
+    .mp-cat-filter-bar {
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid #bbf7d0;
+      margin-bottom: 14px;
+    }
+    .mp-cat-select-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 200px;
+      font-size: 10px;
+      font-weight: 800;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .mp-cat-select-wrap select {
+      height: 38px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 0 12px;
+      background: #fff;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 650;
+      color: #0f172a;
+      min-width: 220px;
+    }
+    .mp-cat-select-wrap select:focus {
+      outline: none;
+      border-color: #14b8a6;
+      box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
+    }
     .mp-form-backdrop {
       position: fixed;
       inset: 0;
@@ -9595,6 +9673,78 @@
       border-radius: inherit;
       background: linear-gradient(90deg, #38bdf8, #2563eb);
     }
+    /* September Van & Bus roster fairness board */
+    .drv-fleet-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin: 0 0 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+      border: 1px solid #dbeafe;
+    }
+    .drv-fleet-bar .fleet-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-right: 4px;
+    }
+    .drv-fleet-tab {
+      appearance: none;
+      border: 1px solid #cbd5e1;
+      background: #fff;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .drv-fleet-tab:hover { border-color: #93c5fd; color: #1d4ed8; }
+    .drv-fleet-tab.active {
+      background: #1e3a8a;
+      border-color: #1e3a8a;
+      color: #fff;
+    }
+    .drv-body-tabs { display: inline-flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+    .drv-body-tab {
+      appearance: none;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+      color: #64748b;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .drv-body-tab.active { background: #0f766e; border-color: #0f766e; color: #fff; }
+    .roster-chip.km { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+    .roster-chip.lastwork { background: #fff7ed; border-color: #fed7aa; color: #c2410c; }
+    .roster-chip.body-kdh { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
+    .roster-chip.body-flat { background: #f5f3ff; border-color: #ddd6fe; color: #6d28d9; }
+    .roster-day-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+      margin-top: 6px;
+      max-width: 280px;
+    }
+    .roster-day-strip i {
+      width: 7px;
+      height: 7px;
+      border-radius: 2px;
+      background: #e2e8f0;
+    }
+    .roster-day-strip i.on { background: #2563eb; }
+    .roster-day-strip i.hot { background: #ea580c; }
+    .rank-row.roster-row.fair-due {
+      box-shadow: inset 3px 0 0 #16a34a;
+    }
     .rank-score small {
       display: block;
       font-size: 9px;
@@ -9927,38 +10077,183 @@
     .tr-mod-page .tr-mod-kpis {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 14px;
+      gap: 12px;
+      margin-bottom: 16px;
     }
     @media (max-width: 900px) {
       .tr-mod-page .tr-mod-kpis { grid-template-columns: 1fr 1fr; }
     }
     .tr-mod-kpi {
+      position: relative;
+      overflow: hidden;
       background: #fff;
       border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px 14px;
+      border-radius: 16px;
+      padding: 14px 16px 14px 18px;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+      transition: transform .15s ease, box-shadow .15s ease;
     }
-    .tr-mod-kpi .k { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: .04em; }
-    .tr-mod-kpi .v { margin-top: 4px; font-size: 22px; font-weight: 800; color: #0f172a; }
+    .tr-mod-kpi:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    }
+    .tr-mod-kpi::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 5px;
+      background: #94a3b8;
+    }
+    .tr-mod-kpi.tone-owners::before { background: linear-gradient(180deg, #0ea5e9, #0369a1); }
+    .tr-mod-kpi.tone-transfer::before { background: linear-gradient(180deg, #34d399, #059669); }
+    .tr-mod-kpi.tone-excursion::before { background: linear-gradient(180deg, #fb923c, #ea580c); }
+    .tr-mod-kpi.tone-hours::before { background: linear-gradient(180deg, #38bdf8, #0284c7); }
+    .tr-mod-kpi.tone-refuse::before { background: linear-gradient(180deg, #fb7185, #e11d48); }
+    .tr-mod-kpi.tone-money::before { background: linear-gradient(180deg, #fbbf24, #d97706); }
+    .tr-mod-kpi.tone-guide::before { background: linear-gradient(180deg, #2dd4bf, #0f766e); }
+    .tr-mod-kpi.tone-owners { background: linear-gradient(135deg, #f0f9ff 0%, #fff 55%); }
+    .tr-mod-kpi.tone-transfer { background: linear-gradient(135deg, #ecfdf5 0%, #fff 55%); }
+    .tr-mod-kpi.tone-excursion { background: linear-gradient(135deg, #fff7ed 0%, #fff 55%); }
+    .tr-mod-kpi.tone-hours { background: linear-gradient(135deg, #e0f2fe 0%, #fff 55%); }
+    .tr-mod-kpi.tone-refuse { background: linear-gradient(135deg, #fff1f2 0%, #fff 55%); }
+    .tr-mod-kpi.tone-money { background: linear-gradient(135deg, #fffbeb 0%, #fff 55%); }
+    .tr-mod-kpi.tone-guide { background: linear-gradient(135deg, #f0fdfa 0%, #fff 55%); }
+    .tr-mod-kpi .k {
+      font-size: 11px;
+      font-weight: 800;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .tr-mod-kpi .v {
+      margin-top: 6px;
+      font-size: 22px;
+      font-weight: 850;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+    .tr-mod-kpi .hint {
+      margin-top: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+    }
+    .tr-mod-kpi .ico {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      min-width: 34px;
+      height: 28px;
+      padding: 0 7px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .04em;
+      color: #0f766e;
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(148,163,184,.3);
+    }
     .tr-an-tabs {
-      display: inline-flex; gap: 4px; background: #f1f5f9; border-radius: 999px;
-      padding: 4px; margin: 0 0 14px;
+      display: inline-flex; gap: 6px; background: linear-gradient(135deg, #e0f2fe, #f0fdf4);
+      border: 1px solid #bae6fd; border-radius: 14px;
+      padding: 5px; margin: 0 0 16px;
     }
     .tr-an-tab {
       border: 0; background: transparent; cursor: pointer;
-      padding: 8px 16px; border-radius: 999px;
-      font: inherit; font-size: 13px; font-weight: 700; color: #64748b;
+      padding: 9px 16px; border-radius: 10px;
+      font: inherit; font-size: 13px; font-weight: 750; color: #475569;
+      transition: background .15s, color .15s, box-shadow .15s;
     }
-    .tr-an-tab:hover { color: #1e3a8a; }
-    .tr-an-tab.active { background: #fff; color: #0f172a; box-shadow: 0 1px 3px rgba(15,23,42,.08); }
+    .tr-an-tab:hover { color: #0f766e; background: rgba(255,255,255,.55); }
+    .tr-an-tab.active {
+      background: #0f766e;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.28);
+    }
     .tr-an-filters {
       display: flex; flex-wrap: wrap; gap: 8px; align-items: center; width: 100%;
+      padding: 10px; margin: -4px -4px 10px; border-radius: 14px;
+      background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+      border: 1px solid #e2e8f0;
     }
     .tr-an-filters select, .tr-an-filters input[type=search], .tr-an-filters input[type=date] {
       min-width: 140px; height: 38px; border: 1px solid var(--line); border-radius: 10px;
       padding: 0 10px; background: #fff; font: inherit; color: #0f172a;
     }
+    #page-tr-analytics .card {
+      border: 1px solid #dbeafe;
+      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.06);
+      overflow: hidden;
+    }
+    #tr-an-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+    #tr-an-table thead th {
+      position: sticky; top: 0; z-index: 1;
+      background: linear-gradient(180deg, #0f766e, #0d9488);
+      color: #ecfdf5;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 12px 12px;
+      border: 0;
+      white-space: nowrap;
+    }
+    #tr-an-table thead th:first-child { border-radius: 0; }
+    #tr-an-table tbody td {
+      padding: 12px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 13px;
+      vertical-align: middle;
+      background: #fff;
+    }
+    #tr-an-table tbody tr:nth-child(even) td { background: #f8fafc; }
+    #tr-an-table tbody tr:hover td { background: #ecfeff; }
+    #tr-an-table tbody tr.tr-an-sel td {
+      background: linear-gradient(90deg, #ccfbf1 0%, #e0f2fe 100%);
+      box-shadow: inset 3px 0 0 #0f766e;
+    }
+    #tr-an-table td.name { font-weight: 750; color: #0f172a; }
+    .tr-an-person {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .tr-an-avatar {
+      width: 36px; height: 36px; border-radius: 12px; flex-shrink: 0;
+      display: grid; place-items: center;
+      font-size: 12px; font-weight: 850; color: #0f766e;
+      background: linear-gradient(145deg, #ccfbf1, #a5f3fc);
+      border: 1px solid #99f6e4;
+    }
+    .tr-an-person .meta { font-size: 11px; font-weight: 600; color: #64748b; margin-top: 2px; }
+    .tr-an-region {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 10px; border-radius: 999px;
+      font-size: 11px; font-weight: 750;
+      background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;
+    }
+    .tr-an-km { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+    .tr-an-km.transfer { color: #059669; }
+    .tr-an-km.excursion { color: #c2410c; }
+    .tr-an-km.round { color: #0369a1; }
+    .tr-an-km.refuse { color: #e11d48; font-weight: 800; }
+    .tr-an-km.total { color: #0f172a; }
+    .tr-an-hours {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 8px; border-radius: 8px;
+      background: #e0f2fe; color: #0369a1; font-weight: 750; font-size: 12px;
+    }
+    .tr-an-rate {
+      display: inline-flex; padding: 3px 8px; border-radius: 999px;
+      font-size: 11px; font-weight: 800;
+      background: #fef3c7; color: #b45309;
+    }
+    .tr-an-rate.hot { background: #ffe4e6; color: #be123c; }
+    .tr-an-bar {
+      height: 4px; border-radius: 999px; background: #e2e8f0; margin-top: 5px; overflow: hidden; max-width: 88px;
+    }
+    .tr-an-bar > i { display: block; height: 100%; border-radius: inherit; background: #0d9488; }
+    .tr-an-bar.refuse > i { background: #e11d48; }
     .tr-smart {
       position: relative; min-width: 160px; flex: 1 1 160px;
     }
@@ -9966,11 +10261,11 @@
     .tr-smart.period { flex: 1.6 1 260px; min-width: 220px; }
     .tr-smart-btn {
       width: 100%; height: 38px; display: flex; align-items: center; gap: 8px;
-      border: 1px solid var(--line); border-radius: 10px; background: #fff;
+      border: 1px solid #cbd5e1; border-radius: 10px; background: #fff;
       padding: 0 12px; font: inherit; font-size: 13px; font-weight: 600; color: #0f172a;
       cursor: pointer; text-align: left;
     }
-    .tr-smart-btn:hover, .tr-smart.open .tr-smart-btn { border-color: #93c5fd; box-shadow: 0 0 0 3px rgba(37,99,235,.12); }
+    .tr-smart-btn:hover, .tr-smart.open .tr-smart-btn { border-color: #14b8a6; box-shadow: 0 0 0 3px rgba(20,184,166,.15); }
     .tr-smart-btn .lbl { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .tr-smart-btn .hint { font-size: 10px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: .04em; }
     .tr-smart-btn .chev { width: 14px; height: 14px; color: #94a3b8; flex-shrink: 0; transition: transform .15s; }
@@ -9991,7 +10286,7 @@
       width: 100%; text-align: left; border: 0; background: transparent; cursor: pointer;
       padding: 8px 10px; border-radius: 8px; font: inherit; font-size: 13px; color: #0f172a;
     }
-    .tr-smart-opt:hover, .tr-smart-opt.active { background: #eff6ff; color: #1d4ed8; }
+    .tr-smart-opt:hover, .tr-smart-opt.active { background: #ccfbf1; color: #0f766e; }
     .tr-smart-opt small { display: block; color: #64748b; font-size: 11px; margin-top: 1px; }
     .tr-period-presets { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
     .tr-period-presets button {
@@ -9999,7 +10294,7 @@
       padding: 6px 10px; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; color: #334155;
     }
     .tr-period-presets button.active, .tr-period-presets button:hover {
-      background: #1d4ed8; border-color: #1d4ed8; color: #fff;
+      background: #0f766e; border-color: #0f766e; color: #fff;
     }
     .tr-period-dates {
       display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;
@@ -10009,19 +10304,32 @@
     }
     .tr-period-dates input[type=date] { width: 100%; min-width: 0; }
     .tr-period-apply {
-      width: 100%; height: 36px; border: 0; border-radius: 10px; background: #1d4ed8; color: #fff;
+      width: 100%; height: 36px; border: 0; border-radius: 10px; background: #0f766e; color: #fff;
       font: inherit; font-weight: 700; cursor: pointer;
     }
     .tr-an-rev-stats:has(> :nth-child(5)) { grid-template-columns: 1fr 1fr 1fr; }
     .tr-an-layout {
-      display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(260px, .9fr);
+      display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, .95fr);
       gap: 14px; align-items: start;
     }
     @media (max-width: 980px) { .tr-an-layout { grid-template-columns: 1fr; } }
     .tr-an-review {
-      background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px;
+      background: #fff;
+      border: 1px solid #99f6e4;
+      border-radius: 18px;
+      padding: 0;
       position: sticky; top: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(15, 118, 110, 0.1);
     }
+    .tr-an-review-head {
+      padding: 16px 16px 14px;
+      background: linear-gradient(135deg, #0f766e 0%, #0ea5e9 100%);
+      color: #fff;
+    }
+    .tr-an-review-head h3 { margin: 0 0 4px; font-size: 17px; font-weight: 850; color: #fff; }
+    .tr-an-review-head .sub { margin: 0; font-size: 12px; color: rgba(255,255,255,.85); font-weight: 600; }
+    .tr-an-review-body { padding: 14px; }
     .tr-an-review h3 { margin: 0 0 4px; font-size: 15px; font-weight: 800; color: #0f172a; }
     .tr-an-review .sub { margin: 0 0 12px; font-size: 12px; color: #64748b; }
     .tr-an-rev-stats {
@@ -10029,26 +10337,49 @@
     }
     .tr-an-rev-stat {
       background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 10px;
+      position: relative; overflow: hidden;
     }
-    .tr-an-rev-stat .k { font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase; }
-    .tr-an-rev-stat .v { margin-top: 2px; font-size: 16px; font-weight: 800; color: #0f172a; }
+    .tr-an-rev-stat.tone-transfer { background: #ecfdf5; border-color: #a7f3d0; }
+    .tr-an-rev-stat.tone-excursion { background: #fff7ed; border-color: #fed7aa; }
+    .tr-an-rev-stat.tone-round { background: #e0f2fe; border-color: #bae6fd; }
+    .tr-an-rev-stat.tone-work { background: #f0fdfa; border-color: #99f6e4; }
+    .tr-an-rev-stat.tone-refuse { background: #fff1f2; border-color: #fecdd3; }
+    .tr-an-rev-stat.tone-total { background: #eff6ff; border-color: #bfdbfe; }
+    .tr-an-rev-stat.tone-hours { background: #ecfeff; border-color: #a5f3fc; }
+    .tr-an-rev-stat.tone-money { background: #fffbeb; border-color: #fde68a; }
+    .tr-an-rev-stat.tone-jobs { background: #f0fdf4; border-color: #bbf7d0; }
+    .tr-an-rev-stat.tone-score { background: #fefce8; border-color: #fde047; }
+    .tr-an-rev-stat.tone-fleet { background: linear-gradient(135deg, #f8fafc, #ecfeff); border-color: #bae6fd; }
+    .tr-an-rev-stat .k { font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: .03em; }
+    .tr-an-rev-stat .v { margin-top: 2px; font-size: 16px; font-weight: 850; color: #0f172a; }
+    .tr-an-rev-stat.tone-refuse .v { color: #be123c; }
+    .tr-an-rev-stat.tone-money .v { color: #b45309; }
     .tr-an-stars { color: #f59e0b; letter-spacing: 1px; font-size: 14px; }
-    .tr-an-rev-list { display: flex; flex-direction: column; gap: 8px; max-height: 320px; overflow: auto; }
+    .tr-an-rev-list { display: flex; flex-direction: column; gap: 8px; max-height: 280px; overflow: auto; }
     .tr-an-rev-item {
-      border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 10px; background: #fff;
+      border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px;
+      background: linear-gradient(135deg, #fff, #f8fafc);
+      border-left: 3px solid #14b8a6;
     }
     .tr-an-rev-item strong { display: block; font-size: 12px; color: #0f172a; }
     .tr-an-rev-item span { font-size: 11px; color: #64748b; }
     .tr-an-empty { padding: 18px; text-align: center; color: #94a3b8; font-size: 13px; }
     .tr-an-vtype {
-      display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700;
-      padding: 3px 8px; border-radius: 999px; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;
+      display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 750;
+      padding: 4px 9px; border-radius: 999px; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;
+      max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     }
     .tr-an-vtype.van { background: #f0fdf4; color: #15803d; border-color: #bbf7d0; }
     .tr-an-vtype.mini { background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
-    .tr-an-vtype.large { background: #f5f3ff; color: #6d28d9; border-color: #ddd6fe; }
-    .tr-an-vtype.super { background: #ecfeff; color: #0e7490; border-color: #a5f3fc; }
+    .tr-an-vtype.large { background: #ecfeff; color: #0e7490; border-color: #a5f3fc; }
+    .tr-an-vtype.super { background: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
     tr.tr-an-sel { background: #eff6ff; }
+    #page-tr-analytics .top h1 {
+      background: linear-gradient(90deg, #0f766e, #0284c7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
     .tr-photo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -10198,8 +10529,8 @@
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 17h14v-5l-1.5-4.5A2 2 0 0 0 15.6 6H8.4a2 2 0 0 0-1.9 1.5L5 12v5z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg>
                     </span>
                     <span class="nav-copy">
-                      <strong>Supplier Roster</strong>
-                      <small>Fleet · multi-vehicle · AI</small>
+                      <strong>Driver Roster</strong>
+                      <small>Van · Mini · Bus · fairness</small>
                     </span>
                   </a>
                   <a class="nav-link" data-page="guide-regis" href="#guide-regis">
@@ -11611,6 +11942,18 @@
                   <div class="v" id="exc-mp-cats">0</div>
                 </div>
               </div>
+              <div class="mp-toolbar-row mp-cat-filter-bar" id="exc-mp-cat-bar">
+                <div class="search" style="flex:1;min-width:200px">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                  <input id="exc-mp-cat-q" type="search" placeholder="Search categories…" autocomplete="off" />
+                </div>
+                <label class="mp-cat-select-wrap">
+                  <span>Category</span>
+                  <select id="exc-mp-cat-filter" aria-label="Category filter">
+                    <option value="All">All categories</option>
+                  </select>
+                </label>
+              </div>
               <div class="mp-drill-bar" id="exc-mp-drill" hidden>
                 <button type="button" class="mp-back-btn" id="exc-mp-back">← All categories</button>
                 <div class="mp-crumb" id="exc-mp-crumb"><span>Marketplace</span> / Shops</div>
@@ -11742,7 +12085,7 @@
                 <div>
                   <div class="ai-alloc-kicker">AI Transport Controller</div>
                   <h2>AI Smart Box</h2>
-                  <p>Chain optimizer · Without TR → New Transfer · supplier owner fleet · Ops confirms every decision</p>
+                  <p>Chain optimizer · Driver Roster fairness (milage · refuse · last work) · Without TR → allocate · Ops confirms</p>
                 </div>
                 <div class="ai-alloc-hero-actions">
                   <label class="ai-alloc-date">Date <input type="date" id="ai-alloc-date" /></label>
@@ -11970,7 +12313,7 @@
                         <th>Region · Hotel</th>
                         <th>Pax</th>
                         <th>Request coach</th>
-                        <th>Pickup</th>
+                        <th>Pickup · travel</th>
                         <th>Booking note</th>
                       </tr>
                     </thead>
@@ -11983,8 +12326,18 @@
                 <div class="xfer-suggest-grid" id="xfer-suggests"></div>
               </div>
               <div class="card ops-card" style="margin-top:12px">
-                <div class="ops-card-head"><div><h3>Transfer JOBs</h3><p>Allocate · dispatch · complete · payment</p></div></div>
+                <div class="ops-card-head"><div><h3>Transfer JOBs</h3><p>Allocate · hotel FO message (3d + 24h) · dispatch</p></div></div>
                 <div class="xfer-jobs-list" id="xfer-jobs-list"></div>
+              </div>
+              <div class="card ops-card" style="margin-top:12px">
+                <div class="ops-card-head">
+                  <div>
+                    <h3>Hotel FO notify queue</h3>
+                    <p>Departure info · WhatsApp / Telegram / App · 3 days prior + 24h remind</p>
+                  </div>
+                  <button type="button" class="btn-secondary" id="xfer-hotel-queue-refresh">Refresh due</button>
+                </div>
+                <div class="xfer-hotel-queue" id="xfer-hotel-queue"></div>
               </div>
             </div>
 
@@ -12225,8 +12578,12 @@
                 <input id="xfer-job-modal-guide" type="text" placeholder="Airport guide desk" />
               </label>
               <label>
+                Driver (required for hotel FO message)
+                <input id="xfer-job-modal-driver" type="text" placeholder="Driver name / vehicle" />
+              </label>
+              <label>
                 Driver note (WhatsApp / ERP app)
-                <input id="xfer-job-modal-driver" type="text" placeholder="Optional note to driver" />
+                <input id="xfer-job-modal-driver-note" type="text" placeholder="Optional note to driver" />
               </label>
               <div id="xfer-job-modal-pickups" style="font-size:12px;color:#0369a1;font-weight:750;line-height:1.45;background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:10px"></div>
             </div>
@@ -12237,12 +12594,50 @@
           </div>
         </div>
 
+        <div class="mp-form-backdrop" id="xfer-hotel-modal" hidden>
+          <div class="mp-form" role="dialog" aria-modal="true" aria-labelledby="xfer-hotel-modal-title" style="max-width:640px">
+            <div class="mp-form-head">
+              <h3 id="xfer-hotel-modal-title">Hotel departure message</h3>
+              <button type="button" class="de-sheet-btn close" id="xfer-hotel-modal-close" aria-label="Close">✕</button>
+            </div>
+            <div class="mp-form-body">
+              <input type="hidden" id="xfer-hotel-modal-job" value="" />
+              <p style="margin:0 0 10px;font-size:12px;color:#475569;font-weight:650;line-height:1.45">
+                After TR allocated (pickup · guide · driver) — send to hotel FO. Auto: <b>3 days prior</b> + remind <b>24 hours prior</b>.
+              </p>
+              <label>
+                Channel
+                <select id="xfer-hotel-channel">
+                  <option value="whatsapp">WhatsApp</option>
+                  <option value="telegram">Telegram</option>
+                  <option value="app">App notification</option>
+                  <option value="email">Hotel mail (FO)</option>
+                </select>
+              </label>
+              <label>
+                Hotel contact / group (phone, @handle, or mail)
+                <input id="xfer-hotel-contact" type="text" placeholder="e.g. +94 77 … · hotel FO WhatsApp / @hotel_fo" />
+              </label>
+              <div class="xfer-hotel-schedule" id="xfer-hotel-schedule"></div>
+              <label>
+                Message preview
+                <textarea id="xfer-hotel-preview" rows="14" style="width:100%;font:inherit;font-size:12px;line-height:1.45;border:1px solid #cbd5e1;border-radius:10px;padding:10px;resize:vertical"></textarea>
+              </label>
+            </div>
+            <div class="mp-form-actions" style="flex-wrap:wrap;gap:8px">
+              <button type="button" class="btn-secondary" id="xfer-hotel-modal-cancel">Cancel</button>
+              <button type="button" class="btn-secondary" id="xfer-hotel-schedule-btn">Schedule 3d + 24h</button>
+              <button type="button" class="btn-primary" id="xfer-hotel-send-now">Send now</button>
+            </div>
+          </div>
+        </div>
+
         <section id="page-tr-analytics" class="page tr-mod-page">
           <div class="wrap">
             <div class="top">
               <div>
                 <h1>Transfer Analytics</h1>
-                <p>Supplier owner &amp; guide season stats · mileage · earnings · reviews</p>
+                <p>Colour-coded season board · owner fleet · mileage · earnings · reviews</p>
               </div>
               <button class="btn-secondary" type="button" data-goto="excursions">← Portal</button>
             </div>
@@ -12343,10 +12738,14 @@
                 </table>
               </div>
               <aside class="tr-an-review" id="tr-an-review">
-                <h3 id="tr-an-rev-title">Select a supplier owner</h3>
-                <p class="sub" id="tr-an-rev-sub">Review panel · mileage · earnings · fleet</p>
-                <div class="tr-an-rev-stats" id="tr-an-rev-stats"></div>
-                <div class="tr-an-rev-list" id="tr-an-rev-list"></div>
+                <div class="tr-an-review-head">
+                  <h3 id="tr-an-rev-title">Select a supplier owner</h3>
+                  <p class="sub" id="tr-an-rev-sub">Review panel · mileage · earnings · fleet</p>
+                </div>
+                <div class="tr-an-review-body">
+                  <div class="tr-an-rev-stats" id="tr-an-rev-stats"></div>
+                  <div class="tr-an-rev-list" id="tr-an-rev-list"></div>
+                </div>
               </aside>
             </div>
           </div>
@@ -12669,8 +13068,8 @@
           <div class="wrap">
             <div class="top">
               <div>
-                <h1>Supplier Roster</h1>
-                <p>Transport suppliers · one supplier · many vehicles · AI dispatch</p>
+                <h1>Driver Roster</h1>
+                <p>September Van &amp; Bus board · fleet · region · mileage · refuse KM · last work · AI fair pick</p>
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
                 <button class="btn-secondary" type="button" data-goto="guide-roster">← Guide Roster</button>
@@ -12681,9 +13080,21 @@
               <div class="rank-card drv-roster-card drivers-mode" id="drv-rank-card">
                 <div class="rank-head">
                   <div class="rank-head-copy">
-                    <div class="rank-kicker">AI-led allocation</div>
-                    <h2 id="drv-rank-title">Driver Roaster</h2>
-                    <p class="rank-sub" id="drv-rank-sub">AI dispatch · transfers · excursions · shuttle · round tours</p>
+                    <div class="rank-kicker">Ops fairness board</div>
+                    <h2 id="drv-rank-title">Driver Roster</h2>
+                    <p class="rank-sub" id="drv-rank-sub">Van / Mini Coach / 33 Bus · region pools · due drivers first</p>
+                  </div>
+                </div>
+                <div class="drv-fleet-bar" id="drv-fleet-bar" aria-label="Fleet sheet">
+                  <span class="fleet-label">Fleet</span>
+                  <button type="button" class="drv-fleet-tab active" data-drv-fleet="Van">Van</button>
+                  <button type="button" class="drv-fleet-tab" data-drv-fleet="Mini Coach">Mini Coach</button>
+                  <button type="button" class="drv-fleet-tab" data-drv-fleet="Bus">33 Bus</button>
+                  <button type="button" class="drv-fleet-tab" data-drv-fleet="All">All fleets</button>
+                  <div class="drv-body-tabs" id="drv-body-tabs" title="Van body type">
+                    <button type="button" class="drv-body-tab active" data-drv-body="All">All body</button>
+                    <button type="button" class="drv-body-tab" data-drv-body="KDH">KDH</button>
+                    <button type="button" class="drv-body-tab" data-drv-body="FLATROOF">FLATROOF</button>
                   </div>
                 </div>
                 <div class="rank-pills" id="drv-rank-pills"></div>
@@ -12691,7 +13102,7 @@
                   <div class="drv-ai-desk-head">
                     <div>
                       <strong>AI Dispatch Desk</strong>
-                      <span>Doc rules · coach by pax · region · transfer vs excursion</span>
+                      <span>Fairness · low mileage · low refuse · older last work · region · seats</span>
                     </div>
                     <div style="display:flex;gap:6px;flex-wrap:wrap">
                       <button type="button" class="drv-ai-match" id="drv-ai-auto" style="background:#0f766e">Auto-match next</button>
@@ -14492,6 +14903,26 @@
     /* null = category home; string = opened market with shops */
     let mpActiveTag = null;
     let mpExtrasLoaded = false;
+    let mpCatFilter = "All";
+
+    function mpFillCatFilterSelect() {
+      const sel = document.getElementById("exc-mp-cat-filter");
+      if (!sel) return;
+      const cur = sel.value || mpCatFilter || "All";
+      sel.innerHTML = `<option value="All">All categories</option>` +
+        MP_CATEGORIES.map((c) => `<option value="${c.tag}">${c.tag}</option>`).join("");
+      sel.value = MP_CATEGORIES.some((c) => c.tag === cur) || cur === "All" ? cur : "All";
+      mpCatFilter = sel.value;
+    }
+
+    function mpFilteredCategories() {
+      const q = (document.getElementById("exc-mp-cat-q")?.value || "").trim().toLowerCase();
+      return MP_CATEGORIES.filter((c) => {
+        if (mpCatFilter !== "All" && c.tag !== mpCatFilter) return false;
+        if (!q) return true;
+        return `${c.tag} ${c.type}`.toLowerCase().includes(q);
+      });
+    }
 
     function mpMake(id, name, tag, region, price, rate, contact) {
       const meta = MP_CATEGORIES.find((c) => c.tag === tag) || MP_CATEGORIES[0];
@@ -14627,13 +15058,18 @@
       if (!mpActiveTag) {
         if (drill) { drill.hidden = true; drill.setAttribute("hidden", ""); }
         if (shopBar) { shopBar.hidden = true; shopBar.setAttribute("hidden", ""); }
+        const catBar = document.getElementById("exc-mp-cat-bar");
+        if (catBar) { catBar.hidden = false; catBar.removeAttribute("hidden"); }
+        mpFillCatFilterSelect();
         if (titleEl) titleEl.textContent = "Market categories";
-        if (subEl) subEl.textContent = "Click a category to open its shops";
+        if (subEl) subEl.textContent = "Filter by category · then open shops";
         if (catsLabel) catsLabel.textContent = "Categories";
-        document.getElementById("exc-mp-cats").textContent = String(MP_CATEGORIES.length);
-        list.innerHTML = MP_CATEGORIES.map((c) => {
-          const n = mpCountFor(c.tag);
-          return `
+        const cats = mpFilteredCategories();
+        document.getElementById("exc-mp-cats").textContent = String(cats.length);
+        list.innerHTML = cats.length
+          ? cats.map((c) => {
+              const n = mpCountFor(c.tag);
+              return `
           <button type="button" class="mp-market-card" data-mp-open="${c.tag.replace(/"/g, "&quot;")}">
             <div class="mp-img" style="background-color:${c.tint};background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.4)),url('${c.img}')"></div>
             <div class="mp-body">
@@ -14642,11 +15078,14 @@
               <div class="mp-open">Open shops →</div>
             </div>
           </button>`;
-        }).join("");
+            }).join("")
+          : `<div class="ops-mini-card"><p>No categories match this filter.</p></div>`;
         return;
       }
 
       /* INSIDE category: shops only */
+      const catBar = document.getElementById("exc-mp-cat-bar");
+      if (catBar) { catBar.hidden = true; catBar.setAttribute("hidden", ""); }
       if (drill) {
         drill.hidden = false;
         drill.removeAttribute("hidden");
@@ -14844,6 +15283,140 @@
 
     let rosterMode = "guides"; /* guides | drivers — AI card lives on Guide Roster */
     let rosterStageFilter = "All";
+    let drvFleetFilter = "Van"; /* Van | Mini Coach | Bus | All — Excel sheet model */
+    let drvBodyFilter = "All"; /* All | KDH | FLATROOF */
+
+    const ROSTER_DRIVER_REGIONS = [
+      "All",
+      "Colombo",
+      "Negambo",
+      "Kalutara",
+      "Bentota",
+      "Hikkaduwa",
+      "Unawatuna",
+      "Weligama",
+      "Tangalle",
+      "Pasikuda",
+    ];
+
+    /* Seed last-work labels from Sep Van & Bus roster (plate → last work on) */
+    const EHI_ROSTER_LAST_WORK = {
+      "NC - 6793": "02nd Arr",
+      "NE - 3632": "12th Arr",
+      "NF - 3436": "03rd Arr",
+      "PI - 1418": "15th Arr&Dep",
+      "PC - 9751": "08th Arr&Dep",
+      "NF - 0630": "14th Arr",
+      "PD - 6818": "07th Arr&Dep",
+      "NE - 6343": "16th Dep&Arr",
+      "NB - 9411": "12th Dep&Arr",
+      "NE - 7755": "14th Dep&Arr",
+      "PJ - 3139": "22nd Dep&Arr",
+      "ND - 2375": "23rd Dep&Arr",
+      "NC - 2577": "08th Dep&Arr",
+      "PS - 2442": "02nd Dep&Arr",
+      "PG - 7294": "09th Dep&Arr",
+    };
+
+    function ehiNormPlate(p) {
+      return String(p || "").replace(/\s+/g, " ").trim().toUpperCase();
+    }
+
+    function ehiBodyTypeFromBrand(brand, seats) {
+      const b = String(brand || "").toUpperCase();
+      if (/FLAT/.test(b)) return "FLATROOF";
+      if (/HIGH|KDH|HIACE/.test(b)) return "KDH";
+      if (Number(seats) > 0 && Number(seats) <= 4) return "FLATROOF";
+      if (Number(seats) >= 6) return "KDH";
+      return "KDH";
+    }
+
+    function ehiFleetSheetOf(vehicleType, brand) {
+      const t = String(vehicleType || "").toLowerCase();
+      const b = String(brand || "").toLowerCase();
+      if (/mini/.test(t)) return "Mini Coach";
+      if (/large|super|bus|coach/.test(t) && !/mini/.test(t)) return "Bus";
+      if (/van/.test(t) || /kdh|flat|hiace|highroof/.test(b)) return "Van";
+      if (/car/.test(t) && /kdh|flat|high/.test(b)) return "Van";
+      if (/car/.test(t)) return "Van"; /* Excel Van sheet includes FLATROOF cars */
+      return "Van";
+    }
+
+    function ehiRosterRegionKey(region) {
+      const r = String(region || "").toLowerCase();
+      if (/pasikuda|passikudah/.test(r)) return "Pasikuda";
+      if (/negambo|negombo/.test(r) && !/colombo/.test(r)) return "Negambo";
+      if (/colombo/.test(r)) return "Colombo";
+      if (/kalutara/.test(r)) return "Kalutara";
+      if (/bentota/.test(r)) return "Bentota";
+      if (/hikkaduwa/.test(r)) return "Hikkaduwa";
+      if (/unawatuna|galle/.test(r)) return "Unawatuna";
+      if (/weligama/.test(r)) return "Weligama";
+      if (/tangalle|hambantota|matara/.test(r)) return "Tangalle";
+      if (/panadura/.test(r)) return "Kalutara";
+      return region || "—";
+    }
+
+    function ehiMatchRosterRegion(itemRegion, filter) {
+      if (!filter || filter === "All") return true;
+      const key = ehiRosterRegionKey(itemRegion);
+      const f = String(filter).toLowerCase();
+      const blob = String(itemRegion || "").toLowerCase();
+      if (key.toLowerCase() === f) return true;
+      if (blob.includes(f)) return true;
+      if (f === "negambo" && /negombo|negambo/.test(blob)) return true;
+      if (f === "colombo" && /colombo/.test(blob)) return true;
+      return false;
+    }
+
+    function ehiLastWorkDay(label) {
+      const m = String(label || "").match(/(\d{1,2})/);
+      return m ? Number(m[1]) : 0;
+    }
+
+    function ehiRefuseKmForUnit(id, plate, i) {
+      const seed = String(id || plate || i);
+      let h = 0;
+      for (let c = 0; c < seed.length; c++) h = (h * 31 + seed.charCodeAt(c)) >>> 0;
+      return h % 11 === 0 ? (40 + (h % 120)) : (h % 5 === 0 ? (20 + (h % 60)) : 0);
+    }
+
+    function ehiDayMarksFromLastWork(lastWork, mileageKm) {
+      const day = ehiLastWorkDay(lastWork);
+      const marks = [];
+      for (let d = 1; d <= 31; d++) {
+        if (day && d === day) marks.push("hot");
+        else if (day && d < day && d % 7 === (day % 7)) marks.push("on");
+        else if (!day && mileageKm && d % 9 === (Math.round(mileageKm) % 9)) marks.push("on");
+        else marks.push("");
+      }
+      return marks;
+    }
+
+    function ehiFairnessScore(row) {
+      /* Higher = more due for next job (Excel fairness idea) */
+      let s = 7;
+      const km = Number(row.mileageKm || 0);
+      const refuse = Number(row.refuseKm || 0);
+      const lastDay = ehiLastWorkDay(row.lastWorkOn);
+      const today = new Date().getDate();
+      if (km <= 800) s += 1.4;
+      else if (km <= 1600) s += 0.7;
+      else if (km <= 2800) s += 0.2;
+      else s -= Math.min(1.8, (km - 2800) / 2000);
+      if (refuse) s -= Math.min(1.8, refuse / 80);
+      else s += 0.35;
+      if (!lastDay) s += 0.9;
+      else {
+        const gap = Math.max(0, today - lastDay);
+        s += Math.min(1.5, gap * 0.12);
+        if (gap <= 1) s -= 0.8;
+      }
+      if (row.stage === "available") s += 0.4;
+      if (row.stage === "offline") s -= 2;
+      if (row.stage === "onjob") s -= 1;
+      return Math.max(2.5, Math.min(9.9, Math.round(s * 10) / 10));
+    }
 
     const ROSTER_STAGES = [
       { key: "available", label: "Available" },
@@ -15194,6 +15767,31 @@
         score -= Math.min(1.6, refused * 0.22);
         why.push(`refusals ${refused}`);
       }
+      /* Excel fairness: mileage · refuse KM · last work on */
+      const mil = Number(driver.mileageKm || 0);
+      if (mil > 0) {
+        if (mil <= 900) { score += 0.7; why.push(`low milage ${mil}km`); }
+        else if (mil >= 3000) { score -= Math.min(1.2, (mil - 3000) / 2500); why.push(`high milage ${mil}km`); }
+        else { why.push(`milage ${mil}km`); }
+      }
+      const refuseKm = Number(driver.refuseKm || 0);
+      if (refuseKm > 0) {
+        score -= Math.min(1.4, refuseKm / 90);
+        why.push(`refuse ${refuseKm}km`);
+      }
+      const lastDay = ehiLastWorkDay(driver.lastWorkOn);
+      if (driver.lastWorkOn) {
+        const gap = Math.max(0, new Date().getDate() - lastDay);
+        if (gap >= 5) { score += 0.55; why.push(`due · ${driver.lastWorkOn}`); }
+        else if (gap <= 1 && lastDay) { score -= 0.65; why.push(`recent · ${driver.lastWorkOn}`); }
+        else { why.push(driver.lastWorkOn); }
+      } else {
+        score += 0.35;
+        why.push("no last work");
+      }
+      if (driver.bodyType && /flat|kdh/i.test(String(jobX.needType || jobX.suggestedCoach || ""))) {
+        /* soft preference only */
+      }
       if (driver.stage === "available") { score += 0.55; why.push("available"); }
       if (driver.stage === "offline") { score -= 2.2; why.push("offline"); }
       if (driver.stage === "onjob") { score -= 0.9; why.push("on job"); }
@@ -15265,21 +15863,34 @@
           const next = myTrips.find((t) => t.assigned) || myTrips[0];
           const rf = typeof trAnRefusalForDriver === "function" ? trAnRefusalForDriver(d.id) : null;
           const refused = rf ? Number(rf.refused || 0) : (i % 7);
-          const base = typeof d.rating === "number" ? d.rating + 4 : 8.2;
-          const score = Math.max(
-            4.2,
-            Math.round((base - assigned * 0.15 - refused * 0.18 - (stage === "offline" ? 1.4 : 0)) * 10) / 10
-          );
           const vehicleType = d.vehicleType || "Vehicle";
+          const brand = d.brand || "";
+          const bodyType = ehiBodyTypeFromBrand(brand, d.seats);
+          const fleetSheet = ehiFleetSheetOf(vehicleType, brand);
+          const rosterRegion = ehiRosterRegionKey(d.region || d.city || "");
+          const plateKey = ehiNormPlate(plate);
+          const lastWorkOn = EHI_ROSTER_LAST_WORK[plate]
+            || EHI_ROSTER_LAST_WORK[plateKey]
+            || Object.entries(EHI_ROSTER_LAST_WORK).find(([k]) => ehiNormPlate(k) === plateKey)?.[1]
+            || "";
+          const mileageKm = Number(d.mileageKm || 0);
+          const refuseKm = rf && rf.refuseKm != null
+            ? Number(rf.refuseKm)
+            : ehiRefuseKmForUnit(d.id, plate, i);
+          const dayMarks = ehiDayMarksFromLastWork(lastWorkOn, mileageKm);
           const fleetNote = d.fleetSize > 1 ? ` · ${d.fleetSize} vehicles` : "";
-          return {
+          const row = {
             id: d.id || `d-${plate || i}`,
             name: d.supplierName || d.name,
             supplierName: d.supplierName || d.name,
-            city: d.region || "—",
-            region: d.region || "—",
+            city: rosterRegion,
+            region: d.region || rosterRegion,
+            rosterRegion,
             lang: vehicleType,
             vehicleType,
+            bodyType,
+            brand,
+            fleetSheet,
             seats: d.seats || ehiSeatsForType(vehicleType),
             license: plate || d.phone || "—",
             plate,
@@ -15288,6 +15899,10 @@
             stage,
             jobs: assigned || Math.max(0, Math.round((d.jobs || 0) / Math.max(1, d.fleetSize || 1))),
             refused,
+            refuseKm,
+            mileageKm,
+            lastWorkOn: lastWorkOn || (stage === "available" ? "" : ""),
+            dayMarks,
             transferKm: d.transferKm || 0,
             excursionKm: d.excursionKm || 0,
             roundTourKm: d.roundTourKm || 0,
@@ -15295,9 +15910,11 @@
             nextJob: next
               ? `${next.time} · ${next.kindLabel || next.kind}`
               : (stage === "available" ? `Standby · ${plate || "fleet"}${fleetNote}` : rosterStageLabel(stage)),
-            score,
-            scoreLabel: "AI fit",
+            score: 0,
+            scoreLabel: "Fair due",
           };
+          row.score = ehiFairnessScore(row);
+          return row;
         });
       }
       return vehicles.map((v, i) => {
@@ -15308,16 +15925,24 @@
         const hotOffline = myTrips.some((t) => t.driverOffline || t.missedLocation);
         const stage = rosterPickStage(i, v.status, assigned, confirmPending, hotOffline);
         const next = myTrips.find((t) => t.assigned) || myTrips[0];
-        const base = typeof v.score === "number" ? v.score : 8.4;
-        const score = Math.max(4.5, Math.round((base - assigned * 0.18 - (confirmPending ? 0.4 : 0) - (stage === "offline" ? 1.5 : 0)) * 10) / 10);
-        return {
+        const bodyType = ehiBodyTypeFromBrand(v.brand || v.type, ehiSeatsForType(v.type));
+        const fleetSheet = ehiFleetSheetOf(v.type, v.brand);
+        const rosterRegion = ehiRosterRegionKey(v.city);
+        const mileageKm = Number(v.mileageKm || (600 + i * 90));
+        const refuseKm = ehiRefuseKmForUnit(v.plate, v.plate, i);
+        const lastWorkOn = EHI_ROSTER_LAST_WORK[v.plate] || "";
+        const row = {
           id: `d-${v.plate}`,
           name: supplierName,
           supplierName,
-          city: v.city,
+          city: rosterRegion,
           region: v.city,
+          rosterRegion,
           lang: v.type || "Vehicle",
           vehicleType: v.type,
+          bodyType,
+          brand: v.brand || "",
+          fleetSheet,
           seats: ehiSeatsForType(v.type),
           license: v.plate,
           plate: v.plate,
@@ -15325,11 +15950,17 @@
           stage,
           jobs: assigned,
           refused: 0,
+          refuseKm,
+          mileageKm,
+          lastWorkOn,
+          dayMarks: ehiDayMarksFromLastWork(lastWorkOn, mileageKm),
           fleetSize: 1,
           nextJob: next ? `${next.time} · ${next.kindLabel || next.kind}` : "Standby for AI",
-          score,
-          scoreLabel: "AI fit",
+          score: 0,
+          scoreLabel: "Fair due",
         };
+        row.score = ehiFairnessScore(row);
+        return row;
       });
     }
 
@@ -15735,7 +16366,8 @@
     }
 
     function cityLabel(city) {
-      return city === "All" ? "All cities" : city;
+      if (city === "All") return rosterMode === "drivers" ? "All regions" : "All cities";
+      return city;
     }
 
     function cityStats(city) {
@@ -15829,16 +16461,17 @@
       if (!pills || !list) return;
       syncCityDropdown(city);
 
-      const who = rosterMode === "drivers" ? "suppliers" : "guides";
-      const whoOne = rosterMode === "drivers" ? "supplier" : "guide";
-      if (title) title.textContent = rosterMode === "drivers" ? "Supplier Roster" : "Guide Roaster";
+      const who = rosterMode === "drivers" ? "drivers" : "guides";
+      const whoOne = rosterMode === "drivers" ? "driver" : "guide";
+      if (title) title.textContent = rosterMode === "drivers" ? "Driver Roster" : "Guide Roaster";
       if (sub) {
         sub.textContent = rosterMode === "drivers"
-          ? "Transport suppliers · multi-vehicle fleet · AI dispatch"
+          ? "Van / Mini Coach / 33 Bus · region · milage · refuse · last work · AI fair pick"
           : "Best guides for today’s trips";
       }
 
-      pills.innerHTML = cityPills.map((c) => `
+      const pillCities = rosterMode === "drivers" ? ROSTER_DRIVER_REGIONS : cityPills;
+      pills.innerHTML = pillCities.map((c) => `
         <button type="button" class="rank-pill ${c === city ? "active" : ""}" data-city="${c}">
           ${cityLabel(c)}
         </button>
@@ -15848,8 +16481,25 @@
         btn.addEventListener("click", () => renderRanking(btn.dataset.city));
       });
 
+      document.querySelectorAll("#drv-fleet-bar .drv-fleet-tab").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.drvFleet === drvFleetFilter);
+      });
+      document.querySelectorAll("#drv-body-tabs .drv-body-tab").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.drvBody === drvBodyFilter);
+      });
+      const bodyTabs = document.getElementById("drv-body-tabs");
+      if (bodyTabs) bodyTabs.style.display = (drvFleetFilter === "Van" || drvFleetFilter === "All") ? "" : "none";
+
       const allRows = getRosterRows();
-      const cityRows = allRows.filter((item) => city === "All" || item.city === city || item.region === city);
+      const cityRows = allRows.filter((item) => {
+        if (rosterMode === "drivers") {
+          if (!ehiMatchRosterRegion(item.region || item.city || item.rosterRegion, city)) return false;
+          if (drvFleetFilter !== "All" && item.fleetSheet !== drvFleetFilter) return false;
+          if (drvBodyFilter !== "All" && item.bodyType && item.bodyType !== drvBodyFilter) return false;
+          return true;
+        }
+        return city === "All" || item.city === city || item.region === city;
+      });
       let filtered = cityRows
         .filter((item) => rosterStageFilter === "All" || item.stage === rosterStageFilter)
         .sort((a, b) => b.score - a.score);
@@ -15901,11 +16551,11 @@
       const bannerSub = ui.bannerSub;
       const bannerCount = ui.bannerCount;
       if (bannerTitle) {
-        bannerTitle.textContent = rosterMode === "drivers" ? "AI supplier dispatch" : `AI ${whoOne} allocation`;
+        bannerTitle.textContent = rosterMode === "drivers" ? "Fairness · due drivers first" : `AI ${whoOne} allocation`;
       }
       if (bannerSub) {
         bannerSub.textContent = rosterMode === "drivers"
-          ? (drvAiSvcFilter === "All" ? "Supplier fleet · coach by pax · region · confirm assign" : `Filtered: ${drvAiSvcFilter}`)
+          ? `${drvFleetFilter === "All" ? "All fleets" : drvFleetFilter}${drvBodyFilter !== "All" ? " · " + drvBodyFilter : ""} · ${city === "All" ? "all regions" : city}`
           : (guideAiSvcFilter === "All"
             ? "Excursion guide desk · region · language · confirm"
             : `Filtered: ${guideAiSvcFilter}`);
@@ -15922,23 +16572,55 @@
         const avatarClass = item.stage === "onjob" || item.stage === "offline" || item.stage === "available"
           ? item.stage
           : "";
-        const refuseChip = rosterMode === "drivers" && item.refused
+        if (rosterMode === "drivers") {
+          const bodyClass = item.bodyType === "FLATROOF" ? "body-flat" : "body-kdh";
+          const refuseChip = item.refuseKm
+            ? `<span class="roster-chip refuse">Refuse ${item.refuseKm} km</span>`
+            : (item.refused ? `<span class="roster-chip refuse">${item.refused} refused</span>` : "");
+          const dayStrip = Array.isArray(item.dayMarks)
+            ? `<div class="roster-day-strip" title="Month day marks">${item.dayMarks.map((m) => `<i class="${m}"></i>`).join("")}</div>`
+            : "";
+          const whyLine = item.matchWhy && item.matchWhy.length
+            ? `<div style="font-size:10px;color:#64748b;margin-top:2px">${item.matchWhy.slice(0, 4).join(" · ")}</div>`
+            : `<div style="font-size:10px;color:#64748b;margin-top:2px">${item.nextJob || ""}</div>`;
+          return `
+        <div class="rank-row roster-row ${i < 3 ? "top-pick fair-due" : ""}" data-drv-id="${item.id}">
+          <div class="rank-pos">${i + 1}</div>
+          <div class="roster-avatar ${avatarClass}" aria-hidden="true">${rosterInitials(item.name)}</div>
+          <div class="rank-name">
+            ${item.name}
+            <div class="roster-meta-row">
+              <span class="roster-chip">${item.rosterRegion || item.city}</span>
+              <span class="roster-chip svc-tag">${item.plate || "—"} · ${item.seats || "—"} pax</span>
+              <span class="roster-chip ${bodyClass}">${item.bodyType || item.vehicleType || "—"}</span>
+              <span class="roster-chip km">${item.mileageKm != null ? item.mileageKm + " km" : "—"}</span>
+              ${refuseChip}
+              ${item.lastWorkOn ? `<span class="roster-chip lastwork">${item.lastWorkOn}</span>` : `<span class="roster-chip lastwork">No last work</span>`}
+            </div>
+            ${whyLine}
+            ${dayStrip}
+          </div>
+          <span class="rank-stage ${item.stage}">${rosterStageLabel(item.stage)}</span>
+          <div class="rank-score roster-score">
+            <div class="val">${item.score.toFixed(1)}</div>
+            <small>${item.scoreLabel || "Fair due"}</small>
+            <div class="roster-meter" title="Fairness ${pct}%"><i style="width:${pct}%"></i></div>
+          </div>
+        </div>`;
+        }
+        const refuseChip = item.refused
           ? `<span class="roster-chip refuse">${item.refused} refused</span>`
           : "";
-        const typeChip = rosterMode === "drivers"
-          ? `<span class="roster-chip svc-tag">${item.plate || item.license || "—"} · ${item.lang || item.vehicleType || "Fleet"}</span>${item.fleetSize > 1 ? `<span class="roster-chip job">${item.fleetSize} vehicles</span>` : ""}`
-          : `<span class="roster-chip svc-tag">${item.lang || "—"}</span>`;
+        const typeChip = `<span class="roster-chip svc-tag">${item.lang || "—"}</span>`;
         const whyLine = item.matchWhy && item.matchWhy.length
           ? `<div style="font-size:10px;color:#64748b;margin-top:2px">${item.matchWhy.slice(0, 3).join(" · ")}</div>`
-          : (rosterMode === "drivers" || rosterMode === "guides"
-            ? `<div style="font-size:10px;color:#64748b;margin-top:2px">${item.nextJob || ""}</div>`
-            : "");
+          : `<div style="font-size:10px;color:#64748b;margin-top:2px">${item.nextJob || ""}</div>`;
         return `
         <div class="rank-row roster-row ${i < 3 ? "top-pick" : ""}" data-drv-id="${item.id}">
           <div class="rank-pos">${i + 1}</div>
           <div class="roster-avatar ${avatarClass}" aria-hidden="true">${rosterInitials(item.name)}</div>
           <div class="rank-name">
-            ${item.name}${rosterMode === "drivers" ? ` <span style="font-size:10px;font-weight:700;color:#64748b">supplier</span>` : ""}
+            ${item.name}
             <div class="roster-meta-row">
               <span class="roster-chip">${item.city}</span>
               ${typeChip}
@@ -16148,13 +16830,14 @@
         if (r.driverOffline) tags.push("App offline");
         if (r.missedLocation) tags.push("Not at location");
         if (r.flightAmended) tags.push(r.flightNote || "Flight change");
+        const driverLabel = typeof adAllocatedDriver === "function" ? adAllocatedDriver(r) : (r.driver || "Unassigned");
         return `
           <div class="attn-detail-row ${hot ? "hot" : ""}">
             <div class="top">
-              <strong>${attnEsc(r.guest)}</strong>
+              <strong>${attnEsc(driverLabel)}</strong>
               <span class="when">${attnEsc(r.dayLabel)} · ${attnEsc(r.time)}</span>
             </div>
-            <div class="meta">${attnEsc(r.ref)} · ${attnEsc(r.route)}${r.flightNo ? ` · ${attnEsc(r.flightNo)}` : ""}<br/>Guide/driver: ${attnEsc(r.guide)} · Status: ${attnEsc(r.status)}</div>
+            <div class="meta">${attnEsc(r.ref)} · ${attnEsc(r.route)}${r.flightNo ? ` · ${attnEsc(r.flightNo)}` : ""}<br/>Client: ${attnEsc(r.guest || "—")} · Status: ${attnEsc(r.status)}</div>
             <div class="tags">${tags.map((t) => `<span class="tag ${/offline|miss|unassign|flight|client|confirm|pending/i.test(t) ? "warn" : ""}">${attnEsc(t)}</span>`).join("")}</div>
           </div>
         `;
@@ -16229,6 +16912,11 @@
       const notifyChannels = ["Hotel mail", "WhatsApp", "Telegram", "App"];
       const fleet = vehicles.filter((v) => v.status === "Active");
       const guidePool = guides.filter((g) => g.status === "Active");
+      const driverPool = [
+        "Sajith Fernando", "Nimal Perera", "Chulaka Car", "Janitha Van 03",
+        "Dulip Bus", "Ashen Car", "Wajira Bus", "Pasindu Silva", "Kelum Alwis",
+        "Umayanga De Silva", "Ruwan Silva", "Kasun Perera", "Nalin", "Kapila",
+      ];
       const now = new Date();
       const today0 = new Date(now);
       today0.setHours(0, 0, 0, 0);
@@ -16246,6 +16934,7 @@
           const assigned = n % 5 !== 2 && n % 5 !== 4;
           const vehicle = assigned ? (fleet[n % Math.max(fleet.length, 1)] || vehicles[0]) : null;
           const guide = assigned ? (guidePool[n % Math.max(guidePool.length, 1)] || guides[0]) : null;
+          const driverName = assigned ? driverPool[n % driverPool.length] : "";
           const day0 = new Date(slot);
           day0.setHours(0, 0, 0, 0);
           const diffDays = Math.round((day0 - today0) / 86400000);
@@ -16299,7 +16988,7 @@
             hotel: routes[n % routes.length],
             pax,
             vehicle: vehicle ? vehicle.plate : "—",
-            driver: vehicle ? vehicle.name : "",
+            driver: driverName,
             guide: guide ? guide.name : "Unassigned",
             assigned,
             status,
@@ -16344,8 +17033,22 @@
       return String(status || "").toLowerCase().replace(/\s+/g, "-");
     }
 
+    function adAllocatedDriver(item) {
+      const d = String(item.driver || "").trim();
+      if (d && d !== "—" && !/^unassign/i.test(d)) return d;
+      /* fallback: plate-linked supplier name already stored as vehicle name in some feeds */
+      const v = String(item.vehicle || "").trim();
+      if (item.assigned && v && v !== "—") {
+        const hit = (typeof vehicles !== "undefined" ? vehicles : []).find((x) => x.plate === v);
+        if (hit && hit.name) return hit.name;
+      }
+      return "Unassigned";
+    }
+
     function adRowHtml(item) {
       const kindClass = String(item.kind || "").toLowerCase();
+      const driverName = adAllocatedDriver(item);
+      const unassigned = !item.assigned || driverName === "Unassigned";
       const alerts = [];
       if (item.clientNotifyIssue) alerts.push(item.clientChannel ? `Client · ${item.clientChannel}` : "Client notify");
       if (item.driverConfirmPending) alerts.push("Driver confirm");
@@ -16355,21 +17058,24 @@
       const alertHtml = alerts.length
         ? `<div class="ad-alerts">${alerts.map((a) => `<span class="ad-alert-chip">${a}</span>`).join("")}</div>`
         : "";
+      const guestLine = item.guest
+        ? ` · ${item.guest}${item.pax ? ` · ${item.pax} pax` : ""}`
+        : "";
       return `
-        <div class="ad-row ${item.assigned ? "" : "not-assigned"}${item.kind === "RoundTour" ? " round-tour" : ""}${item.flightAmended ? " flight-amend" : ""}${item.driverOffline || item.missedLocation ? " asap-alert" : ""}">
+        <div class="ad-row ${unassigned ? "not-assigned" : ""}${item.kind === "RoundTour" ? " round-tour" : ""}${item.flightAmended ? " flight-amend" : ""}${item.driverOffline || item.missedLocation ? " asap-alert" : ""}">
           <div class="ad-day"><strong>${item.dayLabel}</strong>${item.dateLabel}</div>
           <div>
             <div class="ad-time">${item.time}</div>
             <span class="ad-kind ${kindClass}">${item.kindLabel || item.kind}</span>
           </div>
           <div class="ad-main">
-            <strong>${item.guest}</strong>
-            <small>${item.ref} · ${item.route}${item.flightNo ? ` · ${item.flightNo}` : ""}</small>
+            <strong>${driverName}</strong>
+            <small>${item.ref} · ${item.route}${item.flightNo ? ` · ${item.flightNo}` : ""}${guestLine}</small>
             ${alertHtml}
           </div>
           <div class="ad-meta">
-            <span class="plate">${item.vehicle}</span>
-            ${item.guide}
+            <span class="plate">${item.vehicle && item.vehicle !== "—" ? item.vehicle : "No vehicle"}</span>
+            ${item.guest || "—"}
             <span class="ad-status ${statusClass(item.status)}">${item.status}</span>
           </div>
         </div>`;
@@ -16421,6 +17127,15 @@
         if (adAlertFilter === "offline-miss" && !(item.driverOffline || item.missedLocation)) return false;
         if (adAlertFilter === "flight-amend" && !item.flightAmended) return false;
         return true;
+      }).sort((a, b) => {
+        const da = adAllocatedDriver(a);
+        const db = adAllocatedDriver(b);
+        const ua = da === "Unassigned" ? 1 : 0;
+        const ub = db === "Unassigned" ? 1 : 0;
+        if (ua !== ub) return ua - ub;
+        const byDrv = da.localeCompare(db);
+        if (byDrv) return byDrv;
+        return `${a.dateISO || ""} ${a.time || ""}`.localeCompare(`${b.dateISO || ""} ${b.time || ""}`);
       });
       const rows = filtered.map(adRowHtml).join("");
       track.innerHTML = rows + (filtered.length ? rows : "");
@@ -16840,8 +17555,34 @@
       const el = document.getElementById(elId);
       if (!el) return;
       el.innerHTML = items.map((i) => `
-        <div class="tr-mod-kpi"><div class="k">${i.k}</div><div class="v">${i.v}</div></div>
+        <div class="tr-mod-kpi${i.tone ? " tone-" + i.tone : ""}">
+          ${i.ico ? `<span class="ico" aria-hidden="true">${i.ico}</span>` : ""}
+          <div class="k">${i.k}</div>
+          <div class="v">${i.v}</div>
+          ${i.hint ? `<div class="hint">${i.hint}</div>` : ""}
+        </div>
       `).join("");
+    }
+
+    function trAnInitials(name) {
+      const parts = String(name || "?").trim().split(/\s+/).filter(Boolean);
+      if (!parts.length) return "?";
+      if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+
+    function trAnFleetClass(label) {
+      const s = String(label || "").toLowerCase();
+      if (/mini/.test(s)) return "mini";
+      if (/large|bus|coach/.test(s) && !/mini/.test(s)) return "large";
+      if (/super/.test(s)) return "super";
+      if (/van|car/.test(s)) return "van";
+      return "van";
+    }
+
+    function trAnKmBar(n, max, refuse) {
+      const pct = Math.max(4, Math.min(100, Math.round((Number(n) / Math.max(max, 1)) * 100)));
+      return `<div class="tr-an-bar${refuse ? " refuse" : ""}" title="${Number(n).toLocaleString()} km"><i style="width:${pct}%"></i></div>`;
     }
 
     const trDriverTransfers = [
@@ -18428,15 +19169,15 @@
         const refuseKm = Number(row.refusedKm || 0);
         const totalKm = workKm + refuseKm;
         stats.innerHTML = `
-          <div class="tr-an-rev-stat"><div class="k">Jobs refused</div><div class="v" style="color:#be123c">${row.refused}</div></div>
-          <div class="tr-an-rev-stat"><div class="k">Transfer mileage</div><div class="v">${transferKm.toLocaleString()} km</div></div>
-          <div class="tr-an-rev-stat"><div class="k">Excursion mileage</div><div class="v">${excursionKm.toLocaleString()} km</div></div>
-          <div class="tr-an-rev-stat"><div class="k">Round tour mileage</div><div class="v">${roundTourKm.toLocaleString()} km</div></div>
-          <div class="tr-an-rev-stat"><div class="k">Work mileage</div><div class="v">${workKm.toLocaleString()} km</div></div>
-          <div class="tr-an-rev-stat"><div class="k">Refusal mileage</div><div class="v">${refuseKm.toLocaleString()} km</div></div>
-          <div class="tr-an-rev-stat"><div class="k">Total mileage</div><div class="v">${totalKm.toLocaleString()} km</div></div>
-          <div class="tr-an-rev-stat"><div class="k">Set price refused</div><div class="v">${trFmtLkr(row.refusedPrice || 0)}</div></div>
-          <div class="tr-an-rev-stat"><div class="k">Refusal rate</div><div class="v">${row.rate}% · ${row.offered} offered</div></div>
+          <div class="tr-an-rev-stat tone-refuse"><div class="k">Jobs refused</div><div class="v">${row.refused}</div></div>
+          <div class="tr-an-rev-stat tone-transfer"><div class="k">Transfer mileage</div><div class="v">${transferKm.toLocaleString()} km</div></div>
+          <div class="tr-an-rev-stat tone-excursion"><div class="k">Excursion mileage</div><div class="v">${excursionKm.toLocaleString()} km</div></div>
+          <div class="tr-an-rev-stat tone-round"><div class="k">Round tour mileage</div><div class="v">${roundTourKm.toLocaleString()} km</div></div>
+          <div class="tr-an-rev-stat tone-work"><div class="k">Work mileage</div><div class="v">${workKm.toLocaleString()} km</div></div>
+          <div class="tr-an-rev-stat tone-refuse"><div class="k">Refusal mileage</div><div class="v">${refuseKm.toLocaleString()} km</div></div>
+          <div class="tr-an-rev-stat tone-total"><div class="k">Total mileage</div><div class="v">${totalKm.toLocaleString()} km</div></div>
+          <div class="tr-an-rev-stat tone-money"><div class="k">Set price refused</div><div class="v">${trFmtLkr(row.refusedPrice || 0)}</div></div>
+          <div class="tr-an-rev-stat tone-score"><div class="k">Refusal rate</div><div class="v">${row.rate}% · ${row.offered} offered</div></div>
         `;
         const items = row.reasons || [];
         list.innerHTML = items.length
@@ -18468,32 +19209,32 @@
       const hrs = totalKm / 45;
       const hrsLbl = `${Math.floor(hrs)}h ${String(Math.round((hrs % 1) * 60)).padStart(2, "0")}m`;
       const fleetHtml = (row.vehicles || []).length
-        ? `<div class="tr-an-rev-stat" style="grid-column:1/-1"><div class="k">Fleet vehicles</div><div class="v" style="font-size:12px;font-weight:700;line-height:1.45">${
+        ? `<div class="tr-an-rev-stat tone-fleet" style="grid-column:1/-1"><div class="k">Fleet vehicles</div><div class="v" style="font-size:12px;font-weight:700;line-height:1.55">${
             row.vehicles.map((v) => {
               const selPlate = (document.getElementById("tr-an-vehicle")?.value || "").trim();
               const on = selPlate && v.plate === selPlate;
-              return `<span style="${on ? "color:#2563eb;background:#eff6ff;padding:2px 6px;border-radius:6px;display:inline-block;margin:2px 0" : ""}">${v.plate} · ${v.vehicleType}${v.seats ? " · " + v.seats + " seats" : ""}${v.brand ? " · " + v.brand : ""}${on ? " ← selected" : ""}</span>`;
-            }).join("<br/>")
+              return `<span class="tr-an-vtype ${trAnFleetClass(v.vehicleType)}" style="display:inline-flex;margin:2px 4px 2px 0;max-width:none;${on ? "outline:2px solid #0ea5e9" : ""}">${v.plate} · ${v.vehicleType}${v.seats ? " · " + v.seats + " seats" : ""}${v.brand ? " · " + v.brand : ""}${on ? " · selected" : ""}</span>`;
+            }).join("")
           }</div></div>`
         : "";
       stats.innerHTML = trAnTab === "drivers" ? `
         ${fleetHtml}
-        <div class="tr-an-rev-stat"><div class="k">Transfer mileage</div><div class="v">${transferKm.toLocaleString()} km</div></div>
-        <div class="tr-an-rev-stat"><div class="k">Excursion mileage</div><div class="v">${excursionKm.toLocaleString()} km</div></div>
-        <div class="tr-an-rev-stat"><div class="k">Round tour mileage</div><div class="v">${roundTourKm.toLocaleString()} km</div></div>
-        <div class="tr-an-rev-stat"><div class="k">Work mileage</div><div class="v">${workKm.toLocaleString()} km</div></div>
-        <div class="tr-an-rev-stat"><div class="k">Refusal mileage</div><div class="v">${rfKm.toLocaleString()} km</div></div>
-        <div class="tr-an-rev-stat"><div class="k">Total mileage</div><div class="v">${totalKm.toLocaleString()} km</div></div>
-        <div class="tr-an-rev-stat"><div class="k">Hours</div><div class="v">${hrsLbl}</div></div>
-        <div class="tr-an-rev-stat"><div class="k">Money earned</div><div class="v">${trFmtLkr(row.earned)}</div></div>
-        <div class="tr-an-rev-stat"><div class="k">Jobs</div><div class="v">${row.jobs}</div></div>
-        <div class="tr-an-rev-stat"><div class="k">Jobs refused</div><div class="v" style="color:#be123c">${rfCount}</div></div>
-        <div class="tr-an-rev-stat"><div class="k">Review score</div><div class="v">${row.rating.toFixed(1)} <span class="tr-an-stars">${trStars(row.rating)}</span></div></div>
+        <div class="tr-an-rev-stat tone-transfer"><div class="k">Transfer mileage</div><div class="v">${transferKm.toLocaleString()} km</div></div>
+        <div class="tr-an-rev-stat tone-excursion"><div class="k">Excursion mileage</div><div class="v">${excursionKm.toLocaleString()} km</div></div>
+        <div class="tr-an-rev-stat tone-round"><div class="k">Round tour mileage</div><div class="v">${roundTourKm.toLocaleString()} km</div></div>
+        <div class="tr-an-rev-stat tone-work"><div class="k">Work mileage</div><div class="v">${workKm.toLocaleString()} km</div></div>
+        <div class="tr-an-rev-stat tone-refuse"><div class="k">Refusal mileage</div><div class="v">${rfKm.toLocaleString()} km</div></div>
+        <div class="tr-an-rev-stat tone-total"><div class="k">Total mileage</div><div class="v">${totalKm.toLocaleString()} km</div></div>
+        <div class="tr-an-rev-stat tone-hours"><div class="k">Hours</div><div class="v">${hrsLbl}</div></div>
+        <div class="tr-an-rev-stat tone-money"><div class="k">Money earned</div><div class="v">${trFmtLkr(row.earned)}</div></div>
+        <div class="tr-an-rev-stat tone-jobs"><div class="k">Jobs</div><div class="v">${row.jobs}</div></div>
+        <div class="tr-an-rev-stat tone-refuse"><div class="k">Jobs refused</div><div class="v">${rfCount}</div></div>
+        <div class="tr-an-rev-stat tone-score"><div class="k">Review score</div><div class="v">${row.rating.toFixed(1)} <span class="tr-an-stars">${trStars(row.rating)}</span></div></div>
       ` : `
-        <div class="tr-an-rev-stat"><div class="k">Work mileage</div><div class="v">${workKm.toLocaleString()} km</div></div>
-        <div class="tr-an-rev-stat"><div class="k">Money earned</div><div class="v">${trFmtLkr(row.earned)}</div></div>
-        <div class="tr-an-rev-stat"><div class="k">Jobs</div><div class="v">${row.jobs}</div></div>
-        <div class="tr-an-rev-stat"><div class="k">Review score</div><div class="v">${row.rating.toFixed(1)} <span class="tr-an-stars">${trStars(row.rating)}</span></div></div>
+        <div class="tr-an-rev-stat tone-work"><div class="k">Work mileage</div><div class="v">${workKm.toLocaleString()} km</div></div>
+        <div class="tr-an-rev-stat tone-money"><div class="k">Money earned</div><div class="v">${trFmtLkr(row.earned)}</div></div>
+        <div class="tr-an-rev-stat tone-jobs"><div class="k">Jobs</div><div class="v">${row.jobs}</div></div>
+        <div class="tr-an-rev-stat tone-score"><div class="k">Review score</div><div class="v">${row.rating.toFixed(1)} <span class="tr-an-stars">${trStars(row.rating)}</span></div></div>
       `;
       const revs = row.reviews || [];
       list.innerHTML = revs.length
@@ -18529,20 +19270,13 @@
         const totKm = rows.reduce((n, r) => n + Number(r.refusedKm || 0), 0);
         const totPrice = rows.reduce((n, r) => n + Number(r.refusedPrice || 0), 0);
         trKpis("tr-an-kpis", [
-          { k: "Supplier owners", v: String(rows.length) },
-          { k: "Jobs refused", v: String(totRef) },
-          { k: "Refusal mileage", v: totKm.toLocaleString() + " km" },
-          { k: "Set price refused", v: trFmtLkr(totPrice) },
+          { k: "Supplier owners", v: String(rows.length), tone: "owners", ico: "SO", hint: "With refusal activity" },
+          { k: "Jobs refused", v: String(totRef), tone: "refuse", ico: "JR", hint: "Declined offers" },
+          { k: "Refusal mileage", v: totKm.toLocaleString() + " km", tone: "refuse", ico: "RK", hint: "Lost road km" },
+          { k: "Set price refused", v: trFmtLkr(totPrice), tone: "money", ico: "LKR", hint: "Value turned down" },
         ]);
       } else {
         const totWork = rows.reduce((n, r) => n + Number(r.mileageKm || 0), 0);
-        const totRefuse = isDrivers
-          ? rows.reduce((n, r) => {
-              return n + trDriverRefusals
-                .filter((x) => ehiNormPerson(x.name).toLowerCase() === ehiNormPerson(r.name).toLowerCase())
-                .reduce((m, x) => m + Number(x.refusedKm || 0), 0);
-            }, 0)
-          : 0;
         const totEarn = rows.reduce((n, r) => n + r.earned, 0);
         const avgR = rows.length ? (rows.reduce((n, r) => n + r.rating, 0) / rows.length) : 0;
         if (isDrivers) {
@@ -18551,17 +19285,17 @@
           const totRound = rows.reduce((n, r) => n + Number(r.roundTourKm || 0), 0);
           const totHrs = (totTransfer + totExcursion + totRound) / 45;
           trKpis("tr-an-kpis", [
-            { k: "Supplier owners", v: String(rows.length) },
-            { k: "Transfer mileage", v: totTransfer.toLocaleString() + " km" },
-            { k: "Excursion mileage", v: totExcursion.toLocaleString() + " km" },
-            { k: "Hours", v: (Math.floor(totHrs) + "h " + String(Math.round((totHrs % 1) * 60)).padStart(2, "0") + "m") },
+            { k: "Supplier owners", v: String(rows.length), tone: "owners", ico: "SO", hint: "Active in filters" },
+            { k: "Transfer mileage", v: totTransfer.toLocaleString() + " km", tone: "transfer", ico: "TR", hint: "A-H · H-A · H-H" },
+            { k: "Excursion mileage", v: totExcursion.toLocaleString() + " km", tone: "excursion", ico: "EX", hint: "Day tours" },
+            { k: "Hours", v: (Math.floor(totHrs) + "h " + String(Math.round((totHrs % 1) * 60)).padStart(2, "0") + "m"), tone: "hours", ico: "HR", hint: "Est. road time" },
           ]);
         } else {
           trKpis("tr-an-kpis", [
-            { k: "Guides", v: String(rows.length) },
-            { k: "Work mileage", v: totWork.toLocaleString() + " km" },
-            { k: "Total earned", v: trFmtLkr(totEarn) },
-            { k: "Avg review", v: avgR ? avgR.toFixed(1) : "—" },
+            { k: "Guides", v: String(rows.length), tone: "guide", ico: "GD", hint: "In filter" },
+            { k: "Work mileage", v: totWork.toLocaleString() + " km", tone: "transfer", ico: "KM", hint: "Season total" },
+            { k: "Total earned", v: trFmtLkr(totEarn), tone: "money", ico: "LKR", hint: "Guide payouts" },
+            { k: "Avg review", v: avgR ? avgR.toFixed(1) : "—", tone: "hours", ico: "RV", hint: "Guest score" },
           ]);
         }
       }
@@ -18577,6 +19311,18 @@
         }
       }
 
+      const maxTot = rows.reduce((m, r) => {
+        if (isRefusals) return Math.max(m, Number(r.refusedKm || 0));
+        if (isDrivers) {
+          const work = Number(r.mileageKm || 0) || (Number(r.transferKm || 0) + Number(r.excursionKm || 0) + Number(r.roundTourKm || 0));
+          const rf = trDriverRefusals
+            .filter((x) => ehiNormPerson(x.name).toLowerCase() === ehiNormPerson(r.name).toLowerCase())
+            .reduce((n, x) => n + Number(x.refusedKm || 0), 0);
+          return Math.max(m, work + rf);
+        }
+        return Math.max(m, Number(r.mileageKm || 0));
+      }, 1);
+
       const tb = document.getElementById("tr-an-rows");
       if (tb) {
         if (!rows.length) {
@@ -18584,18 +19330,29 @@
         } else {
           tb.innerHTML = rows.map((r) => {
             const sel = trAnSelected === r.id ? " tr-an-sel" : "";
+            const person = `
+              <div class="tr-an-person">
+                <span class="tr-an-avatar">${trAnInitials(r.name)}</span>
+                <div>
+                  <div>${r.name}</div>
+                  <div class="meta">${isRefusals || isDrivers
+                    ? `${r.fleetSize || (r.vehicles || []).length || 0} vehicles${r.phone ? " · " + r.phone : ""}`
+                    : (r.languages || "Guide")}</div>
+                </div>
+              </div>`;
             if (isRefusals) {
               const top = (r.reasons && r.reasons[0]) ? r.reasons[0].reason : (r.refused ? "—" : "No refusals");
               const fleet = r.fleetLabel || r.vehicleType || "—";
+              const rateHot = Number(r.rate || 0) >= 20;
               return `
                 <tr class="${sel.trim()}" data-an-id="${r.id}" style="cursor:pointer">
-                  <td class="name">${r.name}<div style="font-size:11px;color:#64748b">${r.fleetSize || 0} vehicles · supplier owner</div></td>
-                  <td>${r.region || "—"}</td>
-                  <td><span class="tr-an-vtype van">${deEsc(fleet)}</span></td>
-                  <td><strong style="color:#be123c">${r.refused}</strong> <span style="color:#64748b;font-size:11px">/ ${r.offered}</span></td>
-                  <td>${Number(r.refusedKm || 0).toLocaleString()} km</td>
+                  <td class="name">${person}</td>
+                  <td><span class="tr-an-region">${r.region || "—"}</span></td>
+                  <td><span class="tr-an-vtype ${trAnFleetClass(fleet)}" title="${deEsc(fleet)}">${deEsc(fleet)}</span></td>
+                  <td><strong class="tr-an-km refuse">${r.refused}</strong> <span style="color:#64748b;font-size:11px">/ ${r.offered}</span></td>
+                  <td><span class="tr-an-km refuse">${Number(r.refusedKm || 0).toLocaleString()} km</span>${trAnKmBar(r.refusedKm || 0, maxTot, true)}</td>
                   <td>${trFmtLkr(r.refusedPrice || 0)}</td>
-                  <td>${r.rate}%</td>
+                  <td><span class="tr-an-rate${rateHot ? " hot" : ""}">${r.rate}%</span></td>
                   <td>${top}</td>
                 </tr>`;
             }
@@ -18613,24 +19370,24 @@
               const fleet = r.fleetLabel || ehiFleetTypeSummary(r.vehicles) || "—";
               return `
                 <tr class="${sel.trim()}" data-an-id="${r.id}" style="cursor:pointer">
-                  <td class="name">${r.name}<div style="font-size:11px;color:#64748b">${r.fleetSize || (r.vehicles || []).length} vehicles${r.phone ? " · " + r.phone : ""}</div></td>
-                  <td>${r.region || "—"}</td>
-                  <td><span class="tr-an-vtype van" title="${deEsc(fleet)}">${deEsc(fleet)}</span></td>
-                  <td>${transferKm.toLocaleString()} km</td>
-                  <td>${excursionKm.toLocaleString()} km</td>
-                  <td>${roundTourKm.toLocaleString()} km</td>
-                  <td style="color:#be123c">${ownerRefuseKm.toLocaleString()} km</td>
-                  <td><strong>${totalKm.toLocaleString()} km</strong></td>
-                  <td>${hrsLbl}</td>
+                  <td class="name">${person}</td>
+                  <td><span class="tr-an-region">${r.region || "—"}</span></td>
+                  <td><span class="tr-an-vtype ${trAnFleetClass(fleet)}" title="${deEsc(fleet)}">${deEsc(fleet)}</span></td>
+                  <td><span class="tr-an-km transfer">${transferKm.toLocaleString()} km</span></td>
+                  <td><span class="tr-an-km excursion">${excursionKm.toLocaleString()} km</span></td>
+                  <td><span class="tr-an-km round">${roundTourKm.toLocaleString()} km</span></td>
+                  <td><span class="tr-an-km refuse">${ownerRefuseKm.toLocaleString()} km</span>${trAnKmBar(ownerRefuseKm, maxTot, true)}</td>
+                  <td><span class="tr-an-km total">${totalKm.toLocaleString()} km</span>${trAnKmBar(totalKm, maxTot, false)}</td>
+                  <td><span class="tr-an-hours">${hrsLbl}</span></td>
                 </tr>`;
             }
             return `
               <tr class="${sel.trim()}" data-an-id="${r.id}" style="cursor:pointer">
-                <td class="name">${r.name}</td>
+                <td class="name">${person}</td>
                 <td>${r.languages || "—"}</td>
-                <td>${r.city || "—"}</td>
+                <td><span class="tr-an-region">${r.city || "—"}</span></td>
                 <td>${r.section}</td>
-                <td>${r.mileageKm.toLocaleString()} km</td>
+                <td><span class="tr-an-km transfer">${r.mileageKm.toLocaleString()} km</span>${trAnKmBar(r.mileageKm, maxTot, false)}</td>
                 <td>${trFmtLkr(r.earned)}</td>
                 <td><strong>${r.rating.toFixed(1)}</strong> <span class="tr-an-stars">${trStars(r.rating)}</span></td>
               </tr>`;
@@ -19175,6 +19932,11 @@
       if (page === "guide-roster" || page === "driver-roster") {
         rosterMode = page === "driver-roster" ? "drivers" : "guides";
         rosterStageFilter = "All";
+        if (page === "driver-roster") {
+          if (!ROSTER_DRIVER_REGIONS.includes(selectedCity)) selectedCity = "All";
+        } else if (!cityPills.includes(selectedCity)) {
+          selectedCity = "All";
+        }
         if (typeof renderRanking === "function") renderRanking(selectedCity || "All");
       }
       const excursionPages = ["excursion-dash", "excursion-reports", "excursion-marketplace", "daily-excursions", "daily-info", "operation", "allocation"];
@@ -19273,13 +20035,122 @@
         d.setDate(d.getDate() - 1);
         date = d.toISOString().slice(0, 10);
         total += 24 * 60;
+      } else if (total < 0) {
+        total += 24 * 60;
       }
       const pickupTime = xferFmtMinutes(total);
       return {
         pickupTime,
         pickupDate: date,
-        label: `${date} ${pickupTime} (airport 3h prior · travel ${travelHrs || 0}h)`,
+        label: date
+          ? `${date} ${pickupTime} (airport 3h prior · travel ${travelHrs || 0}h)`
+          : `${pickupTime} (airport 3h prior · travel ${travelHrs || 0}h)`,
       };
+    }
+
+    /** H-H internal: leave hotel so guests arrive by scheduled time − travel */
+    function xferCalcHhPickup(schedTime, travelHrs, schedDate) {
+      const fm = xferMinutes(schedTime);
+      if (fm == null) return { pickupTime: "—", pickupDate: schedDate || "", label: "—" };
+      const travel = Math.round(Number(travelHrs || 0) * 60);
+      let total = fm - travel;
+      let date = schedDate || "";
+      if (total < 0 && date) {
+        const d = new Date(date + "T12:00:00");
+        d.setDate(d.getDate() - 1);
+        date = d.toISOString().slice(0, 10);
+        total += 24 * 60;
+      } else if (total < 0) {
+        total += 24 * 60;
+      }
+      const pickupTime = xferFmtMinutes(total);
+      return {
+        pickupTime,
+        pickupDate: date,
+        label: date
+          ? `${date} ${pickupTime} (H-H · travel ${travelHrs || 0}h)`
+          : `${pickupTime} (H-H · travel ${travelHrs || 0}h)`,
+      };
+    }
+
+    const XFER_REGION_TRAVEL_HRS = {
+      Negombo: 0.5, Colombo: 1, Kalutara: 1.5, Bentota: 2, Beruwala: 1.75,
+      Hikkaduwa: 2.5, Unawatuna: 3, Galle: 3, Weligama: 3, Mirissa: 3,
+      Matara: 3.25, Tangalle: 3.5, Yala: 4, Pasikudah: 4, "Pasikuda": 4,
+      "Cultural Triangle": 3.5, Kandy: 3,
+    };
+
+    function xferDefaultTravelHrs(region, fallback) {
+      const r = String(region || "");
+      const hit = Object.keys(XFER_REGION_TRAVEL_HRS).find((k) => r.toLowerCase().includes(k.toLowerCase()));
+      if (hit) return XFER_REGION_TRAVEL_HRS[hit];
+      return fallback != null ? Number(fallback) : 2.5;
+    }
+
+    function xferEnsureTravelHrs(book) {
+      if (book.travelHrs != null && book.travelHrs !== "" && Number(book.travelHrs) > 0) {
+        return Number(book.travelHrs);
+      }
+      const def = xferDefaultTravelHrs(book.region, book.trfType === "H-H" ? 1 : 2.5);
+      book.travelHrs = def;
+      return def;
+    }
+
+    function xferAutoPickupForBooking(book, persist) {
+      if (!book) return null;
+      if (book.trfType === "H-A") {
+        const hrs = xferEnsureTravelHrs(book);
+        const p = xferCalcPickup(book.time, hrs, book.date);
+        const label = `${p.pickupDate} ${p.pickupTime}`.trim();
+        if (persist !== false) {
+          book.calcPickup = label;
+          if (!book.pickupOverride) book.pickupOverride = label;
+        }
+        return { ...p, label, kind: "H-A" };
+      }
+      if (book.trfType === "H-H") {
+        const hrs = xferEnsureTravelHrs(book);
+        const p = xferCalcHhPickup(book.time, hrs, book.date);
+        const label = `${p.pickupDate} ${p.pickupTime}`.trim();
+        if (persist !== false) {
+          book.calcPickup = label;
+          if (!book.pickupOverride) book.pickupOverride = label;
+        }
+        return { ...p, label, kind: "H-H" };
+      }
+      return null;
+    }
+
+    function xferPickupCellHtml(r, locked) {
+      /* After vehicle/TR allocated, pickup stays editable for H-A / H-H */
+      const needsPickup = r.trfType === "H-A" || r.trfType === "H-H";
+      if (r.trfType === "A-H") {
+        return `<span class="muted">Meet flight · to hotel</span>`;
+      }
+      if (!needsPickup) {
+        return `<input class="xfer-field xfer-pickup-field" data-id="${deEsc(r.id)}" type="text" value="${deEsc(r.pickupOverride || "")}" ${locked && !r.assigned ? "disabled" : ""} placeholder="Pickup note" />`;
+      }
+      const hrs = xferEnsureTravelHrs(r);
+      const auto = xferAutoPickupForBooking(r, true);
+      const pickupVal = r.pickupOverride || r.finalPickup || r.calcPickup || (auto && auto.label) || "";
+      const hint = r.trfType === "H-A"
+        ? `Flight ${r.time} − 3h airport − ${hrs}h travel`
+        : `Arrive by ${r.time} − ${hrs}h travel`;
+      const canEditPickup = r.assigned || !locked;
+      return `<div class="xfer-pickup-wrap">
+        <div class="row2">
+          <label class="mini">Travel h
+            <input class="xfer-field xfer-travel-field" data-id="${deEsc(r.id)}" type="number" min="0" step="0.5" value="${hrs}" ${canEditPickup ? "" : "disabled"} title="Road hours hotel → destination" />
+          </label>
+          <label class="mini">Pickup time
+            <input class="xfer-field xfer-pickup-field" data-id="${deEsc(r.id)}" type="text" value="${deEsc(pickupVal)}" ${canEditPickup ? "" : "disabled"} placeholder="YYYY-MM-DD HH:MM" />
+          </label>
+        </div>
+        <div class="xfer-pickup-actions">
+          <button type="button" class="xfer-calc-btn" data-id="${deEsc(r.id)}" ${canEditPickup ? "" : "disabled"} title="${deEsc(hint)}">Auto calc</button>
+          ${r.assigned ? `<span class="auto">TR set · edit pickup</span>` : `<span class="auto">${deEsc(hint)}</span>`}
+        </div>
+      </div>`;
     }
 
     function xferPickupHint(dir, flightTime, combinedFirstFlight, travelHrs) {
@@ -19381,6 +20252,297 @@
     let xferServerJobs = [];
     let xferServerVehicles = [];
     let xferServerDrivers = [];
+
+    const XFER_LS_HOTEL_Q = "ehi_xfer_hotel_notify_v1";
+    let xferHotelQueue = (() => {
+      try { return JSON.parse(localStorage.getItem(XFER_LS_HOTEL_Q) || "[]"); } catch (_) { return []; }
+    })();
+
+    function xferSaveHotelQueue() {
+      localStorage.setItem(XFER_LS_HOTEL_Q, JSON.stringify(xferHotelQueue.slice(0, 200)));
+    }
+
+    function xferJobBooks(job) {
+      const ids = job.bookingIds || [];
+      return xferBookings.filter((b) => ids.includes(b.id));
+    }
+
+    function xferJobReadyForHotel(job) {
+      if (!job) return false;
+      const types = String(job.trfType || "");
+      if (!/H-A|H-H|Departure/i.test(types)) return false;
+      const books = xferJobBooks(job);
+      const hasPickup = books.some((b) => b.pickupOverride || b.calcPickup || b.finalPickup)
+        || (job.pickups && job.pickups.length);
+      const hasGuide = !!(job.guide && String(job.guide).trim());
+      const hasDriver = !!(job.driver && String(job.driver).trim());
+      return !!(hasPickup && hasGuide && hasDriver);
+    }
+
+    function xferAddDaysISO(dateISO, days) {
+      const d = new Date(String(dateISO) + "T12:00:00");
+      if (Number.isNaN(d.getTime())) return "";
+      d.setDate(d.getDate() + days);
+      return d.toISOString().slice(0, 10);
+    }
+
+    function xferFmtPickupHrs(label) {
+      const s = String(label || "").trim();
+      const m = s.match(/(\d{4}-\d{2}-\d{2})\s+(\d{1,2}:\d{2})/);
+      if (m) return `${m[1]} / ${m[2]}HRS`;
+      const t = s.match(/(\d{1,2}:\d{2})/);
+      return t ? `${t[1]}HRS` : s || "—";
+    }
+
+    function xferHotelDepMessage(job) {
+      const books = xferJobBooks(job).filter((b) => b.trfType === "H-A" || b.trfType === "H-H" || /H-A|H-H/.test(String(job.trfType)));
+      const rows = (books.length ? books : xferJobBooks(job)).map((b, i) => {
+        const auto = (b.trfType === "H-A" || b.trfType === "H-H") ? xferAutoPickupForBooking(b, false) : null;
+        const pickup = b.pickupOverride || b.finalPickup || b.calcPickup || (auto && auto.label) || "—";
+        const guest = b.guest || b.note || `Guest party · ${b.pax || "?"} pax`;
+        const trfLabel = b.trfType === "H-A"
+          ? `(Grp) Transfer Colombo arpt. (Hotel - Airport)`
+          : b.trfType === "H-H"
+            ? `(Grp) Internal Transfer (Hotel - Hotel)`
+            : String(b.trfType || job.trfType);
+        return {
+          depDate: b.date || job.date,
+          ref: b.ref || b.id || "—",
+          refTo: b.refTo || b.touroperator || "??????",
+          flight: b.flight || "—",
+          flightTime: b.time || "—",
+          trfType: trfLabel,
+          hotel: b.hotel || "—",
+          room: b.roomNo || "",
+          guest: `[ ${i + 1} ] ${guest}`,
+          pickup: xferFmtPickupHrs(pickup),
+        };
+      });
+      const hotelName = rows[0]?.hotel || job.region || "Hotel";
+      const lines = [
+        `Subject: Exotic Holidays International - Departure Information`,
+        ``,
+        `Greetings of the day!`,
+        ``,
+        `I am glad to inform you that We have arrange the transport service for our valuable guest who are staying your hotel. Please check below departure details and inform the correct pickup time to our clients.`,
+        ``,
+        `We will really appreciate your response with Room Numbers.`,
+        ``,
+        `* Room Numbers Are Really Important For Us During the Departure Time.`,
+        `* We have Mentioned The Pickup Time in the Last Column of the Below Table.`,
+        ``,
+        `TR ${job.trNum || "—"} · Coach ${job.coach || "—"} · Driver ${job.driver || "—"} · Guide ${job.guide || "—"}`,
+        `Hotel: ${hotelName}`,
+        ``,
+        `Dep-Date | Reference | Ref(TO) | Flight | Flight Time | Transfer Type | Hotel | Room No | Pick Up Date/Time`,
+        `---------|-----------|--------|--------|-------------|---------------|-------|---------|------------------`,
+      ];
+      rows.forEach((r) => {
+        lines.push(`${r.depDate} | ${r.ref} | ${r.refTo} | ${r.flight} | ${r.flightTime} | ${r.trfType} | ${r.hotel} | ${r.room || "____"} | ${r.pickup}`);
+        lines.push(`${r.guest}`);
+      });
+      lines.push(``, `Thank you.`, `Exotic Holidays International · Transport desk`);
+      return { text: lines.join("\n"), rows, hotelName };
+    }
+
+    function xferHotelScheduleDates(job) {
+      const dep = job.date || (xferJobBooks(job)[0] || {}).date || "";
+      return {
+        depDate: dep,
+        prior3d: dep ? xferAddDaysISO(dep, -3) : "",
+        prior24h: dep ? xferAddDaysISO(dep, -1) : "",
+      };
+    }
+
+    function xferOpenHotelModal(jobId) {
+      const job = xferJobs.find((j) => j.id === jobId);
+      if (!job) return;
+      if (!xferJobReadyForHotel(job)) {
+        alert("Set pickup time, guide and driver on this TR first — then send hotel departure message.");
+        return;
+      }
+      const modal = document.getElementById("xfer-hotel-modal");
+      const msg = xferHotelDepMessage(job);
+      const sched = xferHotelScheduleDates(job);
+      document.getElementById("xfer-hotel-modal-job").value = job.id;
+      document.getElementById("xfer-hotel-contact").value = job.hotelContact || "";
+      document.getElementById("xfer-hotel-channel").value = job.hotelChannel || "whatsapp";
+      document.getElementById("xfer-hotel-preview").value = msg.text;
+      const schedEl = document.getElementById("xfer-hotel-schedule");
+      if (schedEl) {
+        schedEl.innerHTML = `
+          <div class="box"><span>Send · 3 days prior</span>${deEsc(sched.prior3d || "—")} (dep ${deEsc(sched.depDate || "—")})</div>
+          <div class="box"><span>Remind · 24 hours prior</span>${deEsc(sched.prior24h || "—")} (day before dep)</div>`;
+      }
+      if (modal) {
+        modal.hidden = false;
+        modal.removeAttribute("hidden");
+        requestAnimationFrame(() => modal.classList.add("open"));
+      }
+    }
+
+    function xferCloseHotelModal() {
+      const modal = document.getElementById("xfer-hotel-modal");
+      if (modal) {
+        modal.classList.remove("open");
+        modal.hidden = true;
+      }
+    }
+
+    function xferEnqueueHotelNotify(job, opts = {}) {
+      const channel = opts.channel || "whatsapp";
+      const contact = opts.contact || "";
+      const msg = opts.message || xferHotelDepMessage(job).text;
+      const sched = xferHotelScheduleDates(job);
+      const now = new Date().toISOString();
+      const base = {
+        jobId: job.id,
+        trNum: job.trNum,
+        hotel: xferHotelDepMessage(job).hotelName,
+        channel,
+        contact,
+        message: msg,
+        depDate: sched.depDate,
+        createdAt: now,
+      };
+      const items = [
+        {
+          ...base,
+          id: `hn-${job.id}-3d-${Date.now()}`,
+          kind: "3d",
+          label: "3 days prior",
+          sendOn: sched.prior3d,
+          status: opts.sendNow ? "sent" : "scheduled",
+          sentAt: opts.sendNow ? now : "",
+        },
+        {
+          ...base,
+          id: `hn-${job.id}-24h-${Date.now() + 1}`,
+          kind: "24h",
+          label: "24 hours prior",
+          sendOn: sched.prior24h,
+          status: "scheduled",
+          sentAt: "",
+        },
+      ];
+      xferHotelQueue = xferHotelQueue.filter((q) => q.jobId !== job.id || q.status === "sent");
+      xferHotelQueue.unshift(...items);
+      job.hotelContact = contact;
+      job.hotelChannel = channel;
+      job.hotelNotifyScheduled = true;
+      if (opts.sendNow) job.hotelNotifiedAt = now;
+      xferSaveHotelQueue();
+      xferSaveJobs(xferJobs);
+      return items;
+    }
+
+    function xferDeliverHotelChannel(item) {
+      const ch = item.channel || "whatsapp";
+      const text = item.message || "";
+      const contact = String(item.contact || "").replace(/\s+/g, "");
+      if (ch === "whatsapp") {
+        const phone = contact.replace(/[^\d]/g, "");
+        const url = phone
+          ? `https://wa.me/${phone}?text=${encodeURIComponent(text)}`
+          : `https://wa.me/?text=${encodeURIComponent(text)}`;
+        window.open(url, "_blank");
+        return { status: "opened", channel: "whatsapp", deepLink: url };
+      }
+      if (ch === "telegram") {
+        const handle = String(item.contact || "").replace(/^@/, "").trim();
+        const url = handle && !/^\+?\d+$/.test(handle)
+          ? `https://t.me/${encodeURIComponent(handle)}`
+          : `https://t.me/share/url?url=${encodeURIComponent("EHI Departure")}&text=${encodeURIComponent(text)}`;
+        window.open(url, "_blank");
+        if (handle && !/^\+?\d+$/.test(handle)) {
+          try { if (navigator.clipboard) navigator.clipboard.writeText(text); } catch (_) {}
+        }
+        return { status: "opened", channel: "telegram", deepLink: url };
+      }
+      if (ch === "app") {
+        try {
+          if (navigator.clipboard) navigator.clipboard.writeText(text);
+        } catch (_) {}
+        return { status: "queued_app", channel: "app", note: "Copied · push to hotel FO app when connected" };
+      }
+      try {
+        if (navigator.clipboard) navigator.clipboard.writeText(text);
+      } catch (_) {}
+      return { status: "queued_email", channel: "email", note: "Copied · connect SMTP for hotel FO mail" };
+    }
+
+    function xferSendHotelNow(jobId) {
+      const job = xferJobs.find((j) => j.id === jobId);
+      if (!job) return;
+      const channel = document.getElementById("xfer-hotel-channel")?.value || "whatsapp";
+      const contact = document.getElementById("xfer-hotel-contact")?.value || "";
+      const message = document.getElementById("xfer-hotel-preview")?.value || xferHotelDepMessage(job).text;
+      const items = xferEnqueueHotelNotify(job, { channel, contact, message, sendNow: true });
+      const result = xferDeliverHotelChannel(items[0]);
+      if (xferApiOnline && window.TransportAPI?.notify) {
+        TransportAPI.notify(job.id, channel === "email" ? "email" : "whatsapp").catch(() => {});
+      }
+      alert(`Hotel departure message ${result.status} via ${result.channel}.\nScheduled remind: ${items[1].sendOn} (24h prior).`);
+      xferCloseHotelModal();
+      renderXferHotelQueue();
+      renderXferJobDesk();
+    }
+
+    function xferScheduleHotelOnly(jobId) {
+      const job = xferJobs.find((j) => j.id === jobId);
+      if (!job) return;
+      const channel = document.getElementById("xfer-hotel-channel")?.value || "whatsapp";
+      const contact = document.getElementById("xfer-hotel-contact")?.value || "";
+      const message = document.getElementById("xfer-hotel-preview")?.value || xferHotelDepMessage(job).text;
+      const items = xferEnqueueHotelNotify(job, { channel, contact, message, sendNow: false });
+      alert(`Scheduled hotel FO messages:\n· 3 days prior: ${items[0].sendOn}\n· 24h prior: ${items[1].sendOn}\nChannel: ${channel}`);
+      xferCloseHotelModal();
+      renderXferHotelQueue();
+      renderXferJobDesk();
+    }
+
+    function xferProcessDueHotelNotifies(autoOpen) {
+      const today = new Date().toISOString().slice(0, 10);
+      let n = 0;
+      xferHotelQueue.forEach((item) => {
+        if (item.status !== "scheduled") return;
+        if (!item.sendOn || item.sendOn > today) return;
+        const r = xferDeliverHotelChannel(item);
+        item.status = "sent";
+        item.sentAt = new Date().toISOString();
+        item.delivery = r.status;
+        n += 1;
+      });
+      if (n) xferSaveHotelQueue();
+      if (autoOpen && n) alert(`${n} hotel departure message(s) due today — channel opened / queued.`);
+      return n;
+    }
+
+    function renderXferHotelQueue() {
+      const el = document.getElementById("xfer-hotel-queue");
+      if (!el) return;
+      xferProcessDueHotelNotifies(false);
+      const today = new Date().toISOString().slice(0, 10);
+      if (!xferHotelQueue.length) {
+        el.innerHTML = `<div class="ops-mini-card"><p>No hotel FO messages yet. Allocate TR (pickup · guide · driver) → <b>Hotel FO</b>.</p></div>`;
+        return;
+      }
+      el.innerHTML = xferHotelQueue.slice(0, 24).map((item) => {
+        const due = item.status === "scheduled" && item.sendOn && item.sendOn <= today;
+        const cls = item.status === "sent" ? "sent" : due ? "due" : "";
+        return `<div class="xfer-hotel-item ${cls}">
+          <div class="top">
+            <strong>TR ${deEsc(item.trNum)} · ${deEsc(item.label)}</strong>
+            <span class="xfer-pill ${item.status === "sent" ? "ok" : due ? "warn" : ""}">${deEsc(item.status)}${due && item.status === "scheduled" ? " · DUE" : ""}</span>
+          </div>
+          <div class="meta">${deEsc(item.hotel)} · ${deEsc(item.channel)} · send on ${deEsc(item.sendOn || "—")} · dep ${deEsc(item.depDate || "—")}</div>
+          <div class="xfer-job-actions">
+            <button type="button" class="btn-secondary xfer-hotel-resend" data-hn="${deEsc(item.id)}">Send / open now</button>
+            <button type="button" class="btn-secondary xfer-hotel-preview-q" data-hn="${deEsc(item.id)}">Preview</button>
+          </div>
+        </div>`;
+      }).join("");
+    }
 
     /* ========== AI Smart Allocation Board ========== */
     const AI_ALLOC_LS = "ehi_ai_alloc_state_v1";
@@ -20439,6 +21601,7 @@
         notified: false,
         driverNotified: j.dispatch_status === "Dispatched",
         guide: j.guide,
+        driver: j.driver_name || j.driver || "",
         driverNote: j.driver_note,
         mileage: j.approved_mileage || j.google_mileage || "",
         status: j.status,
@@ -20446,9 +21609,18 @@
         driverId: j.driver_id,
         combinationId: j.combination_id,
         payment: j.payment,
+        hotelNotifyScheduled: !!(xferHotelQueue || []).some((q) => q.jobId === j.id),
+        hotelContact: (xferHotelQueue || []).find((q) => q.jobId === j.id)?.contact || "",
+        hotelChannel: (xferHotelQueue || []).find((q) => q.jobId === j.id)?.channel || "whatsapp",
       }));
       xferServerVehicles = vehicles.items || [];
       xferServerDrivers = drivers.items || [];
+      xferJobs.forEach((j) => {
+        if (!j.driver && j.driverId) {
+          const d = xferServerDrivers.find((x) => x.id === j.driverId);
+          if (d) j.driver = d.name || d.full_name || "";
+        }
+      });
       window.__xferSuggestions = suggestions;
       return true;
     }
@@ -20770,8 +21942,8 @@
           .map((r) => {
             const selected = xferSelected.has(r.id);
             const pickup =
-              r.trfType === "H-A"
-                ? r.pickupOverride || r.calcPickup || xferCalcPickup(r.time, r.travelHrs, r.date).label
+              r.trfType === "H-A" || r.trfType === "H-H"
+                ? (r.pickupOverride || r.calcPickup || (xferAutoPickupForBooking(r, true) || {}).label || "—")
                 : "Meet flight · to hotel";
             const coach = r.requested || xferSuggestVehicle(r.pax, "");
             return `
@@ -21044,14 +22216,19 @@
       }
       document.getElementById("xfer-job-modal-guide").value =
         openBooks.map((b) => b.guide).filter(Boolean)[0] || "Airport guide desk";
-      document.getElementById("xfer-job-modal-driver").value = "";
+      document.getElementById("xfer-job-modal-driver").value = openBooks.map((b) => b.driver).filter(Boolean)[0] || "";
+      const noteEl = document.getElementById("xfer-job-modal-driver-note");
+      if (noteEl) noteEl.value = "";
       const pickHtml = openBooks
         .map((b) => {
-          if (b.trfType === "H-A") {
+          if (b.trfType === "H-A" || b.trfType === "H-H") {
             const p = b.pickupOverride
               ? { label: b.pickupOverride }
-              : xferCalcPickup(b.time, b.travelHrs, b.date);
-            return `· ${b.hotel}: pickup <b>${p.label || p.pickupDate + " " + p.pickupTime}</b> (flight ${b.flight} ${b.time}, travel ${b.travelHrs || 0}h)`;
+              : xferAutoPickupForBooking(b, true);
+            const rule = b.trfType === "H-A"
+              ? `flight ${b.flight} ${b.time}, airport 3h prior, travel ${b.travelHrs || 0}h`
+              : `sched ${b.time}, travel ${b.travelHrs || 0}h`;
+            return `· ${b.hotel}: pickup <b>${(p && p.label) || "—"}</b> (${rule})`;
           }
           return `· ${b.flight} ${b.time} · ${b.hotel} · meet arrival`;
         })
@@ -21094,11 +22271,13 @@
       const tbody = document.getElementById("xfer-book-rows");
       if (tbody) {
         tbody.innerHTML = filtered.map((r) => {
-          const pickupVal = r.pickupOverride || r.finalPickup || r.calcPickup || (r.trfType === "H-A" ? (xferCalcPickup(r.time, r.travelHrs, r.date).label || "") : "");
           const selected = xferSelected.has(r.id);
           const noAlloc = r.service === "Hotel" || r.service === "NoTRF";
-          const locked = noAlloc || r.assigned;
-          return `<tr class="${selected ? "selected" : ""} ${noAlloc ? "no-trf" : ""}" data-xfer-id="${deEsc(r.id)}">
+          const locked = noAlloc;
+          if ((r.trfType === "H-A" || r.trfType === "H-H") && !r.pickupOverride) {
+            xferAutoPickupForBooking(r, true);
+          }
+          return `<tr class="${selected ? "selected" : ""} ${noAlloc ? "no-trf" : ""} ${r.assigned ? "has-tr" : ""}" data-xfer-id="${deEsc(r.id)}">
             <td><input type="checkbox" class="xfer-row-check" data-id="${deEsc(r.id)}" ${selected ? "checked" : ""} ${noAlloc || r.assigned ? "disabled" : ""} /></td>
             <td>${r.assigned ? `<span class="xfer-pill ok">TR ${deEsc(r.trNum || "—")}</span>` : `<span class="xfer-pill warn">Without TR</span>`}${r.linkedTr ? `<div class="muted">Linked Dep TR ${deEsc(r.linkedTr)}</div>` : ""}</td>
             <td><span class="xfer-type-pill ${xferTypeClass(r.trfType)}">${deEsc(r.trfType)}</span></td>
@@ -21108,10 +22287,7 @@
             <td><strong>${Number(r.pax)}</strong></td>
             <td><select class="xfer-field xfer-coach-field" data-id="${deEsc(r.id)}" ${noAlloc ? "disabled" : ""}>${xferCoachOptionsHtml(r.requested)}</select>
               <div class="muted" style="margin-top:3px;font-size:10px">Auto: ${deEsc(r.autoCoach || xferSuggestVehicle(r.pax, ""))}</div></td>
-            <td>${r.trfType === "H-A" ? `<div class="xfer-pickup-wrap">
-              <input class="xfer-field xfer-travel-field" data-id="${deEsc(r.id)}" type="number" min="0" step="0.5" value="${Number(r.travelHrs || 0)}" ${locked ? "disabled" : ""} />
-              <input class="xfer-field xfer-pickup-field" data-id="${deEsc(r.id)}" type="text" value="${deEsc(pickupVal)}" ${locked ? "disabled" : ""} />
-              <div class="auto">Airport 3h prior − travel</div></div>` : r.trfType === "A-H" ? `<span class="muted">Meet flight · to hotel</span>` : `<input class="xfer-field xfer-pickup-field" data-id="${deEsc(r.id)}" type="text" value="${deEsc(r.pickupOverride || "")}" ${locked ? "disabled" : ""} />`}</td>
+            <td>${xferPickupCellHtml(r, locked)}</td>
             <td><input class="xfer-field xfer-note-field" data-id="${deEsc(r.id)}" type="text" value="${deEsc(r.note || "")}" style="max-width:200px;min-width:140px" ${noAlloc ? "disabled" : ""} /></td>
           </tr>`;
         }).join("") || `<tr><td colspan="10" class="muted">No bookings for this filter.</td></tr>`;
@@ -21136,30 +22312,38 @@
       }
       const jobsEl = document.getElementById("xfer-jobs-list");
       if (jobsEl) {
-        jobsEl.innerHTML = xferJobs.map((j) => `
+        jobsEl.innerHTML = xferJobs.map((j) => {
+          const hotelReady = xferJobReadyForHotel(j);
+          const isDep = /H-A|H-H|Departure/i.test(String(j.trfType || ""));
+          return `
           <article class="xfer-job-card"><div class="head"><div>
             <strong>TR ${deEsc(j.trNum)} · ${deEsc(j.trfType)} · ${deEsc(j.coach)}</strong>
             <div class="meta" style="font-size:12px;color:#64748b;font-weight:650;margin-top:2px">${deEsc(j.date)} · ${deEsc(j.region)} · ${j.pax} pax · ${deEsc(j.status || "")}${j.combined ? " · COMBINED" : ""}</div>
+            <div class="meta" style="font-size:11px;color:#64748b;font-weight:650;margin-top:2px">Guide: ${deEsc(j.guide || "—")} · Driver: ${deEsc(j.driver || "—")}</div>
           </div><div class="xfer-pills">
             <span class="xfer-pill ${j.driverNotified ? "ok" : "warn"}">${j.driverNotified ? "Dispatched" : "Dispatch pending"}</span>
             ${j.mileage ? `<span class="xfer-pill ok">${deEsc(String(j.mileage))} km</span>` : ""}
+            ${isDep ? `<span class="xfer-pill ${j.hotelNotifyScheduled ? "ok" : hotelReady ? "warn" : ""}">${j.hotelNotifyScheduled ? "Hotel FO queued" : hotelReady ? "Hotel FO ready" : "Need pickup/guide/driver"}</span>` : ""}
           </div></div>
           <div class="body">${deEsc(j.summary || "")}
             ${j.pickups?.length ? `<div style="margin-top:6px">${j.pickups.map((p) => deEsc(p)).join("<br>")}</div>` : ""}
             <div class="xfer-job-actions" style="margin-top:10px">
               <button type="button" class="btn-secondary xfer-alloc-btn" data-job="${deEsc(j.id)}">Allocate</button>
+              ${isDep ? `<button type="button" class="btn-primary xfer-hotel-btn" data-job="${deEsc(j.id)}" ${hotelReady ? "" : "title=\"Set pickup, guide and driver first\""}>Hotel FO</button>` : ""}
               <button type="button" class="btn-secondary xfer-dispatch-btn" data-job="${deEsc(j.id)}">Dispatch</button>
               <button type="button" class="btn-secondary xfer-notify-btn" data-job="${deEsc(j.id)}">Notify WA</button>
               <button type="button" class="btn-secondary xfer-complete-btn" data-job="${deEsc(j.id)}">Complete</button>
               <button type="button" class="btn-secondary xfer-advance-btn" data-job="${deEsc(j.id)}">Advance</button>
               <button type="button" class="btn-secondary xfer-pay-btn" data-job="${deEsc(j.id)}">Payment</button>
-            </div></div></article>`).join("") || `<div class="ops-mini-card"><p>No Transfer JOBs yet.</p></div>`;
+            </div></div></article>`;
+        }).join("") || `<div class="ops-mini-card"><p>No Transfer JOBs yet.</p></div>`;
         if (xferApiOnline) {
           jobsEl.insertAdjacentHTML("beforeend", `<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
             <a class="btn-secondary" href="${TransportAPI.exportUrl({ date: dateEl?.value || "" })}">Export CSV</a>
             <button type="button" class="btn-secondary" id="xfer-audit-btn">Audit log</button></div>`);
         }
       }
+      renderXferHotelQueue();
     }
 
 
@@ -21170,6 +22354,7 @@
             bookingIds: ids,
             coach: opts.coach,
             guide: opts.guide,
+            driver: opts.driver,
             driverNote: opts.driverNote,
           });
           ids.forEach((id) => xferSelected.delete(id));
@@ -21179,6 +22364,11 @@
             trNum: res.trNum || res.job?.tr_num,
             coach: res.job?.coach_type || opts.coach,
             pax: res.job?.pax,
+            guide: opts.guide || res.job?.guide,
+            driver: opts.driver || res.job?.driver_name || "",
+            trfType: res.job?.trf_type || "",
+            date: res.job?.transfer_date,
+            pickups: res.job?.pickups,
           };
         } catch (e) {
           alert(e.message || "Failed to create job");
@@ -21199,11 +22389,14 @@
       const regions = [...new Set(books.map((b) => b.region))];
       const types = [...new Set(books.map((b) => b.trfType))];
       const pickups = books
-        .filter((b) => b.trfType === "H-A")
+        .filter((b) => b.trfType === "H-A" || b.trfType === "H-H")
         .map((b) => {
-          if (b.pickupOverride) return `${b.hotel}: pickup ${b.pickupOverride} (flight ${b.flight} ${b.time})`;
-          const p = xferCalcPickup(b.time, b.travelHrs, b.date);
-          return `${b.hotel}: pickup ${p.pickupDate} ${p.pickupTime} (flight ${b.flight} ${b.time})`;
+          const auto = xferAutoPickupForBooking(b, true);
+          const label = b.pickupOverride || (auto && auto.label) || "";
+          if (b.trfType === "H-A") {
+            return `${b.hotel}: pickup ${label} (flight ${b.flight} ${b.time} · airport 3h prior · travel ${b.travelHrs || 0}h)`;
+          }
+          return `${b.hotel}: pickup ${label} (H-H ${b.time} · travel ${b.travelHrs || 0}h)`;
         });
       const job = {
         id: "job-" + Date.now(),
@@ -21221,8 +22414,10 @@
         notified: false,
         driverNotified: false,
         guide: opts.guide || books.map((b) => b.guide).filter(Boolean)[0] || "Airport guide desk",
+        driver: opts.driver || "",
         driverNote: opts.driverNote || "",
         mileage: "",
+        hotelNotifyScheduled: false,
         createdAt: new Date().toISOString(),
       };
       books.forEach((b) => {
@@ -21231,6 +22426,9 @@
         b.trNum = trNum;
         if (!b.requested) b.requested = coach;
         if (opts.linkedTr) b.linkedTr = opts.linkedTr;
+        if (b.trfType === "H-A" || b.trfType === "H-H") {
+          xferAutoPickupForBooking(b, true);
+        }
       });
       xferJobs.push(job);
       xferSaveBookings(xferBookings);
@@ -21462,13 +22660,19 @@
       }
       if (t.classList.contains("xfer-travel-field")) {
         book.travelHrs = Number(t.value) || 0;
-        const auto = xferCalcPickup(book.time, book.travelHrs, book.date);
-        book.pickupOverride = `${auto.pickupDate} ${auto.pickupTime}`;
+        book.pickupOverride = "";
+        const auto = xferAutoPickupForBooking(book, true);
         xferSaveBookings(xferBookings);
         const pickupInput = t.closest(".xfer-pickup-wrap")?.querySelector(".xfer-pickup-field");
-        if (pickupInput) pickupInput.value = book.pickupOverride;
+        if (pickupInput && auto) pickupInput.value = book.pickupOverride || auto.label || "";
+        const hint = t.closest(".xfer-pickup-wrap")?.querySelector(".auto");
+        if (hint && book.trfType === "H-A") {
+          hint.textContent = `Flight ${book.time} − 3h airport − ${book.travelHrs}h travel`;
+        } else if (hint && book.trfType === "H-H") {
+          hint.textContent = `Arrive by ${book.time} − ${book.travelHrs}h travel`;
+        }
         if (xferApiOnline) {
-          TransportAPI.patchBooking(id, { travelHrs: book.travelHrs }).catch((e) => alert(e.message));
+          TransportAPI.patchBooking(id, { travelHrs: book.travelHrs, pickupOverride: book.pickupOverride }).catch((e) => alert(e.message));
         }
         return;
       }
@@ -21492,6 +22696,29 @@
     });
 
     xferJobRoot?.addEventListener("click", (e) => {
+      const calcBtn = e.target.closest(".xfer-calc-btn");
+      if (calcBtn) {
+        e.preventDefault();
+        const id = calcBtn.dataset.id;
+        const book = xferBookings.find((b) => b.id === id);
+        if (!book || (book.trfType !== "H-A" && book.trfType !== "H-H")) return;
+        book.pickupOverride = "";
+        const auto = xferAutoPickupForBooking(book, true);
+        xferSaveBookings(xferBookings);
+        const wrap = calcBtn.closest(".xfer-pickup-wrap");
+        const pickupInput = wrap?.querySelector(".xfer-pickup-field");
+        const travelInput = wrap?.querySelector(".xfer-travel-field");
+        if (travelInput) travelInput.value = String(book.travelHrs || 0);
+        if (pickupInput) pickupInput.value = book.pickupOverride || (auto && auto.label) || "";
+        if (xferApiOnline) {
+          TransportAPI.patchBooking(id, {
+            travelHrs: book.travelHrs,
+            pickupOverride: book.pickupOverride,
+            overrideReason: "Auto calc pickup",
+          }).catch((err) => alert(err.message));
+        }
+        return;
+      }
       if (e.target.closest("#xfer-select-all")) {
         xferFilterJobBookings().forEach((r) => {
           if (r.service !== "Hotel" && r.service !== "NoTRF" && !r.assigned) xferSelected.add(r.id);
@@ -21530,13 +22757,12 @@
         return;
       }
       if (e.target.closest("#xfer-email-hotels")) {
-        if (!xferApiOnline || !xferJobs[0]) {
-          alert("Start server and create a job first.");
+        const depJob = xferJobs.find((j) => xferJobReadyForHotel(j)) || xferJobs.find((j) => /H-A|H-H|Departure/i.test(String(j.trfType || "")));
+        if (!depJob) {
+          alert("Create a departure Transfer JOB with pickup · guide · driver first.");
           return;
         }
-        TransportAPI.notify(xferJobs[0].id, "email")
-          .then((r) => alert(`Hotel FO email status: ${r.status}\n\n${r.message || ""}`))
-          .catch((err) => alert(err.message));
+        xferOpenHotelModal(depJob.id);
         return;
       }
       const pick = e.target.closest(".xfer-pick-cluster");
@@ -21553,37 +22779,65 @@
         return;
       }
       const alloc = e.target.closest(".xfer-alloc-btn");
-      if (alloc && xferApiOnline) {
-        (async () => {
-          const rec = await TransportAPI.recommend({
-            pax: xferJobs.find((j) => j.id === alloc.dataset.job)?.pax || 4,
-            serviceType: "Group",
-            originRegion: xferJobs.find((j) => j.id === alloc.dataset.job)?.region,
-          });
-          const veh = rec.candidates?.[0];
-          const drivers = await TransportAPI.drivers();
-          const drv = drivers.items?.find((d) => d.status === "Available");
-          if (!veh) {
-            alert((rec.warnings || []).map((w) => w.message).join("\n") || "No vehicle");
-            return;
-          }
-          let override = false;
-          let reason = "";
-          if (rec.conflict) {
-            reason = prompt(rec.warnings.map((w) => w.message).join("\n") + "\nOverride reason:") || "";
-            if (!reason) return;
-            override = true;
-          }
-          await TransportAPI.allocate(alloc.dataset.job, {
-            vehicleId: veh.id,
-            driverId: drv?.id,
-            coach: rec.recommendedType,
-            override,
-            reason,
-          });
-          alert(`Allocated ${veh.plate || veh.id} / ${drv?.name || "no driver"}\n${(rec.reasons || []).join("\n")}`);
-          await renderXferJobDesk();
-        })().catch((err) => alert(err.message));
+      if (alloc) {
+        if (xferApiOnline) {
+          (async () => {
+            const job = xferJobs.find((j) => j.id === alloc.dataset.job);
+            const rec = await TransportAPI.recommend({
+              pax: job?.pax || 4,
+              serviceType: "Group",
+              originRegion: job?.region,
+            });
+            const veh = rec.candidates?.[0];
+            const drivers = await TransportAPI.drivers();
+            const drv = drivers.items?.find((d) => d.status === "Available");
+            if (!veh) {
+              alert((rec.warnings || []).map((w) => w.message).join("\n") || "No vehicle");
+              return;
+            }
+            let override = false;
+            let reason = "";
+            if (rec.conflict) {
+              reason = prompt(rec.warnings.map((w) => w.message).join("\n") + "\nOverride reason:") || "";
+              if (!reason) return;
+              override = true;
+            }
+            await TransportAPI.allocate(alloc.dataset.job, {
+              vehicleId: veh.id,
+              driverId: drv?.id,
+              coach: rec.recommendedType,
+              override,
+              reason,
+            });
+            if (job) {
+              job.driver = drv?.name || job.driver || "";
+              job.driverId = drv?.id || job.driverId;
+              job.vehicleId = veh.id;
+              job.coach = rec.recommendedType || job.coach;
+            }
+            alert(`Allocated ${veh.plate || veh.id} / ${drv?.name || "no driver"}\n${(rec.reasons || []).join("\n")}`);
+            await renderXferJobDesk();
+          })().catch((err) => alert(err.message));
+          return;
+        }
+        const job = xferJobs.find((j) => j.id === alloc.dataset.job);
+        if (!job) return;
+        const driver = prompt("Driver name (required for Hotel FO):", job.driver || "") || "";
+        if (!driver.trim()) {
+          alert("Driver required to complete allocation.");
+          return;
+        }
+        const guide = prompt("Guide / airport desk:", job.guide || "Airport guide desk") || job.guide || "";
+        job.driver = driver.trim();
+        job.guide = String(guide).trim() || job.guide;
+        xferSaveJobs(xferJobs);
+        alert(`Allocated driver ${job.driver}${xferJobReadyForHotel(job) ? "\nHotel FO ready — use Hotel FO button." : ""}`);
+        renderXferJobDesk();
+        return;
+      }
+      const hotelBtn = e.target.closest(".xfer-hotel-btn");
+      if (hotelBtn) {
+        xferOpenHotelModal(hotelBtn.dataset.job);
         return;
       }
       const disp = e.target.closest(".xfer-dispatch-btn");
@@ -21688,14 +22942,56 @@
         .filter(Boolean);
       const coach = document.getElementById("xfer-job-modal-coach")?.value || "";
       const guide = document.getElementById("xfer-job-modal-guide")?.value || "";
-      const driverNote = document.getElementById("xfer-job-modal-driver")?.value || "";
-      const job = await xferCreateJobFromIds(ids, { coach, guide, driverNote });
+      const driver = document.getElementById("xfer-job-modal-driver")?.value || "";
+      const driverNote = document.getElementById("xfer-job-modal-driver-note")?.value || "";
+      const job = await xferCreateJobFromIds(ids, { coach, guide, driver, driverNote });
       if (job) {
         xferCloseJobModal();
-        alert(`Created Transfer JOB TR ${job.trNum} · ${job.coach || coach} · ${job.pax || ""} pax`);
+        const hotelHint = xferJobReadyForHotel(job) ? "\nHotel FO ready — schedule 3d + 24h from the job card." : "";
+        alert(`Created Transfer JOB TR ${job.trNum} · ${job.coach || coach} · ${job.pax || ""} pax${hotelHint}`);
         await renderTransferAlloc();
       }
     });
+
+    document.getElementById("xfer-hotel-modal-close")?.addEventListener("click", xferCloseHotelModal);
+    document.getElementById("xfer-hotel-modal-cancel")?.addEventListener("click", xferCloseHotelModal);
+    document.getElementById("xfer-hotel-modal")?.addEventListener("click", (e) => {
+      if (e.target.id === "xfer-hotel-modal") xferCloseHotelModal();
+    });
+    document.getElementById("xfer-hotel-send-now")?.addEventListener("click", () => {
+      const jobId = document.getElementById("xfer-hotel-modal-job")?.value;
+      if (jobId) xferSendHotelNow(jobId);
+    });
+    document.getElementById("xfer-hotel-schedule-btn")?.addEventListener("click", () => {
+      const jobId = document.getElementById("xfer-hotel-modal-job")?.value;
+      if (jobId) xferScheduleHotelOnly(jobId);
+    });
+    document.getElementById("xfer-hotel-queue-refresh")?.addEventListener("click", () => {
+      const n = xferProcessDueHotelNotifies(true);
+      renderXferHotelQueue();
+      if (!n) alert("No hotel FO messages due today.");
+    });
+    document.getElementById("xfer-hotel-queue")?.addEventListener("click", (e) => {
+      const resend = e.target.closest(".xfer-hotel-resend");
+      const preview = e.target.closest(".xfer-hotel-preview-q");
+      const id = (resend || preview)?.dataset?.hn;
+      if (!id) return;
+      const item = xferHotelQueue.find((q) => q.id === id);
+      if (!item) return;
+      if (preview) {
+        alert(item.message || "(empty)");
+        return;
+      }
+      const r = xferDeliverHotelChannel(item);
+      item.status = "sent";
+      item.sentAt = new Date().toISOString();
+      item.delivery = r.status;
+      xferSaveHotelQueue();
+      renderXferHotelQueue();
+      alert(`Hotel FO ${r.status} via ${r.channel}.`);
+    });
+    // Process any due hotel notifies when desk loads
+    try { xferProcessDueHotelNotifies(false); } catch (_) {}
 
     document.getElementById("xfer-dep-new-job")?.addEventListener("click", () => {
       const ids = xferBookings
@@ -32033,6 +33329,28 @@
       drvAiSelectedJobId = null;
       renderRanking(selectedCity || "All");
     });
+    document.getElementById("drv-fleet-bar")?.addEventListener("click", (e) => {
+      const fleetBtn = e.target.closest("[data-drv-fleet]");
+      if (fleetBtn) {
+        drvFleetFilter = fleetBtn.dataset.drvFleet || "Van";
+        if (drvFleetFilter !== "Van" && drvFleetFilter !== "All") drvBodyFilter = "All";
+        renderRanking(selectedCity || "All");
+        return;
+      }
+      const bodyBtn = e.target.closest("[data-drv-body]");
+      if (bodyBtn) {
+        drvBodyFilter = bodyBtn.dataset.drvBody || "All";
+        renderRanking(selectedCity || "All");
+      }
+    });
+    function drvRosterFilteredRows() {
+      return buildDriverRosterRows().filter((item) => {
+        if (!ehiMatchRosterRegion(item.region || item.city || item.rosterRegion, selectedCity || "All")) return false;
+        if (drvFleetFilter !== "All" && item.fleetSheet !== drvFleetFilter) return false;
+        if (drvBodyFilter !== "All" && item.bodyType && item.bodyType !== drvBodyFilter) return false;
+        return true;
+      });
+    }
     document.getElementById("guide-job-tabs")?.addEventListener("click", (e) => {
       const btn = e.target.closest("[data-guide-svc]");
       if (!btn) return;
@@ -32042,14 +33360,14 @@
     });
     document.getElementById("drv-ai-auto")?.addEventListener("click", () => {
       rosterMode = "drivers";
-      const rows = buildDriverRosterRows().filter((item) => selectedCity === "All" || item.city === selectedCity || item.region === selectedCity);
+      const rows = drvRosterFilteredRows();
       renderDrvAiDesk(rows);
       runDrvAiMatch(rows);
       renderRanking(selectedCity || "All");
     });
     document.getElementById("drv-ai-batch")?.addEventListener("click", () => {
       rosterMode = "drivers";
-      const rows = buildDriverRosterRows().filter((item) => selectedCity === "All" || item.city === selectedCity || item.region === selectedCity);
+      const rows = drvRosterFilteredRows();
       let n = 0;
       while (n < 5) {
         const jobs = getAiDriverJobs().filter((j) => drvAiSvcFilter === "All" || j.svc === drvAiSvcFilter);
@@ -32723,6 +34041,13 @@
     });
     document.getElementById("exc-mp-search")?.addEventListener("input", () => {
       if (mpActiveTag) renderExcMarketplace();
+    });
+    document.getElementById("exc-mp-cat-q")?.addEventListener("input", () => {
+      if (!mpActiveTag) renderExcMarketplace();
+    });
+    document.getElementById("exc-mp-cat-filter")?.addEventListener("change", (e) => {
+      mpCatFilter = e.target.value || "All";
+      if (!mpActiveTag) renderExcMarketplace();
     });
     document.getElementById("mp-form-close")?.addEventListener("click", closeMpForm);
     document.getElementById("mp-form-cancel")?.addEventListener("click", closeMpForm);
