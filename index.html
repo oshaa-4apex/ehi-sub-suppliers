@@ -9673,7 +9673,7 @@
       border-radius: inherit;
       background: linear-gradient(90deg, #38bdf8, #2563eb);
     }
-    /* September Van & Bus roster fairness board */
+    /* Driver roster fairness board */
     .drv-fleet-bar {
       display: flex;
       flex-wrap: wrap;
@@ -9723,6 +9723,249 @@
       cursor: pointer;
     }
     .drv-body-tab.active { background: #0f766e; border-color: #0f766e; color: #fff; }
+    .drv-owner-bar {
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+      margin: 0 0 10px; padding: 8px 10px;
+      background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;
+    }
+    .drv-owner-tab {
+      appearance: none;
+      border: 1px solid #cbd5e1;
+      background: #fff;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .drv-owner-tab:hover { border-color: #f59e0b; color: #b45309; }
+    .drv-owner-tab.active {
+      background: #c2410c;
+      border-color: #c2410c;
+      color: #fff;
+    }
+    .drv-owner-tab[data-drv-owner="exotic"].active,
+    .drv-owner-tab[data-fv-owner="exotic"].active {
+      background: #9f1235;
+      border-color: #9f1235;
+    }
+    .drv-supplier-owners {
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
+      max-height: min(72vh, 760px);
+      overflow: auto;
+      padding-right: 2px;
+    }
+    .drv-owner-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px 14px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+    }
+    .drv-owner-card .own-head {
+      display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: flex-start;
+      justify-content: space-between; margin-bottom: 10px;
+    }
+    .drv-owner-card .own-head h3 {
+      margin: 0; font-size: 15px; font-weight: 900; color: #0f172a; letter-spacing: -0.02em;
+    }
+    .drv-owner-card .own-meta {
+      font-size: 11px; color: #64748b; font-weight: 650; margin-top: 3px; line-height: 1.4;
+    }
+    .drv-owner-card .own-stats {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .drv-owner-card .own-stat {
+      font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 8px;
+      background: #f1f5f9; color: #334155; border: 1px solid #e2e8f0;
+    }
+    .drv-owner-card .own-stat.ok { background: #ecfdf5; border-color: #bbf7d0; color: #166534; }
+    .drv-owner-card .own-stat.warn { background: #fff7ed; border-color: #fed7aa; color: #c2410c; }
+    .drv-owner-card .own-stat.bad { background: #fff1f2; border-color: #fecdd3; color: #be123c; }
+    .drv-owner-fleet {
+      width: 100%; border-collapse: collapse; font-size: 11px; font-weight: 650;
+    }
+    .drv-owner-fleet th {
+      text-align: left; font-size: 9px; text-transform: uppercase; letter-spacing: .04em;
+      color: #64748b; padding: 6px 8px; border-bottom: 1px solid #e2e8f0; background: #f8fafc;
+    }
+    .drv-owner-fleet td {
+      padding: 7px 8px; border-bottom: 1px solid #f1f5f9; color: #334155; vertical-align: top;
+    }
+    .drv-owner-fleet tr:last-child td { border-bottom: 0; }
+    .drv-owner-fleet .plate { font-weight: 850; color: #0f172a; white-space: nowrap; }
+    .drv-ins.ok { color: #166534; font-weight: 800; }
+    .drv-ins.warn { color: #c2410c; font-weight: 800; }
+    .drv-ins.bad { color: #be123c; font-weight: 800; }
+    .fv-exotic-desk {
+      margin-top: 12px;
+      border: 1px solid #fecdd3;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fff1f2 0%, #fff 48%);
+      padding: 12px 14px 14px;
+    }
+    .fv-exotic-desk[hidden] { display: none !important; }
+    .fv-exotic-desk-head {
+      display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: flex-start;
+      justify-content: space-between; margin-bottom: 10px;
+    }
+    .fv-exotic-desk-head strong {
+      display: block; font-size: 14px; font-weight: 900; color: #9f1235; letter-spacing: -0.02em;
+    }
+    .fv-exotic-desk-head span {
+      display: block; font-size: 11px; color: #64748b; font-weight: 650; margin-top: 2px;
+    }
+    .fv-exotic-tabs {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;
+    }
+    .fv-exotic-tab {
+      border: 1px solid #fecdd3; background: #fff; color: #9f1235;
+      border-radius: 999px; padding: 6px 12px; font-size: 11px; font-weight: 800;
+      cursor: pointer;
+    }
+    .fv-exotic-tab.active {
+      background: #9f1235; border-color: #9f1235; color: #fff;
+    }
+    .fv-exotic-sums {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 8px; margin-bottom: 12px;
+    }
+    .fv-exotic-sum {
+      background: #fff; border: 1px solid #fecdd3; border-radius: 12px; padding: 10px 12px;
+    }
+    .fv-exotic-sum .k { font-size: 10px; font-weight: 800; color: #9f1235; text-transform: uppercase; letter-spacing: .04em; }
+    .fv-exotic-sum .v { font-size: 16px; font-weight: 900; color: #0f172a; margin-top: 4px; }
+    .fv-exotic-form {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 8px; margin-bottom: 12px; align-items: end;
+    }
+    .fv-exotic-form label {
+      display: grid; gap: 4px; font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase;
+    }
+    .fv-exotic-form input,
+    .fv-exotic-form select,
+    .fv-exotic-form textarea {
+      border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 10px;
+      font-size: 12px; font-weight: 650; color: #0f172a; background: #fff;
+      font-family: inherit;
+    }
+    .fv-exotic-form textarea { min-height: 38px; resize: vertical; }
+    .fv-exotic-form .span-2 { grid-column: span 2; }
+    .fv-exotic-table-wrap { overflow: auto; border: 1px solid #e2e8f0; border-radius: 12px; background: #fff; }
+    .fv-exotic-table {
+      width: 100%; border-collapse: collapse; font-size: 11px; font-weight: 650;
+    }
+    .fv-exotic-table th {
+      text-align: left; font-size: 9px; text-transform: uppercase; letter-spacing: .04em;
+      color: #64748b; padding: 8px 10px; border-bottom: 1px solid #e2e8f0; background: #f8fafc;
+      white-space: nowrap;
+    }
+    .fv-exotic-table td {
+      padding: 8px 10px; border-bottom: 1px solid #f1f5f9; color: #334155; vertical-align: top;
+    }
+    .fv-exotic-table tr:last-child td { border-bottom: 0; }
+    .fv-exotic-table .amt { font-weight: 850; color: #0f172a; white-space: nowrap; }
+    .fv-exotic-badge {
+      display: inline-block; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 999px;
+      border: 1px solid #e2e8f0; background: #f8fafc; color: #475569;
+    }
+    .fv-exotic-badge.open { background: #fff7ed; border-color: #fed7aa; color: #c2410c; }
+    .fv-exotic-badge.paid, .fv-exotic-badge.done { background: #ecfdf5; border-color: #bbf7d0; color: #166534; }
+    .fv-exotic-badge.pending { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
+    .fv-exotic-del {
+      border: 0; background: #fff1f2; color: #be123c; font-size: 10px; font-weight: 800;
+      border-radius: 8px; padding: 4px 8px; cursor: pointer;
+    }
+    .drv-excel-board {
+      margin-top: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 14px;
+      background: #fff;
+      overflow: auto;
+      max-height: min(70vh, 720px);
+      box-shadow: inset 0 1px 0 #fff;
+    }
+    .drv-excel-board table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: max-content;
+      min-width: 100%;
+      font-size: 11px;
+      font-weight: 650;
+    }
+    .drv-excel-board th,
+    .drv-excel-board td {
+      border-right: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 5px 7px;
+      white-space: nowrap;
+      text-align: center;
+      color: #334155;
+    }
+    .drv-excel-board thead th {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 850;
+      font-size: 10px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    .drv-excel-board th.col-vehicle,
+    .drv-excel-board td.col-vehicle {
+      text-align: left;
+      min-width: 170px;
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      background: #fff;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .drv-excel-board thead th.col-vehicle { z-index: 4; background: #e2e8f0; }
+    .drv-excel-board th.col-fix,
+    .drv-excel-board td.col-fix { min-width: 64px; }
+    .drv-excel-board th.col-day,
+    .drv-excel-board td.col-day { min-width: 34px; padding: 4px 2px; font-size: 10px; }
+    .drv-excel-board tr.region-head td {
+      background: #1e3a8a;
+      color: #fff;
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: .04em;
+      text-align: left;
+      padding: 8px 10px;
+      position: sticky;
+      left: 0;
+    }
+    .drv-excel-board td.day-hot {
+      background: #fef3c7;
+      color: #b45309;
+      font-weight: 850;
+    }
+    .drv-excel-board td.day-txt {
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 750;
+      font-size: 9px;
+    }
+    .drv-excel-board tr.fair-due td.col-vehicle { box-shadow: inset 3px 0 0 #f59e0b; }
+    .drv-excel-board .meta-mute { color: #94a3b8; font-weight: 600; }
+    .drv-excel-legend {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+      margin-top: 8px; font-size: 11px; color: #64748b; font-weight: 650;
+    }
+    .drv-excel-legend i {
+      display: inline-block; width: 12px; height: 12px; border-radius: 3px;
+      vertical-align: -2px; margin-right: 4px; border: 1px solid #e2e8f0;
+    }
+    .drv-excel-legend i.hot { background: #fef3c7; border-color: #fcd34d; }
+    .drv-excel-legend i.due { background: #fff; box-shadow: inset 3px 0 0 #f59e0b; }
     .roster-chip.km { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
     .roster-chip.lastwork { background: #fff7ed; border-color: #fed7aa; color: #c2410c; }
     .roster-chip.body-kdh { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
@@ -10530,7 +10773,25 @@
                     </span>
                     <span class="nav-copy">
                       <strong>Driver Roster</strong>
-                      <small>Van · Mini · Bus · fairness</small>
+                      <small>Fairness · day board</small>
+                    </span>
+                  </a>
+                  <a class="nav-link" data-page="fleet-directory" href="#fleet-directory">
+                    <span class="nav-ico blue">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="18" cy="18" r="3"/></svg>
+                    </span>
+                    <span class="nav-copy">
+                      <strong>All Drivers</strong>
+                      <small>All vehicles · directory</small>
+                    </span>
+                  </a>
+                  <a class="nav-link" data-page="exotic-fleet" href="#exotic-fleet">
+                    <span class="nav-ico rose">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg>
+                    </span>
+                    <span class="nav-copy">
+                      <strong>Exotic Fleet</strong>
+                      <small>Salary · repair · inside · outside · transfers</small>
                     </span>
                   </a>
                   <a class="nav-link" data-page="guide-regis" href="#guide-regis">
@@ -10970,8 +11231,8 @@
                     <button type="button" class="tt-btn green" id="tt-refresh-btn">Refresh</button>
                   </div>
                   <label class="tt-field">
-                    <span>Vehicle name</span>
-                    <select id="tt-vehicle" aria-label="Vehicle name"></select>
+                    <span>Driver name</span>
+                    <select id="tt-vehicle" aria-label="Driver name"></select>
                   </label>
                   <label class="tt-field">
                     <span>Date</span>
@@ -13069,10 +13330,11 @@
             <div class="top">
               <div>
                 <h1>Driver Roster</h1>
-                <p>September Van &amp; Bus board · fleet · region · mileage · refuse KM · last work · AI fair pick</p>
+                <p>Driver roster board · Car · Van · Mini Coach · 33 Bus · region · milage · refuse KM · last work · days</p>
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
                 <button class="btn-secondary" type="button" data-goto="guide-roster">← Guide Roster</button>
+                <button class="btn-primary" type="button" data-goto="fleet-directory">All Drivers →</button>
                 <button class="btn-secondary" type="button" data-goto="transfer-alloc">← Allocation</button>
               </div>
             </div>
@@ -13082,11 +13344,17 @@
                   <div class="rank-head-copy">
                     <div class="rank-kicker">Ops fairness board</div>
                     <h2 id="drv-rank-title">Driver Roster</h2>
-                    <p class="rank-sub" id="drv-rank-sub">Van / Mini Coach / 33 Bus · region pools · due drivers first</p>
+                    <p class="rank-sub" id="drv-rank-sub">Car / Van / Mini Coach / 33 Bus · region pools · due drivers first</p>
                   </div>
+                </div>
+                <div class="drv-owner-bar" id="drv-owner-bar" role="tablist" aria-label="Vehicle owner">
+                  <span class="fleet-label">Owner</span>
+                  <button type="button" class="drv-owner-tab active" data-drv-owner="supplier">Supplier vehicles</button>
+                  <button type="button" class="drv-owner-tab" data-drv-owner="exotic">Exotic vehicles</button>
                 </div>
                 <div class="drv-fleet-bar" id="drv-fleet-bar" aria-label="Fleet sheet">
                   <span class="fleet-label">Fleet</span>
+                  <button type="button" class="drv-fleet-tab" data-drv-fleet="Car">Car</button>
                   <button type="button" class="drv-fleet-tab active" data-drv-fleet="Van">Van</button>
                   <button type="button" class="drv-fleet-tab" data-drv-fleet="Mini Coach">Mini Coach</button>
                   <button type="button" class="drv-fleet-tab" data-drv-fleet="Bus">33 Bus</button>
@@ -13122,12 +13390,103 @@
                 <div class="roster-flow" id="drv-roster-flow" aria-label="Driver allocation workflow"></div>
                 <div class="you-banner roster-banner" id="drv-rank-banner">
                   <div>
-                    <strong id="drv-rank-banner-title">AI driver dispatch</strong>
-                    <span id="drv-rank-banner-sub">Open jobs scored against live roster</span>
+                    <strong id="drv-rank-banner-title">Driver board · fair due first</strong>
+                    <span id="drv-rank-banner-sub">Vehicle · Milage · Refuse KM · Last work on · Pax · Vehicle No · days</span>
                   </div>
                   <span class="you-badge" id="drv-rank-banner-count">0</span>
                 </div>
-                <div class="rank-list roster-smart" id="drv-rank-list"></div>
+                <div class="drv-excel-board" id="drv-excel-board" aria-label="Driver roster board"></div>
+                <div class="drv-supplier-owners" id="drv-supplier-owners" hidden aria-label="Supplier vehicle owners"></div>
+                <div class="drv-excel-legend" id="drv-excel-legend">
+                  <span><i class="hot"></i> Day KM / job mark</span>
+                  <span><i class="due"></i> Fair due (low milage · older last work)</span>
+                  <span>Supplier · Exotic · day board (details on All Drivers)</span>
+                </div>
+                <div class="rank-list roster-smart" id="drv-rank-list" hidden></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="page-fleet-directory" class="page">
+          <div class="wrap">
+            <div class="top">
+              <div>
+                <h1>All Drivers</h1>
+                <p>Roster vehicle names · owner fleets · insurance · all details · All vehicles / Exotic vehicles</p>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <button class="btn-secondary" type="button" data-goto="driver-roster">← Driver Roster</button>
+                <button class="btn-secondary" type="button" data-goto="vehicle-regis">Supplier Registration →</button>
+              </div>
+            </div>
+            <div class="card ops-card">
+              <div class="drv-owner-bar" id="fv-owner-bar" role="tablist" aria-label="Fleet directory owner">
+                <span class="fleet-label">Directory</span>
+                <button type="button" class="drv-owner-tab active" data-fv-owner="all">All vehicles</button>
+                <button type="button" class="drv-owner-tab" data-fv-owner="exotic">Exotic vehicles</button>
+              </div>
+              <div class="drv-fleet-bar" id="fv-fleet-bar" aria-label="Fleet type filter" style="margin-top:8px">
+                <span class="fleet-label">Type</span>
+                <button type="button" class="drv-fleet-tab active" data-fv-fleet="All">All types</button>
+                <button type="button" class="drv-fleet-tab" data-fv-fleet="Car">Car</button>
+                <button type="button" class="drv-fleet-tab" data-fv-fleet="Van">Van</button>
+                <button type="button" class="drv-fleet-tab" data-fv-fleet="Mini Coach">Mini Coach</button>
+                <button type="button" class="drv-fleet-tab" data-fv-fleet="Bus">33 Bus</button>
+              </div>
+              <div class="rank-pills" id="fv-region-pills" style="margin-top:10px"></div>
+              <div class="you-banner roster-banner" style="margin-top:10px">
+                <div>
+                  <strong id="fv-banner-title">All vehicles · supplier owners</strong>
+                  <span id="fv-banner-sub">Owner · vehicle count · types · insurance · licence · fitness</span>
+                </div>
+                <span class="you-badge" id="fv-banner-count">0</span>
+              </div>
+              <div id="fv-exotic-cta" class="fv-exotic-desk" hidden>
+                <div class="fv-exotic-desk-head">
+                  <div>
+                    <strong>Exotic company costs live on Exotic Fleet</strong>
+                    <span>Driver salary · maintenance · inside work · outside hire · transfers — all EHI company totals</span>
+                  </div>
+                  <button type="button" class="btn-primary" data-goto="exotic-fleet">Open Exotic Fleet →</button>
+                </div>
+              </div>
+              <div class="drv-supplier-owners" id="fv-owners-list" aria-label="Fleet directory list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="page-exotic-fleet" class="page">
+          <div class="wrap">
+            <div class="top">
+              <div>
+                <h1>Exotic Fleet</h1>
+                <p>EHI own vehicles · company totals · maintenance · driver salary · inside work · outside hire · transfers</p>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <button class="btn-secondary" type="button" data-goto="fleet-directory">← All Drivers</button>
+                <button class="btn-secondary" type="button" data-goto="driver-roster">Driver Roster</button>
+              </div>
+            </div>
+            <div class="card ops-card">
+              <div class="fv-exotic-desk" id="exf-desk" style="margin-top:0;border:0;background:transparent;padding:0">
+                <div class="fv-exotic-desk-head">
+                  <div>
+                    <strong>Exotic Holidays International · company desk</strong>
+                    <span>Supplier money is separate — salary, repair, inside work, outside hire &amp; transfers all book under EHI</span>
+                  </div>
+                </div>
+                <div class="fv-exotic-tabs" id="exf-tabs" role="tablist">
+                  <button type="button" class="fv-exotic-tab active" data-exf-tab="totals">EHI totals</button>
+                  <button type="button" class="fv-exotic-tab" data-exf-tab="fleet">Fleet</button>
+                  <button type="button" class="fv-exotic-tab" data-exf-tab="repair">Maintenance</button>
+                  <button type="button" class="fv-exotic-tab" data-exf-tab="salary">Driver salary</button>
+                  <button type="button" class="fv-exotic-tab" data-exf-tab="inside">Inside work</button>
+                  <button type="button" class="fv-exotic-tab" data-exf-tab="outside">Outside work</button>
+                  <button type="button" class="fv-exotic-tab" data-exf-tab="transfers">Transfers</button>
+                </div>
+                <div id="exf-panel" aria-live="polite"></div>
+                <div class="drv-supplier-owners" id="exf-fleet-list" hidden aria-label="Exotic fleet list"></div>
               </div>
             </div>
           </div>
@@ -15283,41 +15642,59 @@
 
     let rosterMode = "guides"; /* guides | drivers — AI card lives on Guide Roster */
     let rosterStageFilter = "All";
-    let drvFleetFilter = "Van"; /* Van | Mini Coach | Bus | All — Excel sheet model */
-    let drvBodyFilter = "All"; /* All | KDH | FLATROOF */
+    let drvFleetFilter = "Van"; /* Car | Van | Mini Coach | Bus | All */
+    let drvBodyFilter = "All"; /* All | KDH | FLATROOF — Van body */
+    let drvOwnerFilter = "supplier"; /* supplier | exotic */
+    let fvOwnerFilter = "all"; /* all | exotic — All Drivers directory */
+    let fvFleetFilter = "All"; /* Car | Van | Mini Coach | Bus | All */
+    let fvRegionFilter = "All";
+    let fvExoticDeskTab = "totals"; /* totals | fleet | repair | salary | inside | outside | transfers */
+    const EHI_EXOTIC_OPS_LS = "ehi_exotic_fleet_ops_v1";
 
     const ROSTER_DRIVER_REGIONS = [
       "All",
       "Colombo",
       "Negambo",
+      "Panadura",
       "Kalutara",
       "Bentota",
+      "Ambalangoda",
       "Hikkaduwa",
+      "Galle",
       "Unawatuna",
       "Weligama",
       "Tangalle",
       "Pasikuda",
     ];
 
-    /* Seed last-work labels from Sep Van & Bus roster (plate → last work on) */
-    const EHI_ROSTER_LAST_WORK = {
-      "NC - 6793": "02nd Arr",
-      "NE - 3632": "12th Arr",
-      "NF - 3436": "03rd Arr",
-      "PI - 1418": "15th Arr&Dep",
-      "PC - 9751": "08th Arr&Dep",
-      "NF - 0630": "14th Arr",
-      "PD - 6818": "07th Arr&Dep",
-      "NE - 6343": "16th Dep&Arr",
-      "NB - 9411": "12th Dep&Arr",
-      "NE - 7755": "14th Dep&Arr",
-      "PJ - 3139": "22nd Dep&Arr",
-      "ND - 2375": "23rd Dep&Arr",
-      "NC - 2577": "08th Dep&Arr",
-      "PS - 2442": "02nd Dep&Arr",
-      "PG - 7294": "09th Dep&Arr",
-    };
+    /* Live driver roster board (Car · Van · Mini Coach · 33 Bus) */
+    /* Exotic company fleet extras (own vehicles) */
+    const EHI_EXOTIC_FLEET = [
+      { fleet: "Car", region: "Colombo", vehicle: "EHI Office Car 01", body: "", mileage: "420", refuse: "0", lastWork: "12th Arr", pax: "4", plate: "WP EHI-1001", days: { "12": "210" }, owner: "exotic" },
+      { fleet: "Car", region: "Colombo", vehicle: "EHI Office Car 02", body: "", mileage: "310", refuse: "0", lastWork: "08th Dep", pax: "4", plate: "WP EHI-1002", days: { "8": "180" }, owner: "exotic" },
+      { fleet: "Van", region: "Colombo", vehicle: "EHI Staff Van - KDH", body: "KDH", mileage: "680", refuse: "0", lastWork: "18th Arr&Dep", pax: "8", plate: "WP EHI-2001", days: { "18": "340" }, owner: "exotic" },
+      { fleet: "Van", region: "Negambo", vehicle: "EHI Airport Van - FLATROOF", body: "FLATROOF", mileage: "540", refuse: "0", lastWork: "21st Arr", pax: "4", plate: "WP EHI-2002", days: { "21": "270" }, owner: "exotic" },
+      { fleet: "Mini Coach", region: "Colombo", vehicle: "EHI Mini Coach 01", body: "", mileage: "890", refuse: "0", lastWork: "15th Dep&Arr", pax: "14", plate: "WP EHI-3001", days: { "15": "445" }, owner: "exotic" },
+      { fleet: "Bus", region: "Colombo", vehicle: "EHI 33 Bus 01", body: "", mileage: "1120", refuse: "0", lastWork: "10th Dep", pax: "33", plate: "WP EHI-4001", days: { "10": "560" }, owner: "exotic" },
+    ];
 
+    function ehiRosterOwnerOf(r) {
+      if (r && (r.owner === "exotic" || r.ownerPool === "exotic")) return "exotic";
+      const n = String(r?.vehicle || r?.vehicleLabel || r?.name || "").toLowerCase();
+      if (/office\s*vehicle|exotic|ehi\s*(office|staff|fleet|airport|mini|bus|van|car)|\behi\b/.test(n)) return "exotic";
+      return "supplier";
+    }
+
+    const EHI_DRIVER_ROSTER = [{fleet:"Van",region:"Colombo",vehicle:"Nalin - KDH",body:"KDH",mileage:"635",refuse:"0",lastWork:"02nd Arr",pax:"8",plate:"NC - 6793",days:{"2":"635"}},{fleet:"Van",region:"Colombo",vehicle:"Jayasekara - KDH",body:"KDH",mileage:"635",refuse:"0",lastWork:"12th Arr",pax:"8",plate:"NE - 3632",days:{"12":"635"}},{fleet:"Van",region:"Colombo",vehicle:"Indika neg - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"ND - 2160",days:{}},{fleet:"Van",region:"Colombo",vehicle:"Indika neg -FLATROOF",body:"FLATROOF",mileage:"210",refuse:"0",lastWork:"03rd Arr",pax:"4",plate:"NF - 3436",days:{"3":"210"}},{fleet:"Van",region:"Colombo",vehicle:"Bala - KDH",body:"KDH",mileage:"400",refuse:"0",lastWork:"15th Arr&Dep",pax:"8",plate:"PI - 1418",days:{"15":"400"}},{fleet:"Van",region:"Colombo",vehicle:"Sarath - KDH",body:"KDH",mileage:"635",refuse:"0",lastWork:"08th Arr&Dep",pax:"8",plate:"PC - 9751",days:{"8":"635"}},{fleet:"Van",region:"Colombo",vehicle:"Nishantha - KDH",body:"KDH",mileage:"635",refuse:"0",lastWork:"14th Arr",pax:"8",plate:"NF - 0630",days:{"14":"635"}},{fleet:"Van",region:"Colombo",vehicle:"Nishantha-FLATROOF",body:"FLATROOF",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"PJ - 8976",days:{}},{fleet:"Van",region:"Colombo",vehicle:"Kelum - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NE - 3722",days:{}},{fleet:"Van",region:"Colombo",vehicle:"Geeth - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NC - 5181",days:{}},{fleet:"Van",region:"Colombo",vehicle:"Saman -  FLATROOF",body:"FLATROOF",mileage:"350",refuse:"0",lastWork:"07th Arr&Dep",pax:"4",plate:"PD - 6818",days:{"7":"350"}},{fleet:"Van",region:"Colombo",vehicle:"Waranakula -  FLATROOF",body:"FLATROOF",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"PC - 6956",days:{}},{fleet:"Van",region:"Kalutara",vehicle:"Nishantha - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NF - 0630",days:{}},{fleet:"Van",region:"Kalutara",vehicle:"Nishantha-FLATROOF",body:"FLATROOF",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"PJ - 8976",days:{}},{fleet:"Van",region:"Kalutara",vehicle:"Laksiri -KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NE-3493",days:{}},{fleet:"Van",region:"Kalutara",vehicle:"Priyantha - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NE - 3797",days:{}},{fleet:"Van",region:"Kalutara",vehicle:"Tharindu - KDH",body:"KDH",mileage:"240",refuse:"0",lastWork:"16th Dep&Arr",pax:"8",plate:"NE - 6343",days:{"16":"240"}},{fleet:"Van",region:"Bentota",vehicle:"Kapila - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"",days:{}},{fleet:"Van",region:"Bentota",vehicle:"Kumara - KDH",body:"KDH",mileage:"290",refuse:"0",lastWork:"12th Dep&Arr",pax:"8",plate:"NB - 9411",days:{"12":"290"}},{fleet:"Van",region:"Bentota",vehicle:"Kumara - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"PF - 4527",days:{}},{fleet:"Van",region:"Bentota",vehicle:"Mahesh - KDH",body:"KDH",mileage:"290",refuse:"0",lastWork:"14th Dep&Arr",pax:"8",plate:"NE - 7755",days:{"14":"290"}},{fleet:"Van",region:"Bentota",vehicle:"Nadeesh  - KDH",body:"KDH",mileage:"290",refuse:"0",lastWork:"22nd Dep&Arr",pax:"8",plate:"PJ - 3139",days:{"22":"290"}},{fleet:"Van",region:"Bentota",vehicle:"Nadeesh  - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"PG - 7634",days:{}},{fleet:"Van",region:"Bentota",vehicle:"Pasindu  - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"PL - 2221",days:{}},{fleet:"Van",region:"Bentota",vehicle:"Pasindu  - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"ND - 8408",days:{}},{fleet:"Van",region:"Bentota",vehicle:"Pasindu  - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"PH - 4741",days:{}},{fleet:"Van",region:"Bentota",vehicle:"Pasindu  - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NE - 2465",days:{}},{fleet:"Van",region:"Bentota",vehicle:"Asitha  - KDH",body:"KDH",mileage:"240",refuse:"0",lastWork:"23rd Dep&Arr",pax:"8",plate:"ND - 2375",days:{"23":"240"}},{fleet:"Van",region:"Bentota",vehicle:"Asitha  - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NE - 4106",days:{}},{fleet:"Van",region:"Bentota",vehicle:"Chaminda  - KDH",body:"KDH",mileage:"290",refuse:"0",lastWork:"08th Dep&Arr",pax:"8",plate:"NC - 2577",days:{"8":"290"}},{fleet:"Van",region:"Bentota",vehicle:"Chaminda  - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NE - 5938",days:{}},{fleet:"Van",region:"Bentota",vehicle:"Wasantha  - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"",days:{}},{fleet:"Van",region:"Bentota",vehicle:"Asanka Kumara  - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"ND - 5924",days:{}},{fleet:"Van",region:"Bentota",vehicle:"Nimal - FLATROOF",body:"FLATROOF",mileage:"340",refuse:"0",lastWork:"02nd Dep&Arr",pax:"4",plate:"PS - 2442",days:{"2":"340"}},{fleet:"Van",region:"Bentota",vehicle:"Himasha - FLATROOF",body:"FLATROOF",mileage:"240",refuse:"0",lastWork:"09th Dep&Arr",pax:"4",plate:"PG - 7294",days:{"9":"240"}},{fleet:"Van",region:"Bentota",vehicle:"Sumudu - FLATROOF",body:"FLATROOF",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"",days:{}},{fleet:"Van",region:"Hikkaduwa",vehicle:"Nalaka - KDH",body:"KDH",mileage:"340",refuse:"0",lastWork:"17th Dep&Arr",pax:"8",plate:"NE - 2690",days:{"17":"340"}},{fleet:"Van",region:"Hikkaduwa",vehicle:"Nalaka - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NE - 6028",days:{}},{fleet:"Van",region:"Hikkaduwa",vehicle:"Kinsly - KDH",body:"KDH",mileage:"290",refuse:"0",lastWork:"04th Dep&Arr",pax:"8",plate:"NE - 3540",days:{"4":"290"}},{fleet:"Van",region:"Hikkaduwa",vehicle:"Lalith Drifters - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NE - 2901",days:{}},{fleet:"Van",region:"Hikkaduwa",vehicle:"Lalith Drifters - KDH",body:"KDH",mileage:"340",refuse:"0",lastWork:"18th Dep&Arr",pax:"8",plate:"NE-3595",days:{"18":"340"}},{fleet:"Van",region:"Hikkaduwa",vehicle:"Lalith Drifters  - FLATROOF",body:"FLATROOF",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"PC - 8384",days:{}},{fleet:"Van",region:"Hikkaduwa",vehicle:"Gunarathna  - KDH",body:"KDH",mileage:"36",refuse:"0",lastWork:"06th TR",pax:"8",plate:"PJ - 1698",days:{"6":"36"}},{fleet:"Van",region:"Hikkaduwa",vehicle:"Gunarathna   - FLATROOF",body:"FLATROOF",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"PH - 6930",days:{}},{fleet:"Van",region:"Unawatuna",vehicle:"Sabith - KDH",body:"KDH",mileage:"340",refuse:"0",lastWork:"11th Dep&Arr",pax:"8",plate:"NF - 3456",days:{"11":"340"}},{fleet:"Van",region:"Unawatuna",vehicle:"Sabith - FLATROOF",body:"FLATROOF",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"PC - 0771",days:{}},{fleet:"Van",region:"Unawatuna",vehicle:"Malshan - KDH",body:"KDH",mileage:"290",refuse:"0",lastWork:"05th Dep&Arr",pax:"8",plate:"PG - 7646",days:{"5":"290"}},{fleet:"Van",region:"Unawatuna",vehicle:"Chathuranga - KDH",body:"KDH",mileage:"340",refuse:"0",lastWork:"08th Dep&Arr",pax:"8",plate:"PC - 2435",days:{"8":"340"}},{fleet:"Van",region:"Unawatuna",vehicle:"Chathuranga - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NC - 3115",days:{}},{fleet:"Van",region:"Unawatuna",vehicle:"Chathuranga  - FLATROOF",body:"FLATROOF",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"PC - 4107",days:{}},{fleet:"Van",region:"Unawatuna",vehicle:"Chathuranga  - FLATROOF",body:"FLATROOF",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"PC - 5840",days:{}},{fleet:"Van",region:"Unawatuna",vehicle:"Chanuka -Dayanga KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"",days:{}},{fleet:"Van",region:"Unawatuna",vehicle:"Chanuka - Dayanga FLATROOF",body:"FLATROOF",mileage:"340",refuse:"0",lastWork:"20th Dep&Arr",pax:"4",plate:"PC - 8672",days:{"20":"340"}},{fleet:"Van",region:"Unawatuna",vehicle:"Chandana  - FLATROOF",body:"FLATROOF",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"PG - 7107",days:{}},{fleet:"Van",region:"Weligama",vehicle:"Manoj Silva",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Van",region:"Tangalle",vehicle:"Karu - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NC - 7796",days:{}},{fleet:"Van",region:"Tangalle",vehicle:"Karu - FLATROOF",body:"FLATROOF",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"PI - 1789",days:{}},{fleet:"Van",region:"Tangalle",vehicle:"Piyal - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NC - 4271",days:{}},{fleet:"Van",region:"Tangalle",vehicle:"Piyal - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NC - 7695",days:{}},{fleet:"Van",region:"Tangalle",vehicle:"Piyal - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NE - 4140",days:{}},{fleet:"Van",region:"Tangalle",vehicle:"Mahinda - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NB - 3747",days:{}},{fleet:"Van",region:"Tangalle",vehicle:"Mahinda - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"PC - 9668",days:{}},{fleet:"Van",region:"Tangalle",vehicle:"Mahinda - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NE - 6565",days:{}},{fleet:"Van",region:"Tangalle",vehicle:"Mahinda - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NC 4379",days:{}},{fleet:"Van",region:"Pasikuda",vehicle:"Radeesha - KDH",body:"KDH",mileage:"1140",refuse:"0",lastWork:"22nd Dep",pax:"8",plate:"NE - 4244",days:{"22":"570","11":"570"}},{fleet:"Van",region:"Pasikuda",vehicle:"Radeesha - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NC - 8617",days:{}},{fleet:"Van",region:"Pasikuda",vehicle:"Radeesha - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"PF - 6928",days:{}},{fleet:"Van",region:"Pasikuda",vehicle:"Radeesha - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NE - 6126",days:{}},{fleet:"Van",region:"Pasikuda",vehicle:"Radeesha - FLATROOF",body:"FLATROOF",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"PK - 5111",days:{}},{fleet:"Van",region:"Pasikuda",vehicle:"Vani - KDH",body:"KDH",mileage:"570",refuse:"0",lastWork:"",pax:"8",plate:"NF - 0777",days:{"17":"570"}},{fleet:"Van",region:"Pasikuda",vehicle:"Vani - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NE - 5056",days:{}},{fleet:"Van",region:"Pasikuda",vehicle:"Vani - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"NE - 3411",days:{}},{fleet:"Van",region:"Pasikuda",vehicle:"Vani - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"PG - 8471",days:{}},{fleet:"Van",region:"Negambo",vehicle:"Indika neg - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"ND - 2160",days:{}},{fleet:"Van",region:"Negambo",vehicle:"Indika neg -FLATROOF",body:"FLATROOF",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"NF - 3436",days:{}},{fleet:"Van",region:"Negambo",vehicle:"Bala - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"8",plate:"PI - 1418",days:{}},{fleet:"Van",region:"Negambo",vehicle:"Dinesh  - KDH",body:"KDH",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Colombo",vehicle:"Dinesh",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"13",plate:"",days:{}},{fleet:"Mini Coach",region:"Colombo",vehicle:"Nalinda",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"13",plate:"",days:{}},{fleet:"Mini Coach",region:"Colombo",vehicle:"Suhath",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"14",plate:"",days:{}},{fleet:"Mini Coach",region:"Kalutara",vehicle:"Ajith kumara",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Kalutara",vehicle:"Udesh",body:"",mileage:"290",refuse:"0",lastWork:"",pax:"",plate:"",days:{"13":"290","14":"Outside tour"}},{fleet:"Mini Coach",region:"Kalutara",vehicle:"Tharanga",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Kalutara",vehicle:"Laksiri",body:"",mileage:"290",refuse:"0",lastWork:"",pax:"",plate:"",days:{"13":"290"}},{fleet:"Mini Coach",region:"Kalutara",vehicle:"Manoj",body:"",mileage:"290",refuse:"0",lastWork:"13th Dep",pax:"",plate:"",days:{"13":"290","14":"Outside tour"}},{fleet:"Mini Coach",region:"Kalutara",vehicle:"Keeth",body:"",mileage:"340",refuse:"0",lastWork:"04th Arr",pax:"",plate:"",days:{"4":"340"}},{fleet:"Mini Coach",region:"Bentota",vehicle:"Arjuna",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Bentota",vehicle:"Nadeesh",body:"",mileage:"340",refuse:"0",lastWork:"04th Arr",pax:"",plate:"",days:{"4":"340"}},{fleet:"Mini Coach",region:"Bentota",vehicle:"Haren",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Bentota",vehicle:"Pasindu",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Bentota",vehicle:"Chaminda",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Bentota",vehicle:"Nadimal",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Bentota",vehicle:"Kumara",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Hikkaduwa",vehicle:"Pradeep",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Hikkaduwa",vehicle:"Waruna",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Hikkaduwa",vehicle:"Gunarathna",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Hikkaduwa",vehicle:"Dinuka",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Unawatuna",vehicle:"Chathuranga",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Unawatuna",vehicle:"Keeth",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Unawatuna",vehicle:"Nalaka",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Tangalle",vehicle:"Piyal",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Tangalle",vehicle:"Mahinda",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Pasikuda",vehicle:"Radeesha",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Mini Coach",region:"Pasikuda",vehicle:"Vani",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"",plate:"",days:{}},{fleet:"Bus",region:"Kalutara",vehicle:"Chandana",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"33",plate:"",days:{}},{fleet:"Bus",region:"Bentota",vehicle:"Haren",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"33",plate:"",days:{}},{fleet:"Bus",region:"Unawatuna",vehicle:"MFH Bus Ruwan",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"33",plate:"",days:{}},{fleet:"Bus",region:"Unawatuna",vehicle:"MFH Sarath",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"33",plate:"",days:{}},{fleet:"Bus",region:"Hikkaduwa",vehicle:"Tharindu-New",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"33",plate:"",days:{}},{fleet:"Bus",region:"Unawatuna",vehicle:"Gamini",body:"",mileage:"950",refuse:"0",lastWork:"",pax:"33",plate:"",days:{}},{fleet:"Bus",region:"Hikkaduwa",vehicle:"Susantha - 49",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"33",plate:"",days:{}},{fleet:"Car",region:"Negambo",vehicle:"Indika",body:"",mileage:"715",refuse:"0",lastWork:"17th marawila dep",pax:"4",plate:"",days:{"17":"80","6":"0","11":"635"}},{fleet:"Car",region:"Negambo",vehicle:"Bala",body:"",mileage:"715",refuse:"0",lastWork:"15th Arr",pax:"4",plate:"",days:{"6":"80","15":"635"}},{fleet:"Car",region:"Colombo",vehicle:"Amal",body:"",mileage:"0",refuse:"170",lastWork:"19th Arr not done",pax:"4",plate:"",days:{}},{fleet:"Car",region:"Colombo",vehicle:"Malinda",body:"",mileage:"845",refuse:"0",lastWork:"15th Arr",pax:"4",plate:"",days:{"6":"210","15":"635"}},{fleet:"Car",region:"Colombo",vehicle:"Ranjan",body:"",mileage:"845",refuse:"340",lastWork:"22nd Arr",pax:"4",plate:"",days:{"22":"210","14":"635"}},{fleet:"Car",region:"Colombo",vehicle:"Milhan",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"",days:{}},{fleet:"Car",region:"Colombo",vehicle:"Saman liyanage",body:"",mileage:"1025",refuse:"0",lastWork:"20th Arr",pax:"4",plate:"",days:{"9":"635","2":"290","20":"100"}},{fleet:"Car",region:"Colombo",vehicle:"Praveen",body:"",mileage:"920",refuse:"170",lastWork:"06th Arr Refused",pax:"4",plate:"",days:{"19":"170","17":"750"}},{fleet:"Car",region:"Colombo",vehicle:"Soyza Colombo",body:"",mileage:"1330",refuse:"210",lastWork:"15th Arr",pax:"4",plate:"",days:{"15":"290","1":"220","13":"820"}},{fleet:"Car",region:"Colombo",vehicle:"Kelum",body:"",mileage:"680",refuse:"170",lastWork:"16th Arr Dep",pax:"4",plate:"",days:{"16":"680"}},{fleet:"Car",region:"Colombo",vehicle:"Hafis Dehiwala",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"",days:{}},{fleet:"Car",region:"Colombo",vehicle:"Office Vehicle",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"",days:{},owner:"exotic"},{fleet:"Car",region:"Panadura",vehicle:"Nihal",body:"",mileage:"1180",refuse:"0",lastWork:"20th Arr",pax:"4",plate:"",days:{"6":"340","1":"340","11":"280","20":"220"}},{fleet:"Car",region:"Panadura",vehicle:"Nishantha(Yohan)",body:"",mileage:"1185",refuse:"0",lastWork:"18th Dep",pax:"4",plate:"",days:{"18":"480","6":"635","3":"70"}},{fleet:"Car",region:"Kalutara",vehicle:"Suranga",body:"",mileage:"980",refuse:"0",lastWork:"19th Dep",pax:"4",plate:"",days:{"10":"480","4":"210","19":"290"}},{fleet:"Car",region:"Kalutara",vehicle:"Deshitha",body:"",mileage:"975",refuse:"0",lastWork:"21st Dep",pax:"4",plate:"",days:{"21":"340","8":"635"}},{fleet:"Car",region:"Kalutara",vehicle:"Thilan",body:"",mileage:"975",refuse:"0",lastWork:"17th Arr",pax:"4",plate:"",days:{"7":"635","17":"340"}},{fleet:"Car",region:"Kalutara",vehicle:"Priyantha",body:"",mileage:"920",refuse:"0",lastWork:"22nd Dep Arr",pax:"4",plate:"",days:{"14":"290","6":"340","22":"290"}},{fleet:"Car",region:"Kalutara",vehicle:"Laksiri",body:"",mileage:"580",refuse:"0",lastWork:"16th Dep",pax:"4",plate:"",days:{"16":"290","1":"290"}},{fleet:"Car",region:"Bentota",vehicle:"Amila - Nethmal",body:"",mileage:"925",refuse:"0",lastWork:"08th Arr",pax:"4",plate:"",days:{"8":"635","1":"290"}},{fleet:"Car",region:"Bentota",vehicle:"Umayanga",body:"",mileage:"580",refuse:"290",lastWork:"16th Dep Arr",pax:"4",plate:"",days:{"16":"290","9":"290"}},{fleet:"Car",region:"Bentota",vehicle:"Chamath",body:"",mileage:"580",refuse:"0",lastWork:"13th Dep Arr",pax:"4",plate:"",days:{"13":"290","4":"290"}},{fleet:"Car",region:"Bentota",vehicle:"Nandana",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"",days:{}},{fleet:"Car",region:"Bentota",vehicle:"Rumesh",body:"",mileage:"340",refuse:"0",lastWork:"21st Dep Arr",pax:"4",plate:"",days:{"21":"340"}},{fleet:"Car",region:"Bentota",vehicle:"Pasidu",body:"",mileage:"290",refuse:"0",lastWork:"15th Dep Arr",pax:"4",plate:"",days:{"15":"290"}},{fleet:"Car",region:"Bentota",vehicle:"Chaminda",body:"",mileage:"220",refuse:"0",lastWork:"12th Dep",pax:"4",plate:"",days:{"12":"220"}},{fleet:"Car",region:"Bentota",vehicle:"Sumudu",body:"",mileage:"340",refuse:"0",lastWork:"12th Dep",pax:"4",plate:"",days:{"12":"340"}},{fleet:"Car",region:"Ambalangoda",vehicle:"Ramith",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"",days:{}},{fleet:"Car",region:"Hikkaduwa",vehicle:"Asanka",body:"",mileage:"0",refuse:"0",lastWork:"02nd H-H Cancelled",pax:"4",plate:"",days:{}},{fleet:"Car",region:"Galle",vehicle:"Malshan",body:"",mileage:"340",refuse:"0",lastWork:"11th Dep Arr",pax:"4",plate:"",days:{"11":"340"}},{fleet:"Car",region:"Galle",vehicle:"Prasanga",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"",days:{}},{fleet:"Car",region:"Galle",vehicle:"Minula",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"",days:{}},{fleet:"Car",region:"Weligama",vehicle:"Manoj Silva",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"",days:{}},{fleet:"Car",region:"Tangalle",vehicle:"Wijeratne",body:"",mileage:"220",refuse:"0",lastWork:"02nd H-H",pax:"4",plate:"",days:{"2":"220"}},{fleet:"Car",region:"Tangalle",vehicle:"Piyal",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"",days:{}},{fleet:"Car",region:"Tangalle",vehicle:"Mahinda",body:"",mileage:"0",refuse:"0",lastWork:"",pax:"4",plate:"",days:{}},{fleet:"Car",region:"Pasikuda",vehicle:"Radeesha",body:"",mileage:"1710",refuse:"0",lastWork:"23rd Dep",pax:"4",plate:"",days:{"21":"570","23":"570","18":"570"}},{fleet:"Car",region:"Pasikuda",vehicle:"Rifnaz",body:"",mileage:"1070",refuse:"0",lastWork:"23rd Dep",pax:"4",plate:"",days:{"18":"500","23":"570"}},{fleet:"Car",region:"Pasikuda",vehicle:"Vani",body:"",mileage:"1140",refuse:"0",lastWork:"22nd Dep",pax:"4",plate:"",days:{"22":"570","21":"570"}}];
+    const EHI_ROSTER_LAST_WORK = (() => {
+      const m = {};
+      (EHI_DRIVER_ROSTER || []).forEach((r) => {
+        if (r.plate && r.lastWork) m[r.plate] = r.lastWork;
+      });
+      return m;
+    })();
+
+    /* Last-work map derived from driver roster plates */
     function ehiNormPlate(p) {
       return String(p || "").replace(/\s+/g, " ").trim().toUpperCase();
     }
@@ -15334,11 +15711,12 @@
     function ehiFleetSheetOf(vehicleType, brand) {
       const t = String(vehicleType || "").toLowerCase();
       const b = String(brand || "").toLowerCase();
+      if (/^car$|axio|alto|vezel|leaf|premio|aqua/.test(t) || /^car$/.test(b)) return "Car";
       if (/mini/.test(t)) return "Mini Coach";
       if (/large|super|bus|coach/.test(t) && !/mini/.test(t)) return "Bus";
       if (/van/.test(t) || /kdh|flat|hiace|highroof/.test(b)) return "Van";
       if (/car/.test(t) && /kdh|flat|high/.test(b)) return "Van";
-      if (/car/.test(t)) return "Van"; /* Excel Van sheet includes FLATROOF cars */
+      if (/car/.test(t)) return "Car";
       return "Van";
     }
 
@@ -15347,13 +15725,15 @@
       if (/pasikuda|passikudah/.test(r)) return "Pasikuda";
       if (/negambo|negombo/.test(r) && !/colombo/.test(r)) return "Negambo";
       if (/colombo/.test(r)) return "Colombo";
-      if (/kalutara/.test(r)) return "Kalutara";
+      if (/panadura/.test(r)) return "Panadura";
+      if (/kaluthara|kalutara/.test(r)) return "Kalutara";
       if (/bentota/.test(r)) return "Bentota";
+      if (/ambalangoda/.test(r)) return "Ambalangoda";
       if (/hikkaduwa/.test(r)) return "Hikkaduwa";
-      if (/unawatuna|galle/.test(r)) return "Unawatuna";
+      if (/^galle$|\bgalle\b/.test(r) && !/unawatuna/.test(r)) return "Galle";
+      if (/unawatuna/.test(r)) return "Unawatuna";
       if (/weligama/.test(r)) return "Weligama";
       if (/tangalle|hambantota|matara/.test(r)) return "Tangalle";
-      if (/panadura/.test(r)) return "Kalutara";
       return region || "—";
     }
 
@@ -15850,6 +16230,69 @@
 
     function buildDriverRosterRows() {
       const trips = Array.isArray(arrivalDepartures) ? arrivalDepartures : [];
+      const srcBase = Array.isArray(EHI_DRIVER_ROSTER) && EHI_DRIVER_ROSTER.length ? EHI_DRIVER_ROSTER : [];
+      const exoticExtra = Array.isArray(EHI_EXOTIC_FLEET) ? EHI_EXOTIC_FLEET : [];
+      const wantOwner = drvOwnerFilter || "supplier";
+      const src = [...srcBase, ...exoticExtra].filter((r) => ehiRosterOwnerOf(r) === wantOwner);
+      if (src.length) {
+        return src.map((r, i) => {
+          const plate = r.plate || "";
+          const myTrips = plate
+            ? trips.filter((t) => t.vehicle === plate || String(t.driver || "").includes(String(r.vehicle || "").split("-")[0].trim()))
+            : [];
+          const assigned = myTrips.filter((t) => t.assigned).length;
+          const confirmPending = myTrips.filter((t) => t.driverConfirmPending).length;
+          const hotOffline = myTrips.some((t) => t.driverOffline || t.missedLocation);
+          const stage = rosterPickStage(i, "Active", assigned, confirmPending, hotOffline);
+          const next = myTrips.find((t) => t.assigned) || myTrips[0];
+          const mileageKm = Number(r.mileage || 0);
+          const refuseKm = Number(r.refuse || 0);
+          const bodyType = r.body || ehiBodyTypeFromBrand(r.vehicle, r.pax);
+          const fleetSheet = r.fleet || "Van";
+          const rosterRegion = ehiRosterRegionKey(r.region || "");
+          const days = r.days && typeof r.days === "object" ? r.days : {};
+          const dayMarks = [];
+          for (let d = 1; d <= 30; d++) {
+            dayMarks.push(days[String(d)] ? "hot" : "");
+          }
+          const displayName = String(r.vehicle || "").replace(/\s*-\s*(KDH|FLATROOF).*$/i, "").trim() || r.vehicle;
+          const row = {
+            id: `drv-${fleetSheet}-${rosterRegion}-${plate || i}-${i}`,
+            name: displayName,
+            vehicleLabel: r.vehicle,
+            supplierName: displayName,
+            city: rosterRegion,
+            region: rosterRegion,
+            rosterRegion,
+            lang: fleetSheet,
+            vehicleType: fleetSheet === "Bus" ? "Large Coach" : fleetSheet === "Mini Coach" ? "Mini Coach" : fleetSheet === "Car" ? "Car" : "Van",
+            bodyType,
+            brand: bodyType,
+            fleetSheet,
+            seats: Number(r.pax) || (fleetSheet === "Bus" ? 33 : fleetSheet === "Mini Coach" ? 14 : bodyType === "FLATROOF" ? 4 : 8),
+            license: plate || "—",
+            plate,
+            status: "Active",
+            stage,
+            jobs: assigned,
+            refused: refuseKm > 0 ? 1 : 0,
+            refuseKm,
+            mileageKm,
+            lastWorkOn: r.lastWork || "",
+            ownerPool: ehiRosterOwnerOf(r),
+            dayMarks,
+            days,
+            fleetSize: 1,
+            nextJob: next
+              ? `${next.time} · ${next.kindLabel || next.kind}`
+              : (r.lastWork ? `Last · ${r.lastWork}` : "Standby · fair due"),
+            score: 0,
+            scoreLabel: "Fair due",
+          };
+          row.score = ehiFairnessScore(row);
+          return row;
+        });
+      }
       const units = typeof ehiSupplierFleetUnits === "function" ? ehiSupplierFleetUnits() : [];
       if (units.length) {
         return units.map((d, i) => {
@@ -15903,6 +16346,7 @@
             mileageKm,
             lastWorkOn: lastWorkOn || (stage === "available" ? "" : ""),
             dayMarks,
+            days: {},
             transferKm: d.transferKm || 0,
             excursionKm: d.excursionKm || 0,
             roundTourKm: d.roundTourKm || 0,
@@ -15917,51 +16361,725 @@
           return row;
         });
       }
-      return vehicles.map((v, i) => {
-        const supplierName = v.supplier || (v.name.includes(" ") ? v.name.split(" ").slice(0, -1).join(" ") : v.name);
-        const myTrips = trips.filter((t) => t.vehicle === v.plate);
-        const assigned = myTrips.filter((t) => t.assigned).length;
-        const confirmPending = myTrips.filter((t) => t.driverConfirmPending).length;
-        const hotOffline = myTrips.some((t) => t.driverOffline || t.missedLocation);
-        const stage = rosterPickStage(i, v.status, assigned, confirmPending, hotOffline);
-        const next = myTrips.find((t) => t.assigned) || myTrips[0];
-        const bodyType = ehiBodyTypeFromBrand(v.brand || v.type, ehiSeatsForType(v.type));
-        const fleetSheet = ehiFleetSheetOf(v.type, v.brand);
-        const rosterRegion = ehiRosterRegionKey(v.city);
-        const mileageKm = Number(v.mileageKm || (600 + i * 90));
-        const refuseKm = ehiRefuseKmForUnit(v.plate, v.plate, i);
-        const lastWorkOn = EHI_ROSTER_LAST_WORK[v.plate] || "";
-        const row = {
-          id: `d-${v.plate}`,
-          name: supplierName,
-          supplierName,
-          city: rosterRegion,
-          region: v.city,
-          rosterRegion,
-          lang: v.type || "Vehicle",
-          vehicleType: v.type,
-          bodyType,
-          brand: v.brand || "",
+      return [];
+    }
+
+    function ehiRosterDisplayName(vehicle) {
+      return String(vehicle || "").replace(/\s*-\s*(KDH|FLATROOF).*$/i, "").replace(/\s+/g, " ").trim() || String(vehicle || "—");
+    }
+
+    function ehiBuildRosterDirectoryOwners(pool) {
+      const src = [
+        ...(Array.isArray(EHI_DRIVER_ROSTER) ? EHI_DRIVER_ROSTER : []),
+        ...(Array.isArray(EHI_EXOTIC_FLEET) ? EHI_EXOTIC_FLEET : []),
+      ];
+      const map = new Map();
+      src.forEach((r, i) => {
+        const owner = ehiRosterOwnerOf(r);
+        if (pool === "exotic" && owner !== "exotic") return;
+        const isExotic = owner === "exotic";
+        const display = ehiRosterDisplayName(r.vehicle);
+        const name = isExotic ? "Exotic Holidays International" : display;
+        const key = isExotic ? "exotic-ehi" : `sup-${display.toLowerCase().replace(/[^a-z0-9]+/gi, "-")}`;
+        let sup = map.get(key);
+        if (!sup) {
+          const matched = (typeof ehiTransportSuppliers !== "undefined" ? ehiTransportSuppliers : [])
+            .find((s) => ehiNormPerson(s.name).toLowerCase() === ehiNormPerson(display).toLowerCase());
+          const region = ehiRosterRegionKey(r.region || matched?.region || "");
+          sup = {
+            id: key,
+            name,
+            phone: matched?.phone || (isExotic ? "EHI Ops" : ""),
+            region,
+            garageCity: region || matched?.garageCity || "—",
+            rating: matched?.rating || (isExotic ? 5 : "—"),
+            status: "Active",
+            ownerPool: isExotic ? "exotic" : "supplier",
+            vehicles: [],
+          };
+          map.set(key, sup);
+        }
+        const fleetSheet = r.fleet || "Van";
+        const bodyType = r.body || "";
+        const plate = String(r.plate || "").trim();
+        const plateKey = ehiNormPlate(plate) || `${fleetSheet}-${display}-${r.region}-${i}`;
+        if (sup.vehicles.some((v) => ehiNormPlate(v.plate) === ehiNormPlate(plate) && plate)) return;
+        if (!plate && sup.vehicles.some((v) => v.rosterLabel === r.vehicle && v.region === ehiRosterRegionKey(r.region))) return;
+        const seats = Number(r.pax) || (fleetSheet === "Bus" ? 33 : fleetSheet === "Mini Coach" ? 14 : bodyType === "FLATROOF" ? 4 : fleetSheet === "Car" ? 4 : 8);
+        const docs = ehiVehicleDocDates(plateKey, { vehicleType: fleetSheet, phone: sup.phone });
+        const vehicleType = fleetSheet === "Bus" ? "Large Coach" : fleetSheet;
+        sup.vehicles.push({
+          id: `fv-${plateKey}`,
+          plate: plate || "—",
+          rosterLabel: r.vehicle,
+          vehicleType,
           fleetSheet,
-          seats: ehiSeatsForType(v.type),
-          license: v.plate,
-          plate: v.plate,
-          status: v.status,
-          stage,
-          jobs: assigned,
-          refused: 0,
-          refuseKm,
-          mileageKm,
-          lastWorkOn,
-          dayMarks: ehiDayMarksFromLastWork(lastWorkOn, mileageKm),
-          fleetSize: 1,
-          nextJob: next ? `${next.time} · ${next.kindLabel || next.kind}` : "Standby for AI",
-          score: 0,
-          scoreLabel: "Fair due",
-        };
-        row.score = ehiFairnessScore(row);
-        return row;
+          bodyType,
+          brand: bodyType || fleetSheet,
+          seats,
+          year: docs.year,
+          color: docs.color,
+          insuranceValidTo: docs.insuranceValidTo,
+          insuranceStatus: docs.insuranceStatus,
+          revenueLicenceTo: docs.revenueLicenceTo,
+          fitnessTo: docs.fitnessTo,
+          emissionTo: docs.emissionTo,
+          mileageKm: Number(r.mileage || 0),
+          refuseKm: Number(r.refuse || 0),
+          lastWorkOn: r.lastWork || "",
+          region: ehiRosterRegionKey(r.region || ""),
+          status: "Active",
+        });
+        if (r.region) {
+          const rk = ehiRosterRegionKey(r.region);
+          if (!sup.region || sup.region === "—") sup.region = rk;
+          if (!sup.garageCity || sup.garageCity === "—") sup.garageCity = rk;
+        }
       });
+      return [...map.values()].map((s) => ({
+        ...s,
+        fleetSize: s.vehicles.length,
+        vehicleTypes: [...new Set(s.vehicles.map((v) => v.vehicleType).filter(Boolean))],
+      })).sort((a, b) => b.fleetSize - a.fleetSize || a.name.localeCompare(b.name));
+    }
+
+    function ehiRenderOwnerFleetCards(el, suppliers, emptyMsg) {
+      if (!el) return 0;
+      if (!suppliers.length) {
+        el.innerHTML = `<div class="ops-mini-card"><p>${deEsc(emptyMsg || "No owners for this filter.")}</p></div>`;
+        return 0;
+      }
+      const insClass = (st) => (st === "valid" ? "ok" : st === "expiring" ? "warn" : "bad");
+      const insLabel = (st, date) => {
+        if (st === "valid") return `Valid · ${date}`;
+        if (st === "expiring") return `Expiring · ${date}`;
+        if (st === "expired") return `Expired · ${date}`;
+        return date || "—";
+      };
+      el.innerHTML = suppliers.map((s) => {
+        const typeSummary = ehiFleetTypeSummary(s.vehicles) || "—";
+        const insWarn = s.vehicles.filter((v) => v.insuranceStatus === "expiring").length;
+        const insBad = s.vehicles.filter((v) => v.insuranceStatus === "expired").length;
+        const rows = s.vehicles.map((v) => {
+          const ist = v.insuranceStatus || ehiDocStatus(v.insuranceValidTo);
+          return `<tr>
+            <td class="plate">${deEsc(v.plate || "—")}</td>
+            <td>${deEsc(v.rosterLabel || v.vehicleType || "—")}</td>
+            <td>${deEsc(v.vehicleType || "—")}${v.bodyType ? ` · ${deEsc(v.bodyType)}` : ""}</td>
+            <td>${deEsc(v.brand || "—")}</td>
+            <td>${v.seats || "—"}</td>
+            <td>${v.year || "—"}</td>
+            <td>${deEsc(v.color || "—")}</td>
+            <td class="drv-ins ${insClass(ist)}">${deEsc(insLabel(ist, v.insuranceValidTo))}</td>
+            <td>${deEsc(v.revenueLicenceTo || "—")}</td>
+            <td>${deEsc(v.fitnessTo || "—")}</td>
+            <td>${deEsc(v.emissionTo || "—")}</td>
+            <td>${Number(v.mileageKm || 0).toLocaleString()} km</td>
+            <td>${deEsc(v.lastWorkOn || "—")}</td>
+            <td>${deEsc(v.status || "Active")}</td>
+          </tr>`;
+        }).join("");
+        return `<article class="drv-owner-card" data-sup="${deEsc(s.id)}">
+          <div class="own-head">
+            <div>
+              <h3>${deEsc(s.name)}</h3>
+              <div class="own-meta">${deEsc(s.region || "—")} · Garage ${deEsc(s.garageCity || "—")} · ${deEsc(s.phone || "No phone")} · Rating ${s.rating || "—"}</div>
+            </div>
+            <div class="own-stats">
+              <span class="own-stat">${s.fleetSize} vehicle${s.fleetSize === 1 ? "" : "s"}</span>
+              <span class="own-stat">${deEsc(typeSummary)}</span>
+              ${insBad ? `<span class="own-stat bad">${insBad} insurance expired</span>` : ""}
+              ${insWarn ? `<span class="own-stat warn">${insWarn} insurance expiring</span>` : ""}
+              ${!insBad && !insWarn ? `<span class="own-stat ok">Insurance OK</span>` : ""}
+            </div>
+          </div>
+          <div style="overflow:auto">
+            <table class="drv-owner-fleet">
+              <thead>
+                <tr>
+                  <th>Vehicle No</th>
+                  <th>Roster name</th>
+                  <th>Type</th>
+                  <th>Brand / body</th>
+                  <th>Pax</th>
+                  <th>Year</th>
+                  <th>Color</th>
+                  <th>Insurance validity</th>
+                  <th>Revenue licence</th>
+                  <th>Fitness</th>
+                  <th>Emission</th>
+                  <th>Mileage</th>
+                  <th>Last work</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+        </article>`;
+      }).join("");
+      return suppliers.length;
+    }
+
+    function renderDrvSupplierOwners(city) {
+      const el = document.getElementById("drv-supplier-owners");
+      if (!el) return;
+      const suppliers = ehiBuildRosterDirectoryOwners("all")
+        .filter((s) => s.ownerPool !== "exotic")
+        .map((s) => {
+          let vehicles = (s.vehicles || []).slice();
+          if (drvFleetFilter !== "All") {
+            vehicles = vehicles.filter((v) => (v.fleetSheet || ehiFleetSheetOf(v.vehicleType, v.brand)) === drvFleetFilter);
+          }
+          if (drvBodyFilter !== "All") {
+            vehicles = vehicles.filter((v) => (v.bodyType || ehiBodyTypeFromBrand(v.brand, v.seats) || "") === drvBodyFilter);
+          }
+          return { ...s, vehicles, fleetSize: vehicles.length };
+        })
+        .filter((s) => s.fleetSize > 0)
+        .filter((s) => ehiMatchRosterRegion(s.region || s.garageCity, city || "All"))
+        .sort((a, b) => b.fleetSize - a.fleetSize || a.name.localeCompare(b.name));
+      ehiRenderOwnerFleetCards(el, suppliers, "No supplier owners for this region / fleet filter.");
+    }
+
+    function renderFleetDirectory(city) {
+      const el = document.getElementById("fv-owners-list");
+      if (!el) return;
+      fvRegionFilter = city || fvRegionFilter || "All";
+      const pills = document.getElementById("fv-region-pills");
+      if (pills) {
+        pills.innerHTML = ROSTER_DRIVER_REGIONS.map((c) => `
+          <button type="button" class="rank-pill ${c === fvRegionFilter ? "active" : ""}" data-fv-city="${c}">
+            ${cityLabel(c)}
+          </button>
+        `).join("");
+        pills.querySelectorAll("[data-fv-city]").forEach((btn) => {
+          btn.addEventListener("click", () => renderFleetDirectory(btn.dataset.fvCity));
+        });
+      }
+      document.querySelectorAll("#fv-owner-bar .drv-owner-tab").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.fvOwner === fvOwnerFilter);
+      });
+      document.querySelectorAll("#fv-fleet-bar .drv-fleet-tab").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.fvFleet === fvFleetFilter);
+      });
+      const pool = fvOwnerFilter === "exotic" ? "exotic" : "all";
+      const suppliers = ehiBuildRosterDirectoryOwners(pool)
+        .map((s) => {
+          let vehicles = (s.vehicles || []).slice();
+          if (fvFleetFilter !== "All") {
+            vehicles = vehicles.filter((v) => (v.fleetSheet || ehiFleetSheetOf(v.vehicleType, v.brand)) === fvFleetFilter);
+          }
+          return { ...s, vehicles, fleetSize: vehicles.length };
+        })
+        .filter((s) => s.fleetSize > 0)
+        .filter((s) => {
+          if (fvRegionFilter === "All") return true;
+          if (ehiMatchRosterRegion(s.region || s.garageCity, fvRegionFilter)) return true;
+          return s.vehicles.some((v) => ehiMatchRosterRegion(v.region, fvRegionFilter));
+        })
+        .map((s) => {
+          if (fvRegionFilter === "All") return s;
+          const vehicles = s.vehicles.filter((v) => ehiMatchRosterRegion(v.region || s.region, fvRegionFilter));
+          return { ...s, vehicles, fleetSize: vehicles.length };
+        })
+        .filter((s) => s.fleetSize > 0)
+        .sort((a, b) => b.fleetSize - a.fleetSize || a.name.localeCompare(b.name));
+
+      const n = ehiRenderOwnerFleetCards(
+        el,
+        suppliers,
+        fvOwnerFilter === "exotic" ? "No Exotic vehicles for this filter." : "No roster vehicles for this filter."
+      );
+      const title = document.getElementById("fv-banner-title");
+      const sub = document.getElementById("fv-banner-sub");
+      const count = document.getElementById("fv-banner-count");
+      if (title) {
+        title.textContent = fvOwnerFilter === "exotic"
+          ? "Exotic vehicles · EHI fleet"
+          : "All vehicles · roster drivers & owners";
+      }
+      if (sub) {
+        sub.textContent = fvOwnerFilter === "exotic"
+          ? `${fvFleetFilter === "All" ? "All types" : fvFleetFilter} · ${fvRegionFilter === "All" ? "all regions" : fvRegionFilter} · open Exotic Fleet for salary / repair / outside payments`
+          : `${fvFleetFilter === "All" ? "All types" : fvFleetFilter} · ${fvRegionFilter === "All" ? "all regions" : fvRegionFilter} · insurance · licence · fitness · roster names`;
+      }
+      if (count) count.textContent = String(n);
+      const cta = document.getElementById("fv-exotic-cta");
+      if (cta) cta.hidden = fvOwnerFilter !== "exotic";
+      el.hidden = false;
+    }
+
+    function ehiFmtLkr(n) {
+      const v = Number(n) || 0;
+      return `LKR ${v.toLocaleString("en-LK")}`;
+    }
+
+    function ehiExoticVehicleOptions() {
+      const owners = ehiBuildRosterDirectoryOwners("exotic");
+      const opts = [];
+      owners.forEach((s) => {
+        (s.vehicles || []).forEach((v) => {
+          opts.push({
+            id: v.id,
+            label: `${v.rosterLabel || v.vehicleType} · ${v.plate || "—"}`,
+            plate: v.plate || "—",
+            name: v.rosterLabel || s.name,
+          });
+        });
+      });
+      return opts;
+    }
+
+    function ehiLoadExoticOps() {
+      const seed = {
+        repairs: [
+          { id: "er-1", date: "2026-09-10", vehicle: "EHI Staff Van - KDH", plate: "WP EHI-2001", workshop: "Negombo Auto Care", note: "Brake pads + oil", amount: 28500, status: "paid" },
+          { id: "er-2", date: "2026-09-18", vehicle: "EHI Office Car 01", plate: "WP EHI-1001", workshop: "Colombo Service", note: "AC gas refill", amount: 12000, status: "open" },
+        ],
+        salaries: [
+          { id: "es-1", month: "2026-09", driver: "EHI Staff Van driver", vehicle: "EHI Staff Van - KDH", plate: "WP EHI-2001", basic: 65000, ot: 8500, advance: 10000, paid: true, note: "Sep salary" },
+          { id: "es-2", month: "2026-09", driver: "Airport van driver", vehicle: "EHI Airport Van - FLATROOF", plate: "WP EHI-2002", basic: 60000, ot: 4200, advance: 0, paid: false, note: "Sep · pending" },
+        ],
+        inside: [
+          { id: "ei-1", date: "2026-09-14", vehicle: "EHI Office Car 01", plate: "WP EHI-1001", driver: "Office Car driver", job: "Hotel FO · Cinnamon Grand", route: "CMB → Hotel", kind: "Hotel transfer", amount: 8500, status: "paid", note: "Inside EHI job" },
+          { id: "ei-2", date: "2026-09-19", vehicle: "EHI Staff Van - KDH", plate: "WP EHI-2001", driver: "Staff Van driver", job: "Guest shuttle · Negombo", route: "Airport → Negombo hotels", kind: "Shuttle", amount: 12000, status: "pending", note: "Inside company work" },
+        ],
+        outside: [
+          { id: "eo-1", date: "2026-09-12", vehicle: "EHI Mini Coach 01", plate: "WP EHI-3001", client: "Private wedding · Galle", route: "Colombo → Galle → Colombo", amount: 45000, driverCut: 8000, status: "paid", paidOn: "2026-09-13", invoice: "OUT-2401", note: "Outside hire" },
+          { id: "eo-2", date: "2026-09-20", vehicle: "EHI 33 Bus 01", plate: "WP EHI-4001", client: "School trip · Kandy", route: "Colombo → Kandy", amount: 90000, driverCut: 15000, status: "pending", paidOn: "", invoice: "OUT-2408", note: "Outside hire" },
+        ],
+        transfers: [
+          { id: "et-1", date: "2026-09-17", vehicle: "EHI Airport Van - FLATROOF", plate: "WP EHI-2002", driver: "Airport van driver", ref: "TR-240917-A12", guest: "Mr Silva party", kind: "Arrival", route: "CMB → Jetwing Blue", pax: 4, amount: 6500, status: "done", note: "EHI transfer" },
+          { id: "et-2", date: "2026-09-18", vehicle: "EHI Office Car 02", plate: "WP EHI-1002", driver: "Office Car 02 driver", ref: "TR-240918-D04", guest: "Ms Perera", kind: "Departure", route: "Shangri-La → CMB", pax: 2, amount: 5500, status: "pending", note: "EHI transfer" },
+        ],
+      };
+      try {
+        const raw = JSON.parse(localStorage.getItem(EHI_EXOTIC_OPS_LS) || "null");
+        if (raw && typeof raw === "object") {
+          return {
+            repairs: Array.isArray(raw.repairs) ? raw.repairs : seed.repairs,
+            salaries: Array.isArray(raw.salaries) ? raw.salaries : seed.salaries,
+            inside: Array.isArray(raw.inside) ? raw.inside : seed.inside,
+            outside: Array.isArray(raw.outside) ? raw.outside : seed.outside,
+            transfers: Array.isArray(raw.transfers) ? raw.transfers : seed.transfers,
+          };
+        }
+      } catch (_) { /* use seed */ }
+      return seed;
+    }
+
+    function ehiSaveExoticOps(data) {
+      try { localStorage.setItem(EHI_EXOTIC_OPS_LS, JSON.stringify(data)); } catch (_) { /* ignore */ }
+    }
+
+    let ehiExoticOps = ehiLoadExoticOps();
+
+    function ehiExoticUid(prefix) {
+      return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`;
+    }
+
+    function ehiExoticSalaryNet(r) {
+      return Math.max(0, Number(r.basic || 0) + Number(r.ot || 0) - Number(r.advance || 0));
+    }
+    function ehiExoticOutsideShare(r) {
+      return Math.max(0, Number(r.amount || 0) - Number(r.driverCut || 0));
+    }
+    function ehiExoticTotals() {
+      const repairs = ehiExoticOps.repairs || [];
+      const salaries = ehiExoticOps.salaries || [];
+      const inside = ehiExoticOps.inside || [];
+      const outside = ehiExoticOps.outside || [];
+      const transfers = ehiExoticOps.transfers || [];
+      const maintOpen = repairs.filter((r) => r.status === "open").reduce((s, r) => s + Number(r.amount || 0), 0);
+      const maintPaid = repairs.filter((r) => r.status === "paid" || r.status === "done").reduce((s, r) => s + Number(r.amount || 0), 0);
+      const salDue = salaries.filter((r) => !r.paid).reduce((s, r) => s + ehiExoticSalaryNet(r), 0);
+      const salPaid = salaries.filter((r) => r.paid).reduce((s, r) => s + ehiExoticSalaryNet(r), 0);
+      const inPaid = inside.filter((r) => r.status === "paid" || r.status === "done").reduce((s, r) => s + Number(r.amount || 0), 0);
+      const inPending = inside.filter((r) => r.status === "pending").reduce((s, r) => s + Number(r.amount || 0), 0);
+      const outPending = outside.filter((r) => r.status === "pending").reduce((s, r) => s + Number(r.amount || 0), 0);
+      const outCollected = outside.filter((r) => r.status === "paid").reduce((s, r) => s + Number(r.amount || 0), 0);
+      const outEhi = outside.reduce((s, r) => s + ehiExoticOutsideShare(r), 0);
+      const outDriver = outside.reduce((s, r) => s + Number(r.driverCut || 0), 0);
+      const trDone = transfers.filter((r) => r.status === "done" || r.status === "paid").reduce((s, r) => s + Number(r.amount || 0), 0);
+      const trPending = transfers.filter((r) => r.status === "pending").reduce((s, r) => s + Number(r.amount || 0), 0);
+      const fleetN = ehiExoticVehicleOptions().length;
+      const revenueIn = inPaid + (outCollected - outDriver) + trDone;
+      const costOut = maintPaid + salPaid;
+      return {
+        maintOpen, maintPaid, salDue, salPaid, inPaid, inPending,
+        outPending, outCollected, outEhi, outDriver, trDone, trPending,
+        fleetN, revenueIn, costOut, net: revenueIn - costOut,
+      };
+    }
+
+    function renderExoticOpsDesk() {
+      const panel = document.getElementById("exf-panel");
+      const tabs = document.getElementById("exf-tabs");
+      const fleetList = document.getElementById("exf-fleet-list");
+      if (!panel || !tabs) return;
+      tabs.querySelectorAll(".fv-exotic-tab").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.exfTab === fvExoticDeskTab);
+      });
+      if (fleetList) fleetList.hidden = fvExoticDeskTab !== "fleet";
+
+      const vehOpts = ehiExoticVehicleOptions();
+      const vehSelect = (id) => `<select id="${id}">
+        <option value="">Select Exotic vehicle…</option>
+        ${vehOpts.map((v) => `<option value="${deEsc(v.label)}" data-plate="${deEsc(v.plate)}">${deEsc(v.label)}</option>`).join("")}
+      </select>`;
+
+      if (fvExoticDeskTab === "totals") {
+        const t = ehiExoticTotals();
+        panel.innerHTML = `
+          <div class="fv-exotic-sums">
+            <div class="fv-exotic-sum"><div class="k">Exotic vehicles</div><div class="v">${t.fleetN}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Inside work paid</div><div class="v">${ehiFmtLkr(t.inPaid)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Outside hire (EHI share)</div><div class="v">${ehiFmtLkr(t.outEhi)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Transfers done</div><div class="v">${ehiFmtLkr(t.trDone)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Driver salary paid</div><div class="v">${ehiFmtLkr(t.salPaid)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Driver salary due</div><div class="v">${ehiFmtLkr(t.salDue)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Maintenance paid</div><div class="v">${ehiFmtLkr(t.maintPaid)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Company net</div><div class="v">${ehiFmtLkr(t.net)}</div></div>
+          </div>
+          <div class="ops-mini-card" style="margin:0">
+            <p style="margin:0 0 8px;font-size:13px;font-weight:800;color:#9f1235">Full EHI company desk</p>
+            <p style="margin:0;font-size:12px;color:#475569;font-weight:650;line-height:1.5">
+              Revenue in (inside + outside EHI share + transfers): <strong>${ehiFmtLkr(t.revenueIn)}</strong><br/>
+              Costs out (salary paid + maintenance paid): <strong>${ehiFmtLkr(t.costOut)}</strong><br/>
+              Pending: inside ${ehiFmtLkr(t.inPending)} · outside ${ehiFmtLkr(t.outPending)} · transfers ${ehiFmtLkr(t.trPending)} · maintenance ${ehiFmtLkr(t.maintOpen)}<br/>
+              Everything books under <strong>Exotic Holidays International</strong> — not supplier payments.
+            </p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+              <button type="button" class="btn-primary" data-exf-tab="inside">Inside work →</button>
+              <button type="button" class="btn-primary" data-exf-tab="outside">Outside work →</button>
+              <button type="button" class="btn-primary" data-exf-tab="transfers">Transfers →</button>
+              <button type="button" class="btn-secondary" data-exf-tab="salary">Driver salary →</button>
+              <button type="button" class="btn-secondary" data-exf-tab="repair">Maintenance →</button>
+              <button type="button" class="btn-secondary" data-exf-tab="fleet">Fleet →</button>
+            </div>
+          </div>`;
+        return;
+      }
+
+      if (fvExoticDeskTab === "fleet") {
+        panel.innerHTML = `<div class="ops-mini-card" style="margin:0 0 10px"><p style="margin:0;font-size:12px;color:#64748b;font-weight:650">Exotic own fleet · insurance · licence · fitness · roster names. Money &amp; job tabs are separate.</p></div>`;
+        if (fleetList) {
+          const owners = ehiBuildRosterDirectoryOwners("exotic");
+          ehiRenderOwnerFleetCards(fleetList, owners, "No Exotic vehicles on roster.");
+        }
+        return;
+      }
+
+      if (fvExoticDeskTab === "repair") {
+        const rows = (ehiExoticOps.repairs || []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+        const openAmt = rows.filter((r) => r.status === "open").reduce((s, r) => s + Number(r.amount || 0), 0);
+        const paidAmt = rows.filter((r) => r.status === "paid" || r.status === "done").reduce((s, r) => s + Number(r.amount || 0), 0);
+        panel.innerHTML = `
+          <div class="fv-exotic-sums">
+            <div class="fv-exotic-sum"><div class="k">Open maintenance</div><div class="v">${ehiFmtLkr(openAmt)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Paid / done</div><div class="v">${ehiFmtLkr(paidAmt)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Jobs</div><div class="v">${rows.length}</div></div>
+          </div>
+          <form class="fv-exotic-form" id="exf-repair-form">
+            <label>Date<input type="date" name="date" required value="${new Date().toISOString().slice(0, 10)}" /></label>
+            <label>Vehicle${vehSelect("exf-repair-veh")}</label>
+            <label>Workshop<input name="workshop" required placeholder="Garage / workshop" /></label>
+            <label>Amount (LKR)<input name="amount" type="number" min="0" step="100" required placeholder="0" /></label>
+            <label class="span-2">Work / note<textarea name="note" placeholder="What was repaired…"></textarea></label>
+            <label>Status
+              <select name="status"><option value="open">Open</option><option value="paid">Paid</option><option value="done">Done</option></select>
+            </label>
+            <label><span>&nbsp;</span><button type="submit" class="btn-primary" style="width:100%">Add maintenance</button></label>
+          </form>
+          <div class="fv-exotic-table-wrap"><table class="fv-exotic-table">
+            <thead><tr><th>Date</th><th>Vehicle</th><th>Plate</th><th>Workshop</th><th>Note</th><th>Amount</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              ${rows.length ? rows.map((r) => `<tr>
+                <td>${deEsc(r.date || "—")}</td>
+                <td>${deEsc(r.vehicle || "—")}</td>
+                <td class="amt">${deEsc(r.plate || "—")}</td>
+                <td>${deEsc(r.workshop || "—")}</td>
+                <td>${deEsc(r.note || "—")}</td>
+                <td class="amt">${ehiFmtLkr(r.amount)}</td>
+                <td><span class="fv-exotic-badge ${deEsc(r.status || "open")}">${deEsc(r.status || "open")}</span></td>
+                <td><button type="button" class="fv-exotic-del" data-exotic-del="repair" data-id="${deEsc(r.id)}">Remove</button></td>
+              </tr>`).join("") : `<tr><td colspan="8" style="padding:14px;color:#64748b">No maintenance jobs yet.</td></tr>`}
+            </tbody>
+          </table></div>`;
+        return;
+      }
+
+      if (fvExoticDeskTab === "salary") {
+        const rows = (ehiExoticOps.salaries || []).slice().sort((a, b) => String(b.month).localeCompare(String(a.month)));
+        const due = rows.filter((r) => !r.paid).reduce((s, r) => s + ehiExoticSalaryNet(r), 0);
+        const paid = rows.filter((r) => r.paid).reduce((s, r) => s + ehiExoticSalaryNet(r), 0);
+        const monthVal = new Date().toISOString().slice(0, 7);
+        panel.innerHTML = `
+          <div class="fv-exotic-sums">
+            <div class="fv-exotic-sum"><div class="k">Salary due</div><div class="v">${ehiFmtLkr(due)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Salary paid</div><div class="v">${ehiFmtLkr(paid)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Records</div><div class="v">${rows.length}</div></div>
+          </div>
+          <form class="fv-exotic-form" id="exf-salary-form">
+            <label>Month<input type="month" name="month" required value="${monthVal}" /></label>
+            <label>Driver name<input name="driver" required placeholder="Driver name" /></label>
+            <label>Vehicle${vehSelect("exf-salary-veh")}</label>
+            <label>Basic (LKR)<input name="basic" type="number" min="0" step="100" required placeholder="0" /></label>
+            <label>OT (LKR)<input name="ot" type="number" min="0" step="100" value="0" /></label>
+            <label>Advance (LKR)<input name="advance" type="number" min="0" step="100" value="0" /></label>
+            <label>Paid?
+              <select name="paid"><option value="no">Not paid</option><option value="yes">Paid</option></select>
+            </label>
+            <label class="span-2">Note<textarea name="note" placeholder="Salary note…"></textarea></label>
+            <label><span>&nbsp;</span><button type="submit" class="btn-primary" style="width:100%">Add salary</button></label>
+          </form>
+          <div class="fv-exotic-table-wrap"><table class="fv-exotic-table">
+            <thead><tr><th>Month</th><th>Driver</th><th>Vehicle</th><th>Plate</th><th>Basic</th><th>OT</th><th>Advance</th><th>Net</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              ${rows.length ? rows.map((r) => `<tr>
+                <td>${deEsc(r.month || "—")}</td>
+                <td>${deEsc(r.driver || "—")}</td>
+                <td>${deEsc(r.vehicle || "—")}</td>
+                <td class="amt">${deEsc(r.plate || "—")}</td>
+                <td class="amt">${ehiFmtLkr(r.basic)}</td>
+                <td class="amt">${ehiFmtLkr(r.ot)}</td>
+                <td class="amt">${ehiFmtLkr(r.advance)}</td>
+                <td class="amt">${ehiFmtLkr(ehiExoticSalaryNet(r))}</td>
+                <td><span class="fv-exotic-badge ${r.paid ? "paid" : "pending"}">${r.paid ? "paid" : "due"}</span>
+                  ${!r.paid ? ` <button type="button" class="fv-exotic-del" style="background:#ecfdf5;color:#166534" data-exotic-pay="salary" data-id="${deEsc(r.id)}">Mark paid</button>` : ""}
+                </td>
+                <td><button type="button" class="fv-exotic-del" data-exotic-del="salary" data-id="${deEsc(r.id)}">Remove</button></td>
+              </tr>`).join("") : `<tr><td colspan="10" style="padding:14px;color:#64748b">No salary rows yet.</td></tr>`}
+            </tbody>
+          </table></div>`;
+        return;
+      }
+
+      if (fvExoticDeskTab === "inside") {
+        const rows = (ehiExoticOps.inside || []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+        const paid = rows.filter((r) => r.status === "paid" || r.status === "done").reduce((s, r) => s + Number(r.amount || 0), 0);
+        const pending = rows.filter((r) => r.status === "pending").reduce((s, r) => s + Number(r.amount || 0), 0);
+        panel.innerHTML = `
+          <div class="fv-exotic-sums">
+            <div class="fv-exotic-sum"><div class="k">Inside work paid</div><div class="v">${ehiFmtLkr(paid)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Inside work pending</div><div class="v">${ehiFmtLkr(pending)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Jobs</div><div class="v">${rows.length}</div></div>
+          </div>
+          <form class="fv-exotic-form" id="exf-inside-form">
+            <label>Date<input type="date" name="date" required value="${new Date().toISOString().slice(0, 10)}" /></label>
+            <label>Vehicle${vehSelect("exf-inside-veh")}</label>
+            <label>Driver<input name="driver" required placeholder="Driver name" /></label>
+            <label>Job / hotel<input name="job" required placeholder="Inside job name" /></label>
+            <label>Type
+              <select name="kind">
+                <option value="Hotel transfer">Hotel transfer</option>
+                <option value="Shuttle">Shuttle</option>
+                <option value="Excursion">Excursion</option>
+                <option value="Staff move">Staff move</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            <label>Route<input name="route" placeholder="From → To" /></label>
+            <label>Amount (LKR)<input name="amount" type="number" min="0" step="100" required placeholder="0" /></label>
+            <label>Status
+              <select name="status"><option value="pending">Pending</option><option value="paid">Paid</option><option value="done">Done</option></select>
+            </label>
+            <label class="span-2">Note<textarea name="note" placeholder="Inside company work detail…"></textarea></label>
+            <label><span>&nbsp;</span><button type="submit" class="btn-primary" style="width:100%">Add inside work</button></label>
+          </form>
+          <div class="fv-exotic-table-wrap"><table class="fv-exotic-table">
+            <thead><tr><th>Date</th><th>Vehicle</th><th>Plate</th><th>Driver</th><th>Job</th><th>Type</th><th>Route</th><th>Amount</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              ${rows.length ? rows.map((r) => `<tr>
+                <td>${deEsc(r.date || "—")}</td>
+                <td>${deEsc(r.vehicle || "—")}</td>
+                <td class="amt">${deEsc(r.plate || "—")}</td>
+                <td>${deEsc(r.driver || "—")}</td>
+                <td>${deEsc(r.job || "—")}</td>
+                <td>${deEsc(r.kind || "—")}</td>
+                <td>${deEsc(r.route || "—")}</td>
+                <td class="amt">${ehiFmtLkr(r.amount)}</td>
+                <td>
+                  <span class="fv-exotic-badge ${deEsc(r.status || "pending")}">${deEsc(r.status || "pending")}</span>
+                  ${r.status === "pending" ? ` <button type="button" class="fv-exotic-del" style="background:#ecfdf5;color:#166534" data-exotic-pay="inside" data-id="${deEsc(r.id)}">Mark paid</button>` : ""}
+                </td>
+                <td><button type="button" class="fv-exotic-del" data-exotic-del="inside" data-id="${deEsc(r.id)}">Remove</button></td>
+              </tr>`).join("") : `<tr><td colspan="10" style="padding:14px;color:#64748b">No inside work yet.</td></tr>`}
+            </tbody>
+          </table></div>`;
+        return;
+      }
+
+      if (fvExoticDeskTab === "outside") {
+        const rows = (ehiExoticOps.outside || []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+        const pending = rows.filter((r) => r.status === "pending").reduce((s, r) => s + Number(r.amount || 0), 0);
+        const collected = rows.filter((r) => r.status === "paid").reduce((s, r) => s + Number(r.amount || 0), 0);
+        const ehiTot = rows.reduce((s, r) => s + ehiExoticOutsideShare(r), 0);
+        const drvTot = rows.reduce((s, r) => s + Number(r.driverCut || 0), 0);
+        panel.innerHTML = `
+          <div class="fv-exotic-sums">
+            <div class="fv-exotic-sum"><div class="k">Outside hire pending</div><div class="v">${ehiFmtLkr(pending)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Collected</div><div class="v">${ehiFmtLkr(collected)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">EHI share</div><div class="v">${ehiFmtLkr(ehiTot)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Driver cuts</div><div class="v">${ehiFmtLkr(drvTot)}</div></div>
+            <div class="fv-exotic-sum"><div class="k">Jobs</div><div class="v">${rows.length}</div></div>
+          </div>
+          <form class="fv-exotic-form" id="exf-outside-form">
+            <label>Date<input type="date" name="date" required value="${new Date().toISOString().slice(0, 10)}" /></label>
+            <label>Invoice No.<input name="invoice" placeholder="OUT-2409" /></label>
+            <label>Vehicle${vehSelect("exf-outside-veh")}</label>
+            <label>Client / job<input name="client" required placeholder="Who hired · job name" /></label>
+            <label class="span-2">Route / place<input name="route" placeholder="From → To" /></label>
+            <label>Amount received (LKR)<input name="amount" type="number" min="0" step="100" required placeholder="0" /></label>
+            <label>Driver cut (LKR)<input name="driverCut" type="number" min="0" step="100" value="0" /></label>
+            <label>Payment status
+              <select name="status"><option value="pending">Pending</option><option value="paid">Paid</option></select>
+            </label>
+            <label>Paid on<input type="date" name="paidOn" /></label>
+            <label class="span-2">Note<textarea name="note" placeholder="Outside hire detail…"></textarea></label>
+            <label><span>&nbsp;</span><button type="submit" class="btn-primary" style="width:100%">Add outside payment</button></label>
+          </form>
+          <div class="fv-exotic-table-wrap"><table class="fv-exotic-table">
+            <thead><tr>
+              <th>Date</th><th>Invoice</th><th>Vehicle</th><th>Plate</th><th>Client / job</th><th>Route</th>
+              <th>Amount</th><th>Driver cut</th><th>EHI share</th><th>Paid on</th><th>Status</th><th></th>
+            </tr></thead>
+            <tbody>
+              ${rows.length ? rows.map((r) => `<tr>
+                <td>${deEsc(r.date || "—")}</td>
+                <td class="amt">${deEsc(r.invoice || "—")}</td>
+                <td>${deEsc(r.vehicle || "—")}</td>
+                <td class="amt">${deEsc(r.plate || "—")}</td>
+                <td>${deEsc(r.client || "—")}</td>
+                <td>${deEsc(r.route || "—")}</td>
+                <td class="amt">${ehiFmtLkr(r.amount)}</td>
+                <td class="amt">${ehiFmtLkr(r.driverCut)}</td>
+                <td class="amt">${ehiFmtLkr(ehiExoticOutsideShare(r))}</td>
+                <td>${deEsc(r.paidOn || "—")}</td>
+                <td>
+                  <span class="fv-exotic-badge ${deEsc(r.status || "pending")}">${deEsc(r.status || "pending")}</span>
+                  ${r.status !== "paid" ? ` <button type="button" class="fv-exotic-del" style="background:#ecfdf5;color:#166534" data-exotic-pay="outside" data-id="${deEsc(r.id)}">Mark paid</button>` : ""}
+                </td>
+                <td><button type="button" class="fv-exotic-del" data-exotic-del="outside" data-id="${deEsc(r.id)}">Remove</button></td>
+              </tr>`).join("") : `<tr><td colspan="12" style="padding:14px;color:#64748b">No outside work payments yet.</td></tr>`}
+            </tbody>
+          </table></div>`;
+        return;
+      }
+
+      /* transfers */
+      const rows = (ehiExoticOps.transfers || []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+      const done = rows.filter((r) => r.status === "done" || r.status === "paid").reduce((s, r) => s + Number(r.amount || 0), 0);
+      const pending = rows.filter((r) => r.status === "pending").reduce((s, r) => s + Number(r.amount || 0), 0);
+      panel.innerHTML = `
+        <div class="fv-exotic-sums">
+          <div class="fv-exotic-sum"><div class="k">Transfers done</div><div class="v">${ehiFmtLkr(done)}</div></div>
+          <div class="fv-exotic-sum"><div class="k">Transfers pending</div><div class="v">${ehiFmtLkr(pending)}</div></div>
+          <div class="fv-exotic-sum"><div class="k">Jobs</div><div class="v">${rows.length}</div></div>
+        </div>
+        <form class="fv-exotic-form" id="exf-transfer-form">
+          <label>Date<input type="date" name="date" required value="${new Date().toISOString().slice(0, 10)}" /></label>
+          <label>TR ref<input name="ref" required placeholder="TR-…" /></label>
+          <label>Vehicle${vehSelect("exf-transfer-veh")}</label>
+          <label>Driver<input name="driver" required placeholder="Driver name" /></label>
+          <label>Guest / party<input name="guest" required placeholder="Guest name" /></label>
+          <label>Transfer type
+            <select name="kind">
+              <option value="Arrival">Arrival</option>
+              <option value="Departure">Departure</option>
+              <option value="Internal">Internal</option>
+              <option value="Transfer">Transfer</option>
+            </select>
+          </label>
+          <label class="span-2">Route<input name="route" placeholder="From → To" /></label>
+          <label>Pax<input name="pax" type="number" min="1" step="1" value="2" /></label>
+          <label>Amount (LKR)<input name="amount" type="number" min="0" step="100" required placeholder="0" /></label>
+          <label>Status
+            <select name="status"><option value="pending">Pending</option><option value="done">Done</option><option value="paid">Paid</option></select>
+          </label>
+          <label class="span-2">Note<textarea name="note" placeholder="Transfer note…"></textarea></label>
+          <label><span>&nbsp;</span><button type="submit" class="btn-primary" style="width:100%">Add transfer</button></label>
+        </form>
+        <div class="fv-exotic-table-wrap"><table class="fv-exotic-table">
+          <thead><tr><th>Date</th><th>Ref</th><th>Vehicle</th><th>Plate</th><th>Driver</th><th>Guest</th><th>Type</th><th>Route</th><th>Pax</th><th>Amount</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            ${rows.length ? rows.map((r) => `<tr>
+              <td>${deEsc(r.date || "—")}</td>
+              <td class="amt">${deEsc(r.ref || "—")}</td>
+              <td>${deEsc(r.vehicle || "—")}</td>
+              <td class="amt">${deEsc(r.plate || "—")}</td>
+              <td>${deEsc(r.driver || "—")}</td>
+              <td>${deEsc(r.guest || "—")}</td>
+              <td>${deEsc(r.kind || "—")}</td>
+              <td>${deEsc(r.route || "—")}</td>
+              <td>${r.pax || "—"}</td>
+              <td class="amt">${ehiFmtLkr(r.amount)}</td>
+              <td>
+                <span class="fv-exotic-badge ${deEsc(r.status || "pending")}">${deEsc(r.status || "pending")}</span>
+                ${r.status === "pending" ? ` <button type="button" class="fv-exotic-del" style="background:#ecfdf5;color:#166534" data-exotic-pay="transfers" data-id="${deEsc(r.id)}">Mark done</button>` : ""}
+              </td>
+              <td><button type="button" class="fv-exotic-del" data-exotic-del="transfers" data-id="${deEsc(r.id)}">Remove</button></td>
+            </tr>`).join("") : `<tr><td colspan="12" style="padding:14px;color:#64748b">No Exotic transfers yet.</td></tr>`}
+          </tbody>
+        </table></div>`;
+    }
+
+    function renderDrvExcelBoard(rows) {
+      const board = document.getElementById("drv-excel-board");
+      if (!board) return;
+      const days = Array.from({ length: 30 }, (_, i) => i + 1);
+      const dueIds = new Set(
+        [...rows].sort((a, b) => b.score - a.score).slice(0, 5).map((r) => r.id)
+      );
+      const regions = ROSTER_DRIVER_REGIONS.filter((r) => r !== "All");
+      const byRegion = {};
+      rows.forEach((r) => {
+        const key = r.rosterRegion || r.city || "—";
+        if (!byRegion[key]) byRegion[key] = [];
+        byRegion[key].push(r);
+      });
+      const regionOrder = [
+        ...regions.filter((r) => byRegion[r]?.length),
+        ...Object.keys(byRegion).filter((r) => !regions.includes(r)),
+      ];
+      let html = `<table><thead><tr>
+        <th class="col-vehicle">Vehicle</th>
+        <th class="col-fix">Milage</th>
+        <th class="col-fix">Refuse KM</th>
+        <th class="col-fix">Last work on</th>
+        <th class="col-fix">Pax count</th>
+        <th class="col-fix">Vehicle No</th>
+        ${days.map((d) => `<th class="col-day">${d}</th>`).join("")}
+      </tr></thead><tbody>`;
+      if (!regionOrder.length) {
+        html += `<tr><td colspan="${6 + days.length}" class="meta-mute" style="text-align:left;padding:16px">No units for this fleet / region / body filter.</td></tr>`;
+      }
+      regionOrder.forEach((region) => {
+        const list = (byRegion[region] || []).slice().sort((a, b) => b.score - a.score);
+        html += `<tr class="region-head"><td colspan="${6 + days.length}">${deEsc(region)}</td></tr>`;
+        list.forEach((item) => {
+          const due = dueIds.has(item.id) ? " fair-due" : "";
+          const dayMap = item.days || {};
+          const dayCells = days.map((d) => {
+            const v = dayMap[String(d)] ?? dayMap[d];
+            if (v == null || v === "") return `<td class="col-day"></td>`;
+            const isNum = /^\d+(\.\d+)?$/.test(String(v).trim());
+            return `<td class="col-day ${isNum ? "day-hot" : "day-txt"}">${deEsc(String(v))}</td>`;
+          }).join("");
+          html += `<tr class="${due}">
+            <td class="col-vehicle">${deEsc(item.vehicleLabel || item.name)}</td>
+            <td class="col-fix">${item.mileageKm ? deEsc(String(item.mileageKm)) : `<span class="meta-mute">—</span>`}</td>
+            <td class="col-fix">${item.refuseKm ? deEsc(String(item.refuseKm)) : `<span class="meta-mute">0</span>`}</td>
+            <td class="col-fix">${item.lastWorkOn ? deEsc(item.lastWorkOn) : `<span class="meta-mute">—</span>`}</td>
+            <td class="col-fix">${item.seats ? deEsc(String(item.seats)) : `<span class="meta-mute">—</span>`}</td>
+            <td class="col-fix">${item.plate ? deEsc(item.plate) : `<span class="meta-mute">—</span>`}</td>
+            ${dayCells}
+          </tr>`;
+        });
+      });
+      html += `</tbody></table>`;
+      board.innerHTML = html;
     }
 
     function rosterUi() {
@@ -16466,7 +17584,7 @@
       if (title) title.textContent = rosterMode === "drivers" ? "Driver Roster" : "Guide Roaster";
       if (sub) {
         sub.textContent = rosterMode === "drivers"
-          ? "Van / Mini Coach / 33 Bus · region · milage · refuse · last work · AI fair pick"
+          ? "Driver roster board · Car / Van / Mini Coach / 33 Bus · region · milage · refuse · last work · days"
           : "Best guides for today’s trips";
       }
 
@@ -16487,6 +17605,9 @@
       document.querySelectorAll("#drv-body-tabs .drv-body-tab").forEach((btn) => {
         btn.classList.toggle("active", btn.dataset.drvBody === drvBodyFilter);
       });
+      document.querySelectorAll("#drv-owner-bar .drv-owner-tab").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.drvOwner === drvOwnerFilter);
+      });
       const bodyTabs = document.getElementById("drv-body-tabs");
       if (bodyTabs) bodyTabs.style.display = (drvFleetFilter === "Van" || drvFleetFilter === "All") ? "" : "none";
 
@@ -16495,7 +17616,7 @@
         if (rosterMode === "drivers") {
           if (!ehiMatchRosterRegion(item.region || item.city || item.rosterRegion, city)) return false;
           if (drvFleetFilter !== "All" && item.fleetSheet !== drvFleetFilter) return false;
-          if (drvBodyFilter !== "All" && item.bodyType && item.bodyType !== drvBodyFilter) return false;
+          if (drvBodyFilter !== "All" && (item.bodyType || "") !== drvBodyFilter) return false;
           return true;
         }
         return city === "All" || item.city === city || item.region === city;
@@ -16551,16 +17672,37 @@
       const bannerSub = ui.bannerSub;
       const bannerCount = ui.bannerCount;
       if (bannerTitle) {
-        bannerTitle.textContent = rosterMode === "drivers" ? "Fairness · due drivers first" : `AI ${whoOne} allocation`;
+        bannerTitle.textContent = rosterMode === "drivers"
+          ? (drvOwnerFilter === "exotic" ? "Exotic vehicles · fair due first" : "Supplier vehicles · fair due first")
+          : `AI ${whoOne} allocation`;
       }
       if (bannerSub) {
         bannerSub.textContent = rosterMode === "drivers"
-          ? `${drvFleetFilter === "All" ? "All fleets" : drvFleetFilter}${drvBodyFilter !== "All" ? " · " + drvBodyFilter : ""} · ${city === "All" ? "all regions" : city}`
+          ? `${drvFleetFilter === "All" ? "All fleets" : drvFleetFilter} · ${city === "All" ? "all regions" : city} · Vehicle · Milage · Refuse KM · Last work · Pax · Vehicle No · days`
           : (guideAiSvcFilter === "All"
             ? "Excursion guide desk · region · language · confirm"
             : `Filtered: ${guideAiSvcFilter}`);
       }
-      if (bannerCount) bannerCount.textContent = String(filtered.length);
+      if (bannerCount) {
+        bannerCount.textContent = String(filtered.length);
+      }
+
+      const excelBoard = document.getElementById("drv-excel-board");
+      const excelLegend = document.getElementById("drv-excel-legend");
+      const ownerBoard = document.getElementById("drv-supplier-owners");
+      if (rosterMode === "drivers") {
+        if (list) list.hidden = true;
+        if (ownerBoard) ownerBoard.hidden = true;
+        if (excelBoard) excelBoard.hidden = false;
+        if (excelLegend) excelLegend.hidden = false;
+        renderDrvExcelBoard(filtered);
+        if (typeof renderDashRosterOverview === "function") renderDashRosterOverview();
+        return;
+      }
+      if (excelBoard) excelBoard.hidden = true;
+      if (excelLegend) excelLegend.hidden = true;
+      if (ownerBoard) ownerBoard.hidden = true;
+      if (list) list.hidden = false;
 
       if (!filtered.length) {
         list.innerHTML = `<div class="empty" style="padding:24px 8px">No ${who} in this view.</div>`;
@@ -16572,42 +17714,6 @@
         const avatarClass = item.stage === "onjob" || item.stage === "offline" || item.stage === "available"
           ? item.stage
           : "";
-        if (rosterMode === "drivers") {
-          const bodyClass = item.bodyType === "FLATROOF" ? "body-flat" : "body-kdh";
-          const refuseChip = item.refuseKm
-            ? `<span class="roster-chip refuse">Refuse ${item.refuseKm} km</span>`
-            : (item.refused ? `<span class="roster-chip refuse">${item.refused} refused</span>` : "");
-          const dayStrip = Array.isArray(item.dayMarks)
-            ? `<div class="roster-day-strip" title="Month day marks">${item.dayMarks.map((m) => `<i class="${m}"></i>`).join("")}</div>`
-            : "";
-          const whyLine = item.matchWhy && item.matchWhy.length
-            ? `<div style="font-size:10px;color:#64748b;margin-top:2px">${item.matchWhy.slice(0, 4).join(" · ")}</div>`
-            : `<div style="font-size:10px;color:#64748b;margin-top:2px">${item.nextJob || ""}</div>`;
-          return `
-        <div class="rank-row roster-row ${i < 3 ? "top-pick fair-due" : ""}" data-drv-id="${item.id}">
-          <div class="rank-pos">${i + 1}</div>
-          <div class="roster-avatar ${avatarClass}" aria-hidden="true">${rosterInitials(item.name)}</div>
-          <div class="rank-name">
-            ${item.name}
-            <div class="roster-meta-row">
-              <span class="roster-chip">${item.rosterRegion || item.city}</span>
-              <span class="roster-chip svc-tag">${item.plate || "—"} · ${item.seats || "—"} pax</span>
-              <span class="roster-chip ${bodyClass}">${item.bodyType || item.vehicleType || "—"}</span>
-              <span class="roster-chip km">${item.mileageKm != null ? item.mileageKm + " km" : "—"}</span>
-              ${refuseChip}
-              ${item.lastWorkOn ? `<span class="roster-chip lastwork">${item.lastWorkOn}</span>` : `<span class="roster-chip lastwork">No last work</span>`}
-            </div>
-            ${whyLine}
-            ${dayStrip}
-          </div>
-          <span class="rank-stage ${item.stage}">${rosterStageLabel(item.stage)}</span>
-          <div class="rank-score roster-score">
-            <div class="val">${item.score.toFixed(1)}</div>
-            <small>${item.scoreLabel || "Fair due"}</small>
-            <div class="roster-meter" title="Fairness ${pct}%"><i style="width:${pct}%"></i></div>
-          </div>
-        </div>`;
-        }
         const refuseChip = item.refused
           ? `<span class="roster-chip refuse">${item.refused} refused</span>`
           : "";
@@ -17367,7 +18473,7 @@
 
     function ttCardHtml(job, active) {
       const dateShow = job.dateISO || job.dateLabel || job.dayLabel || "—";
-      const vehicleShow = job.vehicle || job.driver || "—";
+      const driverShow = job.driver || job.vehicle || "—";
       const typeShow = job.kindLabel || job.kind || "—";
       return `
         <article class="tt-card ${active ? "active" : ""}" data-tt-id="${attnEsc(job.id)}" role="button" tabindex="0">
@@ -17380,8 +18486,8 @@
           </div>
           <div class="tt-card-grid">
             <div class="cell">
-              <span class="k">Vehicle name</span>
-              <span class="v">${attnEsc(vehicleShow)}</span>
+              <span class="k">Driver name</span>
+              <span class="v">${attnEsc(driverShow)}</span>
             </div>
             <div class="cell">
               <span class="k">Date</span>
@@ -17401,8 +18507,8 @@
       const vehicleSel = document.getElementById("tt-vehicle");
       if (!vehicleSel) return;
       const cur = vehicleSel.value || "All";
-      const names = [...new Set(jobs.map((j) => j.vehicle).filter(Boolean))].sort((a, b) => a.localeCompare(b));
-      vehicleSel.innerHTML = `<option value="All">All vehicles</option>` +
+      const names = [...new Set(jobs.map((j) => j.driver || j.vehicle).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+      vehicleSel.innerHTML = `<option value="All">All drivers</option>` +
         names.map((n) => `<option value="${attnEsc(n)}">${attnEsc(n)}</option>`).join("");
       if ([...vehicleSel.options].some((o) => o.value === cur)) vehicleSel.value = cur;
     }
@@ -17414,7 +18520,7 @@
       const dateVal = document.getElementById("tt-date")?.value || "";
       const kind = document.getElementById("tt-kind-filter")?.value || "All";
       let rows = ttJobs.filter((j) => {
-        if (vehicle !== "All" && j.vehicle !== vehicle) return false;
+        if (vehicle !== "All" && (j.driver || j.vehicle) !== vehicle) return false;
         if (dateVal && j.dateISO !== dateVal) return false;
         if (kind !== "All" && j.kind !== kind) return false;
         return true;
@@ -17498,7 +18604,7 @@
         const kind = document.getElementById("tt-kind-filter")?.value || "All";
         ttRenderMap(
           ttJobs.filter((j) => {
-            if (vehicle !== "All" && j.vehicle !== vehicle) return false;
+            if (vehicle !== "All" && (j.driver || j.vehicle) !== vehicle) return false;
             if (dateVal && j.dateISO !== dateVal) return false;
             if (kind !== "All" && j.kind !== kind) return false;
             return true;
@@ -18512,6 +19618,50 @@
     function ehiNormPerson(name) {
       return String(name || "").replace(/\s+/g, " ").replace(/\./g, "").trim();
     }
+    function ehiHashSeed(s) {
+      const str = String(s || "");
+      let h = 2166136261;
+      for (let i = 0; i < str.length; i++) {
+        h ^= str.charCodeAt(i);
+        h = Math.imul(h, 16777619);
+      }
+      return h >>> 0;
+    }
+    function ehiAddMonthsISO(base, months) {
+      const d = new Date(base.getFullYear(), base.getMonth() + months, base.getDate());
+      return d.toISOString().slice(0, 10);
+    }
+    function ehiDocStatus(iso) {
+      if (!iso) return "unknown";
+      const today = new Date().toISOString().slice(0, 10);
+      if (iso < today) return "expired";
+      const soon = new Date();
+      soon.setDate(soon.getDate() + 45);
+      if (iso <= soon.toISOString().slice(0, 10)) return "expiring";
+      return "valid";
+    }
+    function ehiVehicleDocDates(seed, row) {
+      const h = ehiHashSeed(seed + "|" + (row?.vehicleType || "") + "|" + (row?.phone || ""));
+      const base = new Date(2026, 0, 1);
+      const insMonths = ((h % 20) - 4); /* -4 … +15 months from Jan 2026 */
+      const revMonths = ((h >> 3) % 18) - 2;
+      const fitMonths = ((h >> 5) % 16) - 1;
+      const emiMonths = ((h >> 7) % 14);
+      const colors = ["White", "Silver", "Black", "Blue", "Grey", "Pearl", "Maroon"];
+      const insuranceValidTo = ehiAddMonthsISO(base, insMonths);
+      const revenueLicenceTo = ehiAddMonthsISO(base, revMonths);
+      const fitnessTo = ehiAddMonthsISO(base, fitMonths);
+      const emissionTo = ehiAddMonthsISO(base, emiMonths);
+      return {
+        insuranceValidTo,
+        insuranceStatus: ehiDocStatus(insuranceValidTo),
+        revenueLicenceTo,
+        fitnessTo,
+        emissionTo,
+        year: 2016 + (h % 10),
+        color: colors[h % colors.length],
+      };
+    }
     function ehiSupplierKey(name, phone) {
       const n = ehiNormPerson(name).toLowerCase();
       const p = String(phone || "").replace(/\D/g, "");
@@ -18546,17 +19696,27 @@
         const plate = d.plate && d.plate !== "—" ? String(d.plate).trim() : "";
         const already = plate && sup.vehicles.some((v) => v.plate === plate);
         if (!already) {
+          const docs = ehiVehicleDocDates(plate || d.id || String(sup.vehicles.length), d);
           sup.vehicles.push({
             id: d.id || `veh-${sup.vehicles.length + 1}`,
             plate: plate || `TBD-${sup.vehicles.length + 1}`,
             vehicleType: d.vehicleType || "Vehicle",
             seats: d.seats || 4,
             brand: d.brand || "",
+            bodyType: ehiBodyTypeFromBrand(d.brand, d.seats),
+            fleetSheet: ehiFleetSheetOf(d.vehicleType, d.brand),
             status: d.status || "Active",
             mileageKm: Number(d.mileageKm || 0),
             transferKm: Number(d.transferKm || 0),
             excursionKm: Number(d.excursionKm || 0),
             roundTourKm: Number(d.roundTourKm || 0),
+            insuranceValidTo: docs.insuranceValidTo,
+            insuranceStatus: docs.insuranceStatus,
+            revenueLicenceTo: docs.revenueLicenceTo,
+            fitnessTo: docs.fitnessTo,
+            emissionTo: docs.emissionTo,
+            year: docs.year,
+            color: docs.color,
           });
         }
         if (d.region && (!sup.region || String(d.region).length > String(sup.region).length)) sup.region = d.region;
@@ -19880,6 +21040,8 @@
         "transfer-alloc": "EHI Back Office — Transfer Allocation",
         "guide-roster": "EHI Back Office — Guide Roster",
         "driver-roster": "EHI Back Office — Driver Roster",
+        "fleet-directory": "EHI Back Office — All Drivers",
+        "exotic-fleet": "EHI Back Office — Exotic Fleet",
         "tr-analytics": "EHI Back Office — Transfer Analytics",
         "tr-driver-transfers": "EHI Back Office — Transfers",
         "tr-driver-reviews": "EHI Back Office — Driver Reviews",
@@ -19908,7 +21070,7 @@
       if (typeof renderTransportModulePage === "function") renderTransportModulePage(page);
 
       const transportPages = [
-        "excursions", "vehicle-regis", "guide-regis", "transfer-alloc", "guide-roster", "driver-roster",
+        "excursions", "vehicle-regis", "guide-regis", "transfer-alloc", "guide-roster", "driver-roster", "fleet-directory", "exotic-fleet",
         "tr-analytics", "tr-driver-transfers", "tr-driver-reviews",
         "tr-media",
       ];
@@ -19916,7 +21078,7 @@
         document.getElementById("transport-section").classList.add("open");
         document.getElementById("transport-toggle").setAttribute("aria-expanded", "true");
       }
-      const allocationNestPages = ["transfer-alloc", "guide-roster", "driver-roster", "guide-regis", "vehicle-regis"];
+      const allocationNestPages = ["transfer-alloc", "guide-roster", "driver-roster", "fleet-directory", "exotic-fleet", "guide-regis", "vehicle-regis"];
       const allocationNest = document.getElementById("allocation-nest");
       const allocationNestBtn = document.getElementById("allocation-nest-toggle");
       if (allocationNest && allocationNestBtn && allocationNestPages.includes(page)) {
@@ -19938,6 +21100,13 @@
           selectedCity = "All";
         }
         if (typeof renderRanking === "function") renderRanking(selectedCity || "All");
+      }
+      if (page === "fleet-directory") {
+        if (!ROSTER_DRIVER_REGIONS.includes(fvRegionFilter)) fvRegionFilter = "All";
+        if (typeof renderFleetDirectory === "function") renderFleetDirectory(fvRegionFilter || "All");
+      }
+      if (page === "exotic-fleet") {
+        if (typeof renderExoticOpsDesk === "function") renderExoticOpsDesk();
       }
       const excursionPages = ["excursion-dash", "excursion-reports", "excursion-marketplace", "daily-excursions", "daily-info", "operation", "allocation"];
       if (excursionPages.includes(page)) {
@@ -33329,6 +34498,190 @@
       drvAiSelectedJobId = null;
       renderRanking(selectedCity || "All");
     });
+    document.getElementById("drv-owner-bar")?.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-drv-owner]");
+      if (!btn) return;
+      drvOwnerFilter = btn.dataset.drvOwner || "supplier";
+      renderRanking(selectedCity || "All");
+    });
+    document.getElementById("fv-owner-bar")?.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-fv-owner]");
+      if (!btn) return;
+      fvOwnerFilter = btn.dataset.fvOwner || "all";
+      renderFleetDirectory(fvRegionFilter || "All");
+    });
+    document.getElementById("fv-fleet-bar")?.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-fv-fleet]");
+      if (!btn) return;
+      fvFleetFilter = btn.dataset.fvFleet || "All";
+      renderFleetDirectory(fvRegionFilter || "All");
+    });
+    document.getElementById("exf-tabs")?.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-exf-tab]");
+      if (!btn) return;
+      fvExoticDeskTab = btn.dataset.exfTab || "totals";
+      renderExoticOpsDesk();
+    });
+    document.getElementById("exf-desk")?.addEventListener("click", (e) => {
+      const jump = e.target.closest("button[data-exf-tab]");
+      if (jump && !jump.closest("#exf-tabs")) {
+        fvExoticDeskTab = jump.dataset.exfTab || "totals";
+        renderExoticOpsDesk();
+        return;
+      }
+      const payBtn = e.target.closest("[data-exotic-pay]");
+      if (payBtn) {
+        const kind = payBtn.dataset.exoticPay;
+        const id = payBtn.dataset.id;
+        if (kind === "salary") {
+          const row = (ehiExoticOps.salaries || []).find((r) => r.id === id);
+          if (row) row.paid = true;
+        }
+        if (kind === "outside") {
+          const row = (ehiExoticOps.outside || []).find((r) => r.id === id);
+          if (row) {
+            row.status = "paid";
+            if (!row.paidOn) row.paidOn = new Date().toISOString().slice(0, 10);
+          }
+        }
+        if (kind === "inside") {
+          const row = (ehiExoticOps.inside || []).find((r) => r.id === id);
+          if (row) row.status = "paid";
+        }
+        if (kind === "transfers") {
+          const row = (ehiExoticOps.transfers || []).find((r) => r.id === id);
+          if (row) row.status = "done";
+        }
+        ehiSaveExoticOps(ehiExoticOps);
+        renderExoticOpsDesk();
+        return;
+      }
+      const delBtn = e.target.closest("[data-exotic-del]");
+      if (!delBtn) return;
+      const kind = delBtn.dataset.exoticDel;
+      const id = delBtn.dataset.id;
+      if (kind === "repair") ehiExoticOps.repairs = (ehiExoticOps.repairs || []).filter((r) => r.id !== id);
+      if (kind === "salary") ehiExoticOps.salaries = (ehiExoticOps.salaries || []).filter((r) => r.id !== id);
+      if (kind === "inside") ehiExoticOps.inside = (ehiExoticOps.inside || []).filter((r) => r.id !== id);
+      if (kind === "outside") ehiExoticOps.outside = (ehiExoticOps.outside || []).filter((r) => r.id !== id);
+      if (kind === "transfers") ehiExoticOps.transfers = (ehiExoticOps.transfers || []).filter((r) => r.id !== id);
+      ehiSaveExoticOps(ehiExoticOps);
+      renderExoticOpsDesk();
+    });
+    document.getElementById("exf-desk")?.addEventListener("submit", (e) => {
+      const form = e.target.closest("form");
+      if (!form) return;
+      e.preventDefault();
+      const fd = new FormData(form);
+      const pickVeh = (selId) => {
+        const sel = document.getElementById(selId);
+        const opt = sel?.selectedOptions?.[0];
+        const label = (sel?.value || "").trim();
+        const plate = opt?.dataset?.plate || "";
+        const vehicle = label.includes(" · ") ? label.split(" · ")[0] : label;
+        return { vehicle, plate, label };
+      };
+      if (form.id === "exf-repair-form") {
+        const v = pickVeh("exf-repair-veh");
+        if (!v.label) return;
+        ehiExoticOps.repairs.unshift({
+          id: ehiExoticUid("er"),
+          date: String(fd.get("date") || ""),
+          vehicle: v.vehicle,
+          plate: v.plate,
+          workshop: String(fd.get("workshop") || "").trim(),
+          note: String(fd.get("note") || "").trim(),
+          amount: Number(fd.get("amount") || 0),
+          status: String(fd.get("status") || "open"),
+        });
+        ehiSaveExoticOps(ehiExoticOps);
+        renderExoticOpsDesk();
+        return;
+      }
+      if (form.id === "exf-salary-form") {
+        const v = pickVeh("exf-salary-veh");
+        ehiExoticOps.salaries.unshift({
+          id: ehiExoticUid("es"),
+          month: String(fd.get("month") || ""),
+          driver: String(fd.get("driver") || "").trim(),
+          vehicle: v.vehicle || "—",
+          plate: v.plate || "—",
+          basic: Number(fd.get("basic") || 0),
+          ot: Number(fd.get("ot") || 0),
+          advance: Number(fd.get("advance") || 0),
+          paid: String(fd.get("paid") || "no") === "yes",
+          note: String(fd.get("note") || "").trim(),
+        });
+        ehiSaveExoticOps(ehiExoticOps);
+        renderExoticOpsDesk();
+        return;
+      }
+      if (form.id === "exf-outside-form") {
+        const v = pickVeh("exf-outside-veh");
+        if (!v.label) return;
+        if (!ehiExoticOps.outside) ehiExoticOps.outside = [];
+        ehiExoticOps.outside.unshift({
+          id: ehiExoticUid("eo"),
+          date: String(fd.get("date") || ""),
+          invoice: String(fd.get("invoice") || "").trim(),
+          vehicle: v.vehicle,
+          plate: v.plate,
+          client: String(fd.get("client") || "").trim(),
+          route: String(fd.get("route") || "").trim(),
+          amount: Number(fd.get("amount") || 0),
+          driverCut: Number(fd.get("driverCut") || 0),
+          status: String(fd.get("status") || "pending"),
+          paidOn: String(fd.get("paidOn") || ""),
+          note: String(fd.get("note") || "").trim(),
+        });
+        ehiSaveExoticOps(ehiExoticOps);
+        renderExoticOpsDesk();
+        return;
+      }
+      if (form.id === "exf-inside-form") {
+        const v = pickVeh("exf-inside-veh");
+        if (!v.label) return;
+        if (!ehiExoticOps.inside) ehiExoticOps.inside = [];
+        ehiExoticOps.inside.unshift({
+          id: ehiExoticUid("ei"),
+          date: String(fd.get("date") || ""),
+          vehicle: v.vehicle,
+          plate: v.plate,
+          driver: String(fd.get("driver") || "").trim(),
+          job: String(fd.get("job") || "").trim(),
+          kind: String(fd.get("kind") || "Hotel transfer"),
+          route: String(fd.get("route") || "").trim(),
+          amount: Number(fd.get("amount") || 0),
+          status: String(fd.get("status") || "pending"),
+          note: String(fd.get("note") || "").trim(),
+        });
+        ehiSaveExoticOps(ehiExoticOps);
+        renderExoticOpsDesk();
+        return;
+      }
+      if (form.id === "exf-transfer-form") {
+        const v = pickVeh("exf-transfer-veh");
+        if (!v.label) return;
+        if (!ehiExoticOps.transfers) ehiExoticOps.transfers = [];
+        ehiExoticOps.transfers.unshift({
+          id: ehiExoticUid("et"),
+          date: String(fd.get("date") || ""),
+          ref: String(fd.get("ref") || "").trim(),
+          vehicle: v.vehicle,
+          plate: v.plate,
+          driver: String(fd.get("driver") || "").trim(),
+          guest: String(fd.get("guest") || "").trim(),
+          kind: String(fd.get("kind") || "Arrival"),
+          route: String(fd.get("route") || "").trim(),
+          pax: Number(fd.get("pax") || 0),
+          amount: Number(fd.get("amount") || 0),
+          status: String(fd.get("status") || "pending"),
+          note: String(fd.get("note") || "").trim(),
+        });
+        ehiSaveExoticOps(ehiExoticOps);
+        renderExoticOpsDesk();
+      }
+    });
     document.getElementById("drv-fleet-bar")?.addEventListener("click", (e) => {
       const fleetBtn = e.target.closest("[data-drv-fleet]");
       if (fleetBtn) {
@@ -33347,7 +34700,7 @@
       return buildDriverRosterRows().filter((item) => {
         if (!ehiMatchRosterRegion(item.region || item.city || item.rosterRegion, selectedCity || "All")) return false;
         if (drvFleetFilter !== "All" && item.fleetSheet !== drvFleetFilter) return false;
-        if (drvBodyFilter !== "All" && item.bodyType && item.bodyType !== drvBodyFilter) return false;
+        if (drvBodyFilter !== "All" && (item.bodyType || "") !== drvBodyFilter) return false;
         return true;
       });
     }
@@ -34256,7 +35609,7 @@
       if (["excursion-dash", "excursion-reports", "excursion-marketplace", "daily-excursions", "daily-info", "operation", "allocation"].includes(page)) {
         openSection("excursion-section", "excursion-toggle");
       }
-      if (["transfer-alloc", "guide-roster", "driver-roster", "guide-regis", "vehicle-regis"].includes(page)) {
+      if (["transfer-alloc", "guide-roster", "driver-roster", "fleet-directory", "exotic-fleet", "guide-regis", "vehicle-regis"].includes(page)) {
         openSection("transport-section", "transport-toggle");
         const nest = document.getElementById("allocation-nest");
         const nestBtn = document.getElementById("allocation-nest-toggle");
